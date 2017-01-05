@@ -11,7 +11,7 @@ services:
   my-wp:
     image: wordpress
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www/html/web/wp/
     ports:
       - "8080:80"
     links:
