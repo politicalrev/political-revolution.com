@@ -1,0 +1,138 @@
+@import "common/variables";
+
+// Automatically injected Bower dependencies via wiredep (never manually edit this block)
+// bower:scss
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+// endbower
+
+// @import "common/global";
+// @import "components/buttons";
+// @import "components/comments";
+// @import "components/forms";
+// @import "components/grid";
+// @import "components/wp-classes";
+// @import "layouts/header";
+// @import "layouts/sidebar";
+// @import "layouts/footer";
+// @import "layouts/pages";
+// @import "layouts/posts";
+// @import "layouts/tinymce";
+
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+@import 'font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic');
+
+/*
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+	@include skel-breakpoints((
+		xlarge: '(max-width: 1680px)',
+		large: '(max-width: 1280px)',
+		medium: '(max-width: 980px)',
+		small: '(max-width: 736px)',
+		xsmall: '(max-width: 550px)',
+		xxsmall: '(max-width: 360px)'
+	));
+
+	@include skel-layout((
+		reset: 'full',
+		boxModel: 'border',
+		grid: ( gutters: 2em ),
+		breakpoints: (
+			large: (
+				grid: ( gutters: 1.5em )
+			),
+			small: (
+				grid: ( gutters: 1.25em )
+			)
+		)
+	));
+
+	@mixin inner {
+		> .inner {
+			@include padding(4em, 0);
+			margin: 0 auto;
+			max-width: _size(inner);
+			width: calc(100% - 6em);
+
+			@include breakpoint(small) {
+				@include padding(3em, 0);
+				width: calc(100% - 3em);
+			}
+		}
+	}
+
+// Base.
+
+	@import 'base/page';
+	@import 'base/typography';
+
+// Component.
+
+	@import 'components/section';
+	@import 'components/form';
+	@import 'components/box';
+	@import 'components/icon';
+	@import 'components/image';
+	@import 'components/list';
+	@import 'components/table';
+	@import 'components/button';
+	@import 'components/tiles';
+	@import 'components/contact-method';
+	@import 'components/spotlights';
+	@import "components/social-buttons";
+
+// Layout.
+
+	@import 'layout/header';
+	@import 'layout/banner';
+	@import 'layout/main';
+	@import 'layout/contact';
+	@import 'layout/footer';
+	@import 'layout/wrapper';
+	@import 'layout/menu';
+	@import 'layout/page';
+	@import 'layout/page-alt';
+	@import 'layout/post';
+	@import 'layout/petition';
+
+
+// put the page specific theme deviation styles here
+.home{
+	#banner > .inner{
+		height: 100%;
+
+		.content{
+			top: 100%;
+			left: 50%;
+			transform: translate(-50%, -100%);
+			position: absolute;
+			width: 100%;
+			display: flex;
+
+			margin: 0 auto _size(element-margin);
+			max-width: 56em;
+			background: _palette(fg);
+			color: _palette(bg);
+			box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
+
+			p {
+				font-size: 1em;
+				text-transform: uppercase;
+				padding: .5em 1.5em;
+			}
+
+		}
+	}
+}	
+
+// the script that would reveal this isn't wired up so im overwriting display: none;
+#banner h1{
+	display: block;
+}

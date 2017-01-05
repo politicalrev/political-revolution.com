@@ -1,0 +1,21 @@
+{
+  "name": "sage",
+  "homepage": "https://roots.io/sage/",
+  "authors": [
+    "Ben Word <ben@benword.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery.scrollex": "^0.2.1",
+    "components-font-awesome": "^4.7.0",
+    "font-awesome": "^4.7.0",
+    "bootstrap": "^3.3.7"
+  },
+  "font-awesome": {
+    "main": [
+      "./scss/font-awesome.scss",
+      "./fonts/*"
+    ]
+  }
+}

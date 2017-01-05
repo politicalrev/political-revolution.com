@@ -1,0 +1,59 @@
+$letterhead-size: 3em
+
+.page
+
+	.page-header
+		padding-top: 1em
+		&>h1
+			text-align: center
+			font-size: 3.5em
+			margin-left: 2rem
+			margin-right: 2rem
+			margin-top: .5em
+
+	>.text-wrapper
+		*
+			color: _palette(bg)
+		background: _palette(fg)
+		position: relative
+		padding-top: $letterhead-size * 1.7
+
+.image-grid
+	display: flex
+	flex-flow: row wrap
+	>*
+		border-bottom: none
+		flex-basis: 250px
+		flex-grow: 1
+		margin: 0 4px
+		img
+			width: 100%
+
+
+.page-button
+	background-color: _palette(bg)
+	color: _palette(fg-bold) !important
+	margin: 0 auto
+
+.letterhead
+	position: absolute
+	left: 0
+	top: 1em
+	width: 100%
+	border-top: 3px solid _palette(bg)
+	border-bottom: 3px solid _palette(bg)
+	height: $letterhead-size / 2
+	overflow: visible
+	text-align: center
+	margin: ($letterhead-size / 4) ($letterhead-size) ($letterhead-size) 0
+
+	img
+		// position: absolute
+		height: ($letterhead-size * 1.3)
+		margin: -($letterhead-size * 1.3 / 3) 0 0
+	.star
+		// @include star(($letterhead-size / 5), _palette(bg))
+		margin: .5% 3%
+		font-size: 1em
+		display: inline-block
+		vertical-align: top

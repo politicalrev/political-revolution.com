@@ -1,0 +1,107 @@
+article .post-banner {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 42%;
+    padding: 3em 1em;
+    position: relative;
+    z-index: 1;
+}
+
+article .post-banner::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(5,42,72,0.7);
+}
+
+article .text-wrapper {
+    flex-basis: 40em;
+    flex-grow: 4;
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+article .text-wrapper * {
+    color: #052a48;
+}
+
+@media (min-width: 500px) {
+    .text-wrapper {
+        padding: 3em 3em;
+    }
+}
+
+.text-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em 0 0 3.7em;
+}
+
+header.major>:first-child {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+article header.major {
+    position: relative;
+    padding: 1.5em 0;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    max-width: 44em;
+    z-index: 10;
+    display: block;
+}
+
+article header.major h1 {
+    font-size: 2.5em;
+    color: #f7f7f7;
+    line-height: 1.2;
+    width: auto;
+}
+
+header.major>:first-child:after {
+    content: '';
+    background-color: #fff;
+    display: block;
+    height: 2px;
+    margin: 0.325em 0 0.5em 0;
+    width: 100%;
+}
+
+.entry-content {
+  background: #fff;
+  padding: 25px 0;
+}
+
+.entry-content p {
+  color: #000;
+}
+
+a.btn-tweet {
+    background: #55acee;
+    border-radius: 4px;
+    border: 0;
+    padding: .1em .6em;
+    color: #fff !important;
+    margin: 0 .5em;
+    font-size: .7em;
+    position: relative;
+    top: .3em;
+}
+
+time.updated {
+    font-size: .8em;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}

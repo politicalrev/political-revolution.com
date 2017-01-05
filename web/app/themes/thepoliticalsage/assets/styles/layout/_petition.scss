@@ -1,0 +1,118 @@
+body.page-template-template-petition {
+    margin:0; 
+    padding:0; 
+    width:100%; 
+    height: 100%;
+		background-size:cover;
+		background-position: center right;
+	main {
+		width:40%;
+		min-height:90vh;
+		background-color:rgba(26,43,69,0.9);
+		color:#FFF;
+		box-sizing:border-box;
+		padding:4%;
+    /*h1 {
+      font-size: 2.1em;
+      font-weight: 100;
+      color:#FFF;
+	  }*/
+    hr {
+      width:25%;
+      height:0.3em;
+      border:0;
+      background-color:#FFF;margin:0;
+      margin-bottom: 1em;
+    }
+	}
+	form {
+		width:100%;
+		margin:2em 0;
+	}
+	form input {
+		font-weight:300;
+		transition: border 500ms, outline 500ms;
+    height: 3em;
+	}
+	#email { width:100%; float:none; clear:both; margin-bottom:1em; }
+	#zip { width:42%; float:left; }
+	#submit { width:55%; float:right; background-color:#f54f4f;    background-size: 200% 100%;
+    background-image: linear-gradient(to right, rgba(245,79,79,1) 50%, rgba(0,0,0,0.1) 50%); letter-spacing: 2px;border:0;transition: background-position 200ms; }
+	#submit:hover {background-position: -100% 0;cursor:pointer;}
+	.clear {width:100%;height:0;float:none;clear:both;}
+	.signatures {width:100%;text-align:left;font-family:Montserrat,Gotham, Helvetica Neue, Helvetica, Arial," sans-serif"; font-size:1.3em;text-transform: uppercase;margin-bottom:10px;}
+	h5 {font-family:Montserrat, Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";font-size:2em;font-weight:700;letter-spacing:-1px;text-transform: uppercase;padding: 0;margin:10px auto;}
+
+@media (max-width: 750px){
+	main {
+		width:100%;
+	}
+}
+@media (max-width: 450px){
+	main {
+		width:100%;
+	}
+}
+	
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?wisv4v');
+  src:  url('fonts/icomoon.eot?wisv4v#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?wisv4v') format('truetype'),
+    url('fonts/icomoon.woff?wisv4v') format('woff'),
+    url('fonts/icomoon.svg?wisv4v#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-linkedin2:before {
+  content: "\eaca";
+}
+
+
+	.social {
+		width:100%;
+		height:40px;
+	}
+	.social a {color:#FFF;}
+	.social span {
+		height:20px;width:20px;font-size:20px;border-radius:100%;border:2px solid #FFF;display:inline-block;padding:10px;
+	}
+	
+	#link {
+		height:3.2em;
+		width:100%;
+		border:1px solid #FFF;
+		box-sizing:border-box;
+		background-color:rgba(255,255,255,0.1);
+		color:#FFF;
+		font-size:0.9em;
+		text-transform: uppercase;
+		font-weight:300;
+		padding:1.5em;
+		transition: border-color 500ms;
+	}
+	.thankyou {display:none}
+
+}

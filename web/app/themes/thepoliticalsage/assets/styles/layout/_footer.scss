@@ -1,0 +1,95 @@
+///
+/// Forty by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Footer */
+
+	#footer {
+		background: _palette(bg); 
+		padding: 0;
+		margin: 0 auto;
+		width: 100%;
+
+		div {
+			width: 100%;
+			padding: .5em 0;
+
+			// Social links
+			&:first-child {
+				background-color: _palette(accent2);
+				text-align: center;
+				font-size: 2em;
+				li a {
+					color: _palette(bg);
+					&:hover {color: _palette(fg-bold);}
+				}
+			}
+			// Footer Nav
+			&:nth-of-type(2) {
+				background-color: _palette(fg);
+				color: _palette(bg);
+				position: relative;
+				text-align: center;
+				// display: flex;
+				// flex-flow: row wrap;
+				// justify-content: space-around;
+				// align-items: center;
+				$fixed-margin: 2em;
+				.copyright {
+					position: absolute;
+					left: $fixed-margin;
+					bottom: 1rem;
+				}
+				img {
+					display: block;
+					width: 3em;
+					margin: 0 auto;
+				}
+				@include breakpoint(small) {
+					.copyright, .footernav {
+						position: static !important;
+					} 
+					img {
+						display: none;
+					}
+				}
+				.footernav {
+					position: absolute;
+					right: $fixed-margin;
+					bottom: 1rem;
+					font-size: 0.8em;
+					list-style: none;
+					padding-left: 0;
+					margin-bottom: 0;
+					li {
+						border-left: solid 1px transparentize(_palette(bg), .6);
+						color: _palette(fg-light);
+						display: inline-block;
+						line-height: 1;
+						margin-left: .5em;
+						padding-left: .5em;
+						color: _palette(bg);
+						&:first-child {
+							border-left: 0;
+							margin-left: 0;
+							padding-left: 0;
+						}
+					}
+				}
+			}
+		}
+
+		// @include breakpoint(xsmall) {
+		// 	.copyright {
+		// 		li {
+		// 			display: block;
+		// 			border-left: 0;
+		// 			margin-left: 0;
+		// 			padding-left: 0;
+		// 			line-height: inherit;
+		// 		}
+		// 	}
+		// }
+	}
