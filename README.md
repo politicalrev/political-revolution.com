@@ -14,7 +14,7 @@ jumping into the code to give your work the highest chance of being merged.
 
 ### Get the code
 
-`git clone` into your directory of choice. If you want a quick rundown on the workings of git or how to set it up, check out [this basic git guide](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
+`git clone https://github.com/politicalrev/political-revolution.com.git` in your directory of choice. If you want a quick rundown on the workings of git or how to set it up, check out [this basic git guide](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
 
 ### Set up local dev server
 
@@ -24,17 +24,14 @@ Once you have Docker Engine installed and running, open the terminal of your cho
 
 The first time you run this command, it will take several minutes to complete as it downloads all the dependencies the local server needs. Go grab a cup-a-joe.
 
-## Installation
+To attach to the terminal of the database, server, or build, you may run `docker exec -it <container> /bin/bash`, but you shouldn't need to.
 
-Installation is straight-foward.
+### Initial Wordpress Install
+Navigate to http://127.0.0.1:8080/ and follow the instructions to set up your Wordpress admin account. You can ignore warnings about the user database not existing, they'll go away once you finish the setup wizard. Login with that admin account.
 
-3. Navigate to http://127.0.0.1:8080/ and follow the instructions to create your local dev environment.
-4. Go to http://127.0.0.1:8080/wp-admin and change the active theme to `thrpoliticalsage` to enable our theme.
+Go to http://127.0.0.1:8080/wp-admin, navigate to the themes section, and change the active theme to `thepoliticalsage` to enable the theme we develop.
 
-`npm start` runs gulp watch and starts the docker development server. Stopping gulp with `ctrl + C` and running `npm stop` will spin down your dev processes. To attach to the terminal of the local dev server, you may run `docker exec -it wpthepoliticalrevorg_my-wp_1 /bin/bash`. 
-
-A pre-populated database is not currently being provided. However, after setting up Wordpress for the first time, the database changes you make will be persisted in a Docker [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#data-volumes)
- until/unless you delete it. We plan to provide a pre-populated sample database in the future.
+A pre-populated database is not currently being provided. However, after setting up Wordpress for the first time, the database changes you make will be persisted in a Docker [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#data-volumes) linked to the `db/` directory until/unless you delete it. We plan to provide a pre-populated sample database in the near future.
 
 ## Documentation
 
