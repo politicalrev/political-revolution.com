@@ -1,22 +1,29 @@
-version: "2"
+version: '2'
 services:
-  my-wpdb:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/political-revolution.com
+      - ./site.conf:/etc/nginx/conf.d/site.conf
+  php:
+      image: masterforweb/php7-mysqli-alpine
+      volumes:
+        - ./:/political-revolution.com
+  mysql:
     image: mariadb
     ports:
       - "8081:3306"
     volumes:
-      - my-datavolume:/var/lib/mysql
+      - ./db:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ChangeMeIfYouWant
-  my-wp:
-    image: wordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wp
+      - MYSQL_PASSWORD=WelcomeToTheR3V0LUT10N!
+      - MYSQL_ROOT_PASSWORD=DontUseMe;)
+  build:
+    image: node:7.4.0
     volumes:
-      - ./:/var/www/html/web/wp/
-    ports:
-      - "8080:80"
-    links:
-      - my-wpdb:mysql
-    environment:
-      WORDPRESS_DB_PASSWORD: ChangeMeIfYouWant
-volumes:
-  my-datavolume:
+        - ./:/political-revolution.com
+    entrypoint: ["/political-revolution.com/startbuild.sh"]

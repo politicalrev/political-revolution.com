@@ -18,9 +18,8 @@
     }
   ],
   "scripts": {
-    "start": "cd ../../.. && docker-compose up -d && cd wp-content/themes/thepoliticalsage && npm install && gulp watch",
-    "stop": "docker-compose down",
-    "build": "bower install && gulp",
+    "start": "npm install -g bower gulp && npm install && npm run build && gulp watch",
+    "build": "bower install --allow-root && gulp",
     "jshint": "gulp jshint",
     "jscs": "jscs gulpfile.js assets/scripts/*.js"
   },
