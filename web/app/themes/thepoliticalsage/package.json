@@ -18,7 +18,7 @@
     }
   ],
   "scripts": {
-    "start": "npm install -g bower gulp && npm install && npm run build && gulp watch",
+    "start": "yarn && npm run build && gulp watch",
     "build": "bower install --allow-root && gulp",
     "jshint": "gulp jshint",
     "jscs": "jscs gulpfile.js assets/scripts/*.js"
@@ -28,9 +28,10 @@
   },
   "devDependencies": {
     "asset-builder": "^1.1.0",
+    "bower": "^1.8.0",
     "browser-sync": "^2.8.2",
     "del": "^2.2.2",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-changed": "^1.3.0",
     "gulp-concat": "^2.6.0",

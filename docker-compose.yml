@@ -6,7 +6,7 @@ services:
       - "8080:80"
     volumes:
       - ./:/political-revolution.com
-      - ./site.conf:/etc/nginx/conf.d/site.conf
+      - ./server/site.conf:/etc/nginx/conf.d/site.conf
   php:
       image: masterforweb/php7-mysqli-alpine
       volumes:
@@ -15,7 +15,7 @@ services:
     image: composer/composer:latest
     volumes:
       - ./:/political-revolution.com
-    entrypoint: ["/political-revolution.com/composerinstall.sh"]
+    entrypoint: ["/political-revolution.com/server/composerinstall.sh"]
 
   mysql:
     image: mariadb
@@ -29,7 +29,11 @@ services:
       - MYSQL_PASSWORD=WelcomeToTheR3V0LUT10N!
       - MYSQL_ROOT_PASSWORD=DontUseMe;)
   build:
-    image: node:7.4.0
+    build: 
+      context: ./server
+      dockerfile: NODE-YARN.dockerfile
+    ports: 
+      - "8083:8083"
     volumes:
         - ./:/political-revolution.com
-    entrypoint: ["/political-revolution.com/startbuild.sh"]
+    entrypoint: ["/political-revolution.com/server/startbuild.sh"]
