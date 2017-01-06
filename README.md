@@ -1,8 +1,8 @@
-# [wp.thepoliticalrev.org](https://github.com/politicalrev/wp.thepoliticalrev.org)
+# [political-revolution.com](https://github.com/politicalrev/wp.thepoliticalrev.org)
 
-Welcome to the Github repository for The Political Revolution's Wordpress setup. It is built upon the [Sage 8.5](https://github.com/roots/sage/releases/latest) starter theme and sports a modern development workflow.
+Welcome to the Github repository for the website of [Political Revolution](https://political-revolution.com). It is built upon [Bedrock](https://roots.io/bedrock/) and the [Sage 8.5](https://github.com/roots/sage/releases/latest) starter theme.
 
-This file describes the steps to install this Wordpress repo and setup all the components on the same ([Debian](https://www.debian.org/) or [Ubuntu](https://www.ubuntu.com/)) machine. The steps should be largely similar for using [MAMP](https://www.mamp.info/en/) or [homebrew](http://brew.sh/).
+This file describes the steps to install a working developer environment on your local machine so you can begin contributing to the revolution.
 
 
 ## Contributing
@@ -10,22 +10,24 @@ This file describes the steps to install this Wordpress repo and setup all the c
 Contributions are welcome from everyone. However, *please read* the [contributing guidelines](https://github.com/politicalrev/wp.thepoliticalrev.org/blob/master/CONTRIBUTING.md) before
 jumping into the code to give your work the highest chance of being merged.
 
-## Requirements
+## Installation
 
-Make sure all dependencies have been installed before moving on:
+### Get the code
 
-* [Node.js](http://nodejs.org/) >= 4.5
-  * update to the latest version of npm: `npm install -g npm@latest`.
-* [Docker Engine](https://docs.docker.com/engine/installation/#on-linux) for your platform
+`git clone` into your directory of choice. If you want a quick rundown on the workings of git or how to set it up, check out [this basic git guide](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
 
+### Set up local dev server
+
+The local development server is entirely assebmled using [docker-compose](https://docs.docker.com/compose/), so the only prerequisite for theme development is to install Docker Engine. Installation is straightforward on [Mac](https://docs.docker.com/engine/installation/mac/), [Linux](https://docs.docker.com/engine/installation/), or [Windows](https://docs.docker.com/engine/installation/windows/). 
+
+Once you have Docker Engine installed and running, open the terminal of your choice, navigate to the `political-revolution.com/` directory you cloned earlier, and run `docker-compose up`. Docker will create virtual containers which emulate our production server environment. On your console you will see the output of these containers. 
+
+The first time you run this command, it will take several minutes to complete as it downloads all the dependencies the local server needs. Go grab a cup-a-joe.
 
 ## Installation
 
 Installation is straight-foward.
 
-1. Clone the repository.
-1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
-2. In the root of the project, run `npm run-script build && npm start`.
 3. Navigate to http://127.0.0.1:8080/ and follow the instructions to create your local dev environment.
 4. Go to http://127.0.0.1:8080/wp-admin and change the active theme to `thrpoliticalsage` to enable our theme.
 
@@ -34,20 +36,6 @@ Installation is straight-foward.
 A pre-populated database is not currently being provided. However, after setting up Wordpress for the first time, the database changes you make will be persisted in a Docker [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#data-volumes)
  until/unless you delete it. We plan to provide a pre-populated sample database in the future.
 
-## Theme development
-
-Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
-
-### Available gulp commands
-
-* `gulp` — Compile and optimize the files in your assets directory
-* `gulp watch` — Compile assets when file changes are made
-* `gulp --production` — Compile assets for production (no source maps).
-
 ## Documentation
 
-Detailed documentation for this project will be located in the [docs/](https://github.com/politicalrev/wp.thepoliticalrev.org/tree/master/docs) folder.
-
-Sage 8.5 documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
-
-
+Detailed documentation for this project will be located in the [docs/](https://github.com/politicalrev/wp.thepoliticalrev.org/tree/master/docs) folder, which already contains documentation for both Sage and Bedrock.
