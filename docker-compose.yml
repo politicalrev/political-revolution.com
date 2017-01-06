@@ -23,11 +23,12 @@ services:
       - "8081:3306"
     volumes:
       - ./db:/var/lib/mysql
+      - ./server/db.sql:/docker-entrypoint-initdb.d/db.sql
     environment:
       - MYSQL_DATABASE=wordpress
       - MYSQL_USER=wp
       - MYSQL_PASSWORD=WelcomeToTheR3V0LUT10N!
-      - MYSQL_ROOT_PASSWORD=DontUseMe;)
+      - MYSQL_ROOT_PASSWORD=DontUseMe;)   
   build:
     build: 
       context: ./server
