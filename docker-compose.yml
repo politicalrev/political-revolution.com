@@ -6,7 +6,9 @@ services:
       - "8080:80"
     volumes:
       - ./:/political-revolution.com
-      - ./server/site.conf:/etc/nginx/conf.d/site.conf
+      - ./server/nginx/site.conf:/etc/nginx/conf.d/site.conf
+      - ./server/nginx/snippets/:/etc/nginx/snippets
+      - ./server/nginx/fastcgi.conf:/etc/nginx/fastcgi.conf
   php:
       image: masterforweb/php7-mysqli-alpine
       volumes:
