@@ -11,6 +11,12 @@ services:
       image: masterforweb/php7-mysqli-alpine
       volumes:
         - ./:/political-revolution.com
+  composer:
+    image: composer/composer:latest
+    volumes:
+      - ./:/political-revolution.com
+    entrypoint: ["/political-revolution.com/composerinstall.sh"]
+
   mysql:
     image: mariadb
     ports:
