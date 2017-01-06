@@ -29,7 +29,7 @@ To attach to the terminal of the database, server, or build, you may run `docker
 ### Initial Wordpress Install
 Navigate to http://127.0.0.1:8080/ and follow the instructions to set up your Wordpress admin account. You can ignore warnings about the user database not existing, they'll go away once you finish the setup wizard. Login with that admin account.
 
-Go to http://127.0.0.1:8080/wp-admin, navigate to the themes section, and change the active theme to `thepoliticalsage` to enable the theme we develop.
+Go to http://127.0.0.1:8080/wp-admin, navigate to the themes section, and change the active theme to "The Political Sage" to enable the theme we develop.
 
 A pre-populated database is not currently being provided. However, after setting up Wordpress for the first time, the database changes you make will be persisted in a Docker [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#data-volumes) linked to the `db/` directory until/unless you delete it. We plan to provide a pre-populated sample database in the near future.
 
