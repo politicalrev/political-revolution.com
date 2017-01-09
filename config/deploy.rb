@@ -1,4 +1,3 @@
-set :application, 'political-revolution.com'
 set :repo_url, 'git@github.com:politicalrev/political-revolution.com.git'
 
 # Branch options
@@ -59,3 +58,15 @@ end
 # Note that you need to have WP-CLI installed on your server
 # Uncomment the following line to run it on deploys if needed
 # after 'deploy:publishing', 'deploy:update_option_paths'
+
+namespace :deploy do
+
+  before :publishing, :build do
+    on roles(:all) do
+      execute "cd #{release_path}/web/app/themes/thepoliticalsage && npm run build"
+      # execute "cd #{release_path} && npm install --production --silent --no-spin"
+      # execute "cd #{release_path} && ./node_modules/.bin/gulp jekyllBuild --type production"
+    end
+  end
+
+end

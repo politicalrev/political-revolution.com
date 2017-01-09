@@ -1,4 +1,5 @@
 set :stage, :production
+set :application, 'political-revolution.com'
 
 # Simple Role Syntax
 # ==================
