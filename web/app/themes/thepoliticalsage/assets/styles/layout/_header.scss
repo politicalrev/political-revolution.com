@@ -160,7 +160,9 @@
 		}
 
 		.current-menu-item {
-			display: none !important;
+			a {
+				color: _palette(accent1);
+			}
 		}
 
 		#responsive-menu {
@@ -182,7 +184,7 @@
 				flex-flow: row wrap;
 				justify-content: flex-end;
 				list-style: none;
-				height: 3em;
+				height: $header-height;
 				min-width: 0;
 				overflow: hidden;
 				padding-left: 0;
@@ -192,9 +194,10 @@
 					justify-content: center;
 				}
 				li {
-					height: 3em;
+					height: $header-height;
 					min-width: 0;
 					display: inline-block;
+					padding: 0;
 				}
 			}
 		}

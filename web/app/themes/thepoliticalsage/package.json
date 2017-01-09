@@ -18,8 +18,8 @@
     }
   ],
   "scripts": {
-    "start": "yarn && npm run build && gulp watch",
-    "build": "bower install --allow-root && gulp",
+    "start": "npm run build && gulp watch",
+    "build": "yarn && bower install --allow-root && gulp --production",
     "jshint": "gulp jshint",
     "jscs": "jscs gulpfile.js assets/scripts/*.js"
   },

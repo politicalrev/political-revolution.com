@@ -14,7 +14,9 @@
       <article class="text-wrapper">
       <?php the_content(); ?>
       <hr />
-      <p>You can comment, follow, and read more from the Political Revolution on <a href="http://www.medium.com/@OurPoliticaRev" target="_blank">Medium</a>. 
+      <p>
+        You can comment, follow, and read more from the Political Revolution on <a href="http://www.medium.com/@OurPoliticaRev" target="_blank">Medium</a>.
+      </p>
 
       <p>
         <a class="btn-tweet" target="_blank" href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>&amp;url=<?php echo get_permalink(); ?>&amp;via=OurPoliticalRev" target="_blank">
@@ -28,6 +30,6 @@
     <?php //comments_template('/templates/comments.php'); ?>-->
     <aside class="sidebar"><?php get_template_part('templates/sidebar'); ?></aside>
   </main>
-  
+
 <?php endwhile; ?>
 
