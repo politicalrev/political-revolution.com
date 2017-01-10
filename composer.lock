@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "04959bd934dd6ee5a035d12d9ab3492c",
+    "content-hash": "a277ccd4e2a0ba0a84dc092dd1e29bc0",
     "packages": [
         {
             "name": "composer/installers",
@@ -379,6 +379,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-migrate-db/"
+        },
+        {
+            "name": "wpackagist-plugin/wp-oauth",
+            "version": "0.4.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wp-oauth/",
+                "reference": "tags/0.4.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-oauth.0.4.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wp-oauth/"
         }
     ],
     "packages-dev": [
