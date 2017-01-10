@@ -45,7 +45,8 @@
     "wpackagist-plugin/sucuri-scanner": "1.8.3",
     "wpackagist-plugin/wordpress-seo": "4.0.2",
     "wpackagist-plugin/tiny-compress-images": "2.1.0",
-    "wpackagist-plugin/two-factor-authentication": "1.2.14"
+    "wpackagist-plugin/two-factor-authentication": "1.2.14",
+    "wpackagist-plugin/w3-total-cache": "0.9.5.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1"
