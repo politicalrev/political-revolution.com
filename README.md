@@ -26,6 +26,10 @@ To stop the local server, just hit `ctrl + c` from the terminal window `docker-c
 
 *TODO*
 
+### Installing plugins
+
+Plugins can be installed by locating them in the [Wpackagist registry](https://wpackagist.org), clicking on the version number, copying that line into the the `"require"` section of `composer.json`, and running `composer update`.
+
 ## Contributing
 
 Contributions are welcome from everyone. However, *please read* the [contributing guidelines](https://github.com/politicalrev/wp.thepoliticalrev.org/blob/master/CONTRIBUTING.md) before
