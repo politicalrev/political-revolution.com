@@ -67,8 +67,8 @@ namespace :deploy do
   before :publishing, :build do
     on roles(:all) do
       execute "cd #{release_path}/web/app/themes/thepoliticalsage && npm run build"
-      # execute "cd #{release_path} && npm install --production --silent --no-spin"
-      # execute "cd #{release_path} && ./node_modules/.bin/gulp jekyllBuild --type production"
+      execute "chmod 777 #{release_path}/web/app/cache"
+      execute "chmod 777 #{release_path}/web/app/w3tc-config"      
     end
   end
 
