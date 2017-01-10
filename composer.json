@@ -41,7 +41,8 @@
     "roots/wp-password-bcrypt": "1.0.0",
     "wpackagist-plugin/wp-migrate-db": "0.9.2",
     "wpackagist-plugin/akismet": "3.2",
-    "wpackagist-plugin/wp-oauth": "0.4.1"
+    "wpackagist-plugin/wp-oauth": "0.4.1",
+    "wpackagist-plugin/sucuri-scanner": "1.8.3"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1"
