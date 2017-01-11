@@ -69,6 +69,10 @@
 		font-weight: _font(weight-bold);
 	}
 
+	span.display-font {
+		font-family: _font(family-display);
+	}
+
 	em, i {
 		font-style: italic;
 	}
