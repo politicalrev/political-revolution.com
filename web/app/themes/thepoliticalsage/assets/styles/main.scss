@@ -93,33 +93,3 @@
 	@import "layout/sidebar";   // Wordpress Sidebar styles
 	@import 'layout/petition';  // Petition page template
 	@import "layout/tinymce";   // Wordpress Editor styles
-
-
-// put the page specific theme deviation styles here
-.home{
-	#banner > .inner{
-		height: 100%;
-
-		.content{
-			top: 100%;
-			left: 50%;
-			transform: translate(-50%, -100%);
-			position: absolute;
-			width: 100%;
-			display: flex;
-
-			margin: 0 auto _size(element-margin);
-			max-width: 56em;
-			background: _palette(fg);
-			color: _palette(bg);
-			box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
-
-			p {
-				font-size: 1em;
-				text-transform: uppercase;
-				padding: .5em 1.5em;
-			}
-
-		}
-	}
-}	
