@@ -10,23 +10,23 @@
 }
 .aligncenter {
   display: block;
-  margin: ($spacer / 2) auto;
+  margin: (_size(element-margin) / 2) auto;
   height: auto;
 }
 .alignleft,
 .alignright {
-  margin-bottom: ($spacer / 2);
+  margin-bottom: (_size(element-margin) / 2);
   height: auto;
 }
-@include media-breakpoint-up(sm) {
+@include breakpoint(small) {
   // Only float if not on an extra small device
   .alignleft {
     float: left;
-    margin-right: ($spacer / 2);
+    margin-right: (_size(element-margin) / 2);
   }
   .alignright {
     float: right;
-    margin-left: ($spacer / 2);
+    margin-left: (_size(element-margin) / 2);
   }
 }
 

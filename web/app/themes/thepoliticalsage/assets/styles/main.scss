@@ -5,19 +5,6 @@
 @import "../../bower_components/font-awesome/scss/font-awesome.scss";
 // endbower
 
-// @import "common/global";
-// @import "components/buttons";
-// @import "components/comments";
-// @import "components/forms";
-// @import "components/grid";
-// @import "components/wp-classes";
-// @import "layouts/header";
-// @import "layouts/sidebar";
-// @import "layouts/footer";
-// @import "layouts/pages";
-// @import "layouts/posts";
-// @import "layouts/tinymce";
-
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
@@ -81,10 +68,15 @@
 	@import 'components/list';
 	@import 'components/table';
 	@import 'components/button';
-	@import 'components/tiles';
+	@import 'components/tiles';            // Article tile grid styles
 	@import 'components/contact-method';
 	@import 'components/spotlights';
-	@import "components/social-buttons";
+	@import "components/social-buttons";   // Social button styles
+	// Following stylesheets were included with Sage. 
+	// Temporarily disabled because they rely on bootstrap classes but could be useful in the future
+	// @import "components/wp-classes";
+	// @import "components/forms";
+	// @import "components/comments";
 
 // Layout.
 
@@ -97,8 +89,10 @@
 	@import 'layout/menu';
 	@import 'layout/page';
 	@import 'layout/page-alt';
-	@import 'layout/post';
-	@import 'layout/petition';
+	@import 'layout/post';      // content-single.php styles
+	@import "layout/sidebar";   // Wordpress Sidebar styles
+	@import 'layout/petition';  // Petition page template
+	@import "layout/tinymce";   // Wordpress Editor styles
 
 
 // put the page specific theme deviation styles here
