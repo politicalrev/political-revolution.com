@@ -35,7 +35,7 @@
 		top: 0;
 		width: 100%;
 		z-index: 10000;
-    opacity: .8;
+    opacity: .95;
 		transition: opacity _duration(transition) ease-in-out;
 
 		&:hover {
@@ -53,7 +53,7 @@
 			img {
 				float: left;
 				height: 85%;
-				// width: 15em;   // This would fix menu move but doesn't resize at small sizes
+				// width: 15em;   // This would fix menu jumping on load but doesn't resize at small sizes
 				margin-top: 2%;
 			}
 			strong {
@@ -64,9 +64,9 @@
 		}
 
 		nav {
-			@include vendor('display', 'flex');
-			@include vendor('justify-content', 'flex-end');
-			@include vendor('flex-grow', '1');
+			display: flex;
+			justify-content: flex-end;
+			flex-grow: 1;
 			height: inherit;
 			line-height: inherit;
 
@@ -76,9 +76,11 @@
 				font-size: .8em;
 				height: inherit;
 				line-height: inherit;
-				padding: 0 0.75em;
+				padding: .1rem 0.75em 0;
 				position: relative;
-				vertical-align: middle;
+				@include breakpoint(large) {
+					padding-top: .45rem;
+				}
 				color: _palette(bg);
 
 				&[href="#menu"] {
@@ -101,7 +103,7 @@
 					// }
 
 					&:after {
-						@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
+						transition: opacity #{_duration(transition)} ease-in-out;
 						background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 24 32" preserveAspectRatio="none"><style>line { stroke-width: 2px; stroke: #{_palette(highlight)}; }</style><line x1="0" y1="11" x2="24" y2="11" /><line x1="0" y1="21" x2="24" y2="21" /><line x1="0" y1="16" x2="24" y2="16" /></svg>');
 						opacity: 0;
 						z-index: 1;
@@ -121,16 +123,16 @@
 			}
 
 		&.reveal {
-			@include vendor('animation', 'reveal-header 0.35s ease');
+			animation: reveal-header 0.35s ease;
 			.logo {
 				display: inline-block;
 			}
 		}
 
 		&.alt {
-			@include vendor('transition', 'opacity #{_duration(banner)} ease');
-			@include vendor('transition-delay', '0.75s');
-			@include vendor('animation', 'none');
+			transition: opacity #{_duration(banner)} ease;
+			transition-delay: 0.75s;
+			animation: none;
 			background-color: transparent;
 			box-shadow: none;
 			position: absolute;
@@ -173,7 +175,6 @@
 			margin-right: $side-margins;
 			
 			a {
-				margin-top: .4em;
 				&:hover {
 					color: _palette(accent2);
 				}
