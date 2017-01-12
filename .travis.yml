@@ -23,6 +23,7 @@ before_install:
   - cd $THEME_DIR
 
 install:
+  - nvm install stable
   - npm install -g npm@latest
   - npm install -g bower gulp jscs yarn
   - composer self-update && composer --version
