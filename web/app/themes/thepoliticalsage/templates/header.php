@@ -7,10 +7,10 @@
       <img src="<?= get_stylesheet_directory_uri(); ?>/assets/images/logo-web.png" />
     </a>
 		<nav id="responsive-menu">
-						<?php
-      if (has_nav_menu('primary_navigation')) :
-        wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'links']);
-      endif;
+			<?php
+				if (has_nav_menu('primary_navigation')) :
+					wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'links']);
+				endif;
       ?>
 			<a href="#menu">Menu<i class="fa fa-bars"></i></a>
 		</nav>
