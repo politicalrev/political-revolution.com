@@ -19,7 +19,7 @@
 	 * Applies parallax scrolling to an element's background image.
 	 * @return {jQuery} jQuery object.
 	 */
-	$.fn._parallax = (skel.vars.browser == 'ie' || skel.vars.browser == 'edge' || skel.vars.mobile) ? function() { return $(this) } : function(intensity) {
+	$.fn._parallax = (skel.vars.browser == 'ie' || skel.vars.browser == 'edge' || skel.vars.mobile) ? function() { return $(this); } : function(intensity) {
 
 		var	$window = $(window),
 			$this = $(this);
@@ -98,8 +98,9 @@
 			$header = $('#header'),
 			$banner = $('#banner');
 
+		// DISABLED so content shows up faster on slow connections
 		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+			// $body.addClass('is-loading');
 
 			$window.on('load pageshow', function() {
 				window.setTimeout(function() {
@@ -121,13 +122,14 @@
 		// Fix: Placeholder polyfill.
 		// $('form').placeholder();
 
+		// DISABLED because prioritize was undefined
 		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+		// skel.on('+medium -medium', function() {
+		// 	$.prioritize(
+		// 		'.important\\28 medium\\29',
+		// 		skel.breakpoint('medium').active
+		// 	);
+		// });
 
 		// Scrolly.
 			$('.scrolly').scrolly({
