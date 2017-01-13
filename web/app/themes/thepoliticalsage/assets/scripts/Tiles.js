@@ -1,6 +1,7 @@
 // Tiles.
-module.exports = function() {
+module.exports = function($) {
   var $tiles = $('.tiles > article');
+  var $wrapper = $('#wrapper');
 
   $tiles.each(function() {
 

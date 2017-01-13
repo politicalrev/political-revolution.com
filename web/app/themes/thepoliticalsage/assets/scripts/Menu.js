@@ -1,6 +1,7 @@
 // Menu.
-module.exports = function() {
+module.exports = function($) {
   var $menu = $('#menu'),
+    $body = $('body'),
     $menuInner;
 
   $menu.wrapInner('<div class="inner"></div>');

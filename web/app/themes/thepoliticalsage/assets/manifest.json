@@ -12,11 +12,6 @@
       ],
       "main": true
     },
-    "main-old.js": {
-      "files": [
-        "scripts/main-old.js"
-      ]
-    },
     "util.js": {
       "files": [
         "scripts/util.js"
