@@ -27,11 +27,6 @@
         "scripts/customizer.js"
       ]
     },
-    "skel.min.js": {
-      "files": [
-        "scripts/skel.min.js"
-      ]
-    },
     "jquery.js": {
       "bower": ["jquery"]
     }
