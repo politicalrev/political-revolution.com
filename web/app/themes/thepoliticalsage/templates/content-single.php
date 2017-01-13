@@ -3,8 +3,8 @@
   <main <?php post_class('responsive-text'); ?>>
     <div class="post-banner" style="background-image: url('
       <?php
-        if ( has_post_thumbnail() ) {
-          the_post_thumbnail_url();
+      if (has_post_thumbnail()) {
+        the_post_thumbnail_url();
       }?>
     ')">
       <header class="major text-center">

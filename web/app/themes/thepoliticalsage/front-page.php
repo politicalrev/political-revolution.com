@@ -23,7 +23,8 @@
   <!-- Two -->
   <section id="two">
     <div class="inner">
-      <?php while (have_posts()) {
+      <?php 
+      while (have_posts()) {
          the_post();
          the_content();
       }

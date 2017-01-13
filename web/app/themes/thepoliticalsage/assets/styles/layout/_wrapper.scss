@@ -20,8 +20,4 @@
 		> * {
 			@include inner;
 		}
-
-		@include breakpoint(small) {
-			padding-top: 0em;
-		}
 	}
