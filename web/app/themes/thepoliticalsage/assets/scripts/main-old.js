@@ -131,13 +131,6 @@
 		// 	);
 		// });
 
-		// Scrolly.
-			$('.scrolly').scrolly({
-				offset: function() {
-					return $header.height() - 2;
-				}
-			});
-
 		// Tiles.
 			var $tiles = $('.tiles > article');
 

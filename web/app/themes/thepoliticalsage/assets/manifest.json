@@ -32,11 +32,6 @@
         "scripts/skel.min.js"
       ]
     },
-    "jquery.scrolly.min.js": {
-      "files": [
-        "scripts/jquery.scrolly.min.js"
-      ]
-    },
     "jquery.js": {
       "bower": ["jquery"]
     }

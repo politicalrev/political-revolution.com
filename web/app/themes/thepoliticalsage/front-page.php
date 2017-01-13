@@ -10,9 +10,6 @@
         <input type="email" name="email" id="email" placeholder="sen.sanders@gmail.com" autofocus/>
         <button type="submit" class="important">Join Us</button>
       </form>
-      <!-- <ul class="actions">
-        <li><a href="#one" class="button next scrolly">More</a></li>
-      </ul> -->
     </div>
   </div>
 </section>
