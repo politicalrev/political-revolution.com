@@ -14,11 +14,6 @@ matrix:
   allow_failures:
     - php: nightly
 
-cache:
-  directories:
-    - $THEME_DIR/bower_components
-    - $THEME_DIR/node_modules
-
 before_install:
   - cd $THEME_DIR
 
