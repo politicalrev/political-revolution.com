@@ -7,7 +7,7 @@
     </header>
   <?php endif; ?>
 
-  <?php 
+  <?php
   $i = 0;
   $query = new WP_Query([ 'post_type' => ['post'] ]);
   if ($query->have_posts()) :
@@ -21,7 +21,7 @@
           <p><?php the_excerpt(); ?></p>
         </header>
       </article>
-  <?php 
+  <?php
   // Only limit posts if on frontpage
   if (is_front_page()) {
     $i++;

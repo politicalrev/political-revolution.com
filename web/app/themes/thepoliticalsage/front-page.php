@@ -20,7 +20,7 @@
   <!-- Two -->
   <section id="two">
     <div class="inner">
-      <?php 
+      <?php
       while (have_posts()) {
          the_post();
          the_content();
