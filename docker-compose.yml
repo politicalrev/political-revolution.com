@@ -1,6 +1,6 @@
 version: '2'
 services:
-  web:
+  prdev.com:
     image: nginx:latest
     ports:
       - "8080:80"

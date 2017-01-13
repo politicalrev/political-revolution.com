@@ -12,11 +12,17 @@ This file describes the steps to install a working developer environment on your
 
 ### Set up local dev server
 
-The local development server is entirely assembled using [docker-compose](https://docs.docker.com/compose/), so the only prerequisite for theme development is to install Docker Engine. Installation is straightforward on [Mac](https://docs.docker.com/engine/installation/mac/), [Linux](https://docs.docker.com/engine/installation/), or [Windows](https://docs.docker.com/engine/installation/windows/). 
+1. **Install Docker Engine.** The local development server is entirely assembled using [docker-compose](https://docs.docker.com/compose/), so this is the only prerequisite for theme development. Installation is straightforward on [Mac](https://docs.docker.com/engine/installation/mac/), [Linux](https://docs.docker.com/engine/installation/), or [Windows](https://docs.docker.com/engine/installation/windows/). 
 
-Once you have Docker Engine installed and running, open the terminal of your choice, navigate to the `political-revolution.com/` directory you cloned earlier, and run `cp .env.example .env && docker-compose up`. First, we copy the example environment configuration (which has already been configured to work with our local dev environment) to a .env file. The reason for this is that .env is not tracked by git, as it will vary depending on the deploy environment ([explanation of how .env is used by bedrock](https://roots.io/bedrock/docs/environment-variables/)). Docker will then create virtual containers which emulate our production server environment. On your console you will see the output of these containers. 
 
-The first time you run this command, it will take several minutes to complete as it downloads all the dependencies the local server needs, imorts our database into the `db/` folder, and starts up the server. Go grab a cup-a-joe. When everything finishes, you will have a local version of our website running at `127.0.0.1:8080`. Running `docker-compose up` in the future will go much faster, as the dependencies are already installed.
+
+2. In the terminal of your choice, navigate to the `political-revolution.com/` directory you cloned earlier, and run `cp .env.example .env && docker-compose up`. First, we copy the example environment configuration (which has already been configured to work with our local dev environment) to a .env file. The reason for this is that .env is not tracked by git, as it will vary depending on the deploy environment ([explanation of how .env is used by bedrock](https://roots.io/bedrock/docs/environment-variables/)). Docker will then create virtual containers which emulate our production server environment. On your console you will see the output of these containers. 
+
+    - The first time you run this command, it will take several minutes to complete as it downloads all the dependencies the local server needs, imorts our database into the `db/` folder, and starts up the server. Go grab a cup-a-joe. When everything finishes, you will have a local version of our website running at `127.0.0.1:8080`. Running `docker-compose up` in the future will go much faster, as the dependencies are already installed.
+
+3. **Point the domain `prdev.com` at your local machine.** This is to get [BrowserSync](https://browsersync.io/) working with Docker, and is totally worth it. You can do this manually by adding the line `127.0.0.1 prdev.com` to your hosts file (`/etc/hosts` on Unix, `c:\windows\system32\drivers\etc\hosts` on Windows). If you are on Unix, running `./server/addhost.sh` from the root of the repo will do this for you.
+
+4. **Navigate to `127.0.0.1:8083`, you're ready to go!** You should see a near-exact copy of the PR website. Browsersync will automatically inject any changes you make into the page when you save a file.
 
 To attach to the terminal of the database, server, or build, you may run `docker exec -it <container> /bin/bash`, but you shouldn't need to.
 
