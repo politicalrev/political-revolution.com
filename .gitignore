@@ -32,3 +32,8 @@ bin
 
 # Don't Track Database
 db
+
+# W3 Total Cache Ignores
+web/app/object-cache.php
+web/app/db.php
+web/app/cache
