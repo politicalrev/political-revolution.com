@@ -19,7 +19,7 @@
                     <li><a href="{{ site.gitlab_url }}" class="icon fa-gitlab" target="_blank"><span class="label">GitLab</span></a></li>
                     {% endif %} -->
                     <li><a href="https://github.com/politicalrev" class="icon fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-                    <li><a href="https://medium.com/voices-of-the-political-revolution/the-smear-is-here-for-keith-ellison-651c9be0992c#.vbklzk4ae" class="icon fa-medium" target="_blank"><span class="label">Medium</span></a></li>
+                    <li><a href="https://medium.com/voices-of-the-political-revolution" class="icon fa-medium" target="_blank"><span class="label">Medium</span></a></li>
                     <li><a href="https://polrevvols.herokuapp.com/" class="icon fa-slack" target="_blank"><span class="label">Slack</span></a></li>
                     <li><a href="https://www.reddit.com/r/Political_Revolution/" class="icon fa-reddit-alien" target="_blank"><span class="label">LinkedIn</span></a></li>
                 </ul>
