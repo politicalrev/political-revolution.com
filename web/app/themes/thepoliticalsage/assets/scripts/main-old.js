@@ -122,26 +122,22 @@ const skel = require('./skel');
       }
 
     // Banner.
-      $banner.each(function() {
+    $banner.each(function() {
 
-        var $this = $(this),
-          $image = $this.find('.image'), $img = $image.find('img');
+      var $this = $(this),
+        $image = $this.find('.image'), $img = $image.find('img');
 
-        // Parallax.
-          $this._parallax(0.275);
+      // Parallax.
+      $this._parallax(0.275);
 
-        // Image.
-          if ($image.length > 0) {
-
-            // Set image.
-              $this.css('background-image', 'url(' + $img.attr('src') + ')');
-
-            // Hide original.
-              $image.hide();
-
-          }
-
-      });
+      // Image.
+      if ($image.length > 0) {
+        // Set image.
+        $this.css('background-image', 'url(' + $img.attr('src') + ')');
+        // Hide original.
+        $image.hide();
+      }
+    });
   });
 
-})(jQuery);
+})($);
