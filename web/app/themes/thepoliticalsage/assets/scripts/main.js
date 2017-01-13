@@ -11,7 +11,8 @@
  * ======================================================================== */
 
 (function($) {
-
+  const tiles = require('./Tiles');
+  const menu = require('./Menu');
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
   var Sage = {
@@ -19,6 +20,8 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        tiles();
+        menu();
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

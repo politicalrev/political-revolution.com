@@ -7,10 +7,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "jquery.scrollex": "^0.2.1",
+    "bootstrap": "^3.3.7",
     "components-font-awesome": "^4.7.0",
-    "font-awesome": "^4.7.0",
-    "bootstrap": "^3.3.7"
+    "font-awesome": "^4.7.0"
   },
   "font-awesome": {
     "main": [
