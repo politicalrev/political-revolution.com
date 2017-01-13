@@ -1,4 +1,5 @@
 # [political-revolution.com](https://github.com/politicalrev/wp.thepoliticalrev.org)
+[![Build Status](https://travis-ci.org/politicalrev/political-revolution.com.svg?branch=master)](https://travis-ci.org/politicalrev/political-revolution.com)
 
 Welcome to the Github repository for the website of [Political Revolution](https://political-revolution.com). It is built upon [Bedrock](https://roots.io/bedrock/) and the [Sage 8.5](https://github.com/roots/sage/releases/latest) starter theme.
 
