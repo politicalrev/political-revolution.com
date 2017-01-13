@@ -129,7 +129,10 @@ var cssTasks = function(filename) {
 var jsTasks = function(filename) {
   // Create a plugin to bundle js files with Browserify
   var browserified = transform(function(filename) {
-    var b = browserify(filename);
+    var b = browserify({
+      entries: filename,
+      debug: true
+    });
     return b.bundle();
   });
 
@@ -139,10 +142,10 @@ var jsTasks = function(filename) {
     })
     .pipe(function() {return browserified;})
     .pipe(concat, filename)
-    .pipe(uglify, {
-      compress: {
-        'drop_debugger': enabled.stripJSDebug
-      }
+    .pipe(function() {
+      return gulpif(!enabled.maps, 
+        uglify({compress: {'drop_debugger': enabled.stripJSDebug}})
+      );
     })
     .pipe(function() {
       return gulpif(enabled.rev, rev());
