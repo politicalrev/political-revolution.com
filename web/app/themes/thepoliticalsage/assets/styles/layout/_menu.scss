@@ -16,7 +16,7 @@
 		@include vendor('display', 'flex');
 		@include vendor('justify-content', 'center');
 		@include vendor('pointer-events', 'none');
-		background: transparentize(_palette(bg), 0.1);
+		background: transparentize($color-bg, 0.1);
 		box-shadow: none;
 		height: 100%;
 		left: 0;
@@ -66,7 +66,7 @@
 
 					> a:not(.button) {
 						border: 0;
-						border-top: solid 1px _palette(border);
+						border-top: solid 1px $color-border;
 						display: block;
 						font-size: 0.8em;
 						font-weight: _font(weight-bold);
@@ -123,11 +123,11 @@
 			}
 
 			&:before {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{_palette(fg-bold)}; stroke-width: 2; }</style><line x1="0" y1="0" x2="20" y2="20" /><line x1="20" y1="0" x2="0" y2="20" /></svg>');
+				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{$color-fg-bold)}; stroke-width: 2; }</style><line x1="0" y1="0" x2="20" y2="20" /><line x1="20" y1="0" x2="0" y2="20" /></svg>');
 			}
 
 			&:after {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{_palette(highlight)}; stroke-width: 2; }</style><line x1="0" y1="0" x2="20" y2="20" /><line x1="20" y1="0" x2="0" y2="20" /></svg>');
+				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{$color-highlight)}; stroke-width: 2; }</style><line x1="0" y1="0" x2="20" y2="20" /><line x1="20" y1="0" x2="0" y2="20" /></svg>');
 				opacity: 0;
 			}
 
@@ -141,7 +141,7 @@
 
 	body.is-ie {
 		#menu {
-			background: transparentize(_palette(bg-alt), 0.025);
+			background: transparentize($color-bg-alt, 0.025);
 		}
 	}
 

@@ -7,7 +7,7 @@
 /* Contact */
 
 	#contact {
-		// border-bottom: solid 1px _palette(border);
+		// border-bottom: solid 1px $color-border;
 		overflow-x: hidden;
 
 		> .inner {
@@ -16,7 +16,7 @@
 
 			> :nth-child(2n - 1) {
 				@include padding(4em, 0, (0, 3em, 0, 0));
-				// border-right: solid 1px _palette(border);
+				// border-right: solid 1px $color-border;
 				width: 60%;
 			}
 
@@ -33,7 +33,7 @@
 					position: relative;
 
 					&:before {
-						border-top: solid 1px _palette(border);
+						border-top: solid 1px $color-border;
 						content: '';
 						display: block;
 						margin-left: -3em;

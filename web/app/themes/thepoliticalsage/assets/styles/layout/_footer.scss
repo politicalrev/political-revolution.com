@@ -7,7 +7,7 @@
 /* Footer */
 
 	#footer {
-		background: _palette(bg); 
+		background: $color-bg; 
 		padding: 0;
 		margin: 0 auto;
 		width: 100%;
@@ -18,18 +18,18 @@
 
 			// Social links
 			&:first-child {
-				background-color: _palette(accent2);
+				background-color: $color-accent2;
 				text-align: center;
 				font-size: 2em;
 				li a {
-					color: _palette(bg);
-					&:hover {color: _palette(fg-bold);}
+					color: $color-bg;
+					&:hover {color: $color-fg-bold;}
 				}
 			}
 			// Footer Nav
 			&:nth-of-type(2) {
-				background-color: _palette(fg);
-				color: _palette(bg);
+				background-color: $color-fg;
+				color: $color-bg;
 				position: relative;
 				text-align: center;
 				// display: flex;
@@ -64,13 +64,13 @@
 					padding-left: 0;
 					margin-bottom: 0;
 					li {
-						border-left: solid 1px transparentize(_palette(bg), .6);
-						color: _palette(fg-light);
+						border-left: solid 1px transparentize($color-bg, .6);
+						color: $color-fg-light;
 						display: inline-block;
 						line-height: 1;
 						margin-left: .5em;
 						padding-left: .5em;
-						color: _palette(bg);
+						color: $color-bg;
 						&:first-child {
 							border-left: 0;
 							margin-left: 0;

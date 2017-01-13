@@ -31,7 +31,7 @@
 			@include vendor('transition', 'opacity #{_duration(banner)} ease');
 			@include vendor('transition-delay', '0.75s');
 			@include vendor('pointer-events', 'none');
-			background: linear-gradient(to top, _palette(bg), transparent);
+			background: linear-gradient(to top, $color-bg, transparent);
 			content: '';
 			display: block;
 			height: 70%;
@@ -80,8 +80,8 @@
 				transform: translate(-50%, -100%);
 				width: 100%;
 				max-width: 56em;
-				background: _palette(fg);
-				color: _palette(bg);
+				background: $color-fg;
+				color: $color-bg;
 				box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
 
 				> * {
@@ -113,12 +113,12 @@
 			}
 		}
 
-		&.style1 { &:after { background-color: _palette(accent1); } }
-		&.style2 { &:after { background-color: _palette(accent2); } }
-		&.style3 { &:after { background-color: _palette(accent3); } }
-		&.style4 { &:after { background-color: _palette(accent4); } }
-		&.style5 { &:after { background-color: _palette(accent5); } }
-		&.style6 { &:after { background-color: _palette(accent6); } }
+		&.style1 { &:after { background-color: $color-accent1; } }
+		&.style2 { &:after { background-color: $color-accent2; } }
+		&.style3 { &:after { background-color: $color-accent3; } }
+		&.style4 { &:after { background-color: $color-accent4; } }
+		&.style5 { &:after { background-color: $color-accent5; } }
+		&.style6 { &:after { background-color: $color-accent6; } }
 
 		body.is-loading & {
 			&:after {
@@ -180,7 +180,7 @@
 				opacity: 0;
 			}
 			> div.inner {
-				// background: _palette(bg);
+				// background: $color-bg);
 				// margin: 0;
 				padding: 0 1em 0 !important;
 				width: 100% !important;

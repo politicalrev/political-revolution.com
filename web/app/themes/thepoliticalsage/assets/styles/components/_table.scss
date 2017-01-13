@@ -17,12 +17,12 @@
 
 		tbody {
 			tr {
-				border: solid 1px _palette(border);
+				border: solid 1px $color-border;
 				border-left: 0;
 				border-right: 0;
 
 				&:nth-child(2n + 1) {
-					background-color: _palette(border-bg);
+					background-color: $color-border-bg;
 				}
 			}
 		}
@@ -32,7 +32,7 @@
 		}
 
 		th {
-			color: _palette(fg-bold);
+			color: $color-fg-bold;
 			font-size: 0.9em;
 			font-weight: _font(weight-bold);
 			padding: 0 0.75em 0.75em 0.75em;
@@ -40,11 +40,11 @@
 		}
 
 		thead {
-			border-bottom: solid 2px _palette(border);
+			border-bottom: solid 2px $color-border;
 		}
 
 		tfoot {
-			border-top: solid 2px _palette(border);
+			border-top: solid 2px $color-border;
 		}
 
 		&.alt {
@@ -53,7 +53,7 @@
 			tbody {
 				tr {
 					td {
-						border: solid 1px _palette(border);
+						border: solid 1px $color-border;
 						border-left-width: 0;
 						border-top-width: 0;
 

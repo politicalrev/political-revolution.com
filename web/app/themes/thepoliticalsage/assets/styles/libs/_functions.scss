@@ -19,13 +19,6 @@
 	@return val($misc, $keys...);
 }
 
-/// Gets a palette value.
-/// @param {string} $keys Key(s).
-/// @return {string} Value.
-@function _palette($keys...) {
-	@return val($palette, $keys...);
-}
-
 /// Gets a size value.
 /// @param {string} $keys Key(s).
 /// @return {string} Value.

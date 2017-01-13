@@ -20,9 +20,9 @@
 		background-color: transparent;
 		border: 0;
 		border-radius: 0;
-		box-shadow: inset 0 0 0 2px _palette(fg-bold);
+		box-shadow: inset 0 0 0 2px $color-fg-bold;
 		box-sizing: border-box;
-		color: _palette(fg-bold);
+		color: $color-fg-bold;
 		cursor: pointer;
 		display: inline-block;
 		font-size: 0.8em;
@@ -41,15 +41,15 @@
 		}
 
 		&:hover, &:active, &:focus {
-			box-shadow: inset 0 0 0 2px _palette(highlight);
-			color: _palette(highlight);
+			box-shadow: inset 0 0 0 2px $color-highlight;
+			color: $color-highlight;
 			outline: 0;
 		}
 
 		&:active {
-			background-color: transparentize(_palette(highlight), 0.9);
-			box-shadow: inset 0 0 0 2px desaturate(darken(_palette(highlight), 15), 5);
-			color: desaturate(darken(_palette(highlight), 15), 5);
+			background-color: transparentize($color-highlight, 0.9);
+			box-shadow: inset 0 0 0 2px desaturate(darken($color-highlight, 15), 5);
+			color: desaturate(darken($color-highlight, 15), 5);
 		}
 
 		&.icon {
@@ -94,11 +94,11 @@
 			}
 
 			&:before {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{_palette(fg-bold)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
+				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{$color-fg-bold)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
 			}
 
 			&:after {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{_palette(highlight)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
+				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{$color-highlight)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
 				opacity: 0;
 				z-index: 1;
 			}
@@ -115,17 +115,17 @@
 		}
 
 		&.special {
-			background-color: _palette(fg-bold);
+			background-color: $color-fg-bold;
 			box-shadow: none;
-			color: _palette(bg);
+			color: $color-bg;
 
 			&:hover, &:active {
-				background-color: _palette(highlight);
-				color: _palette(bg) !important;
+				background-color: $color-highlight;
+				color: $color-bg !important;
 			}
 
 			&:active {
-				background-color: desaturate(darken(_palette(highlight), 15), 5);
+				background-color: desaturate(darken($color-highlight, 15), 5);
 			}
 		}
 
@@ -137,7 +137,7 @@
 		}
 
 		&.important {
-			background: _palette(accent1);
+			background: $color-accent1;
 			border: 0;
 			box-shadow: none; 
 		}

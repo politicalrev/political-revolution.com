@@ -1,5 +1,5 @@
 body.single-post
-	background: _palette(fg)
+	background: $color-fg
 	main
 		display: flex
 		justify-content: space-around
@@ -20,29 +20,26 @@ body.single-post
 			width: 100%
 			top: 0
 			left: 0
-			background: transparentize(_palette(bg), .3)
+			background: transparentize($color-bg, .3)
 
 	header.major
-		// background: fade-out(_palette(fg-bold), .2)
 		position: relative
 		padding: 1.5em 0
 		margin: 0 auto
 		text-align: center
-		// border: 5px double _palette(bg)
 		width: 100%
 		max-width: 44em
 		z-index: 10
 		display: block
 		h1
 			font-size: 2.5em
-			color: _palette(fg)
+			color: $color-fg
 			line-height: 1.2
 			width: auto
 			&::after
 				margin-bottom: .2em
-			// color: _palette(bg)
 		span.post-info
-			color: _palette(fg)
+			color: $color-fg
 			display: block
 			&.date
 				font-size: .8em
@@ -54,9 +51,9 @@ body.single-post
 			max-width: 100%
 		margin: 0
 		*
-			color: _palette(bg)
+			color: $color-bg
 		hr
-			border-bottom: solid 1px transparentize(_palette(bg), .8)
+			border-bottom: solid 1px transparentize($color-bg, .8)
 			margin: 2em 0
 		figure, img
 			max-width: 100% !important

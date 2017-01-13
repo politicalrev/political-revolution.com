@@ -14,12 +14,12 @@
 		flex-grow: 3
 		height: 2.8em
 		margin-right: 0
-		background: _palette(accent1)
-		color: _palette(fg)
+		background: $color-accent1
+		color: $color-fg
 		&:focus, &:hover
-			background-color: darken(_palette(accent1), 10%)
+			background-color: darken($color-accent1, 10%)
 		&:focus
-			box-shadow: inset 0 0 0 2px _palette(border-bg)
+			box-shadow: inset 0 0 0 2px $color-border-bg
 		@include breakpoint(xsmall)
 			text-align: center
 
@@ -31,4 +31,4 @@
 		box-shadow: none
 		// height: 3em
 		&:focus, &:hover
-			background-color: darken(_palette(accent1), 10%)
+			background-color: darken($color-accent1, 10%)
