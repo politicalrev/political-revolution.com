@@ -2,6 +2,7 @@
 var argv         = require('minimist')(process.argv.slice(2));
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync  = require('browser-sync').create();
+var browserify   = require('browserify');
 var changed      = require('gulp-changed');
 var concat       = require('gulp-concat');
 var flatten      = require('gulp-flatten');
@@ -18,6 +19,7 @@ var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
+var transform    = require('vinyl-transform');
 var uglify       = require('gulp-uglify');
 
 // See https://github.com/austinpray/asset-builder
@@ -125,10 +127,17 @@ var cssTasks = function(filename) {
 //   .pipe(gulp.dest(path.dist + 'scripts'))
 // ```
 var jsTasks = function(filename) {
+  // Create a plugin to bundle js files with Browserify
+  var browserified = transform(function(filename) {
+    var b = browserify(filename);
+    return b.bundle();
+  });
+
   return lazypipe()
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.init());
     })
+    .pipe(function() {return browserified;})
     .pipe(concat, filename)
     .pipe(uglify, {
       compress: {
