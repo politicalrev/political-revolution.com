@@ -7,9 +7,11 @@
     </header>
   <?php endif; ?>
 
-  <?php $query = new WP_Query([ 'post_type' => ['post'] ]);
+  <?php 
+  $i = 0;
+  $query = new WP_Query([ 'post_type' => ['post'] ]);
   if ($query->have_posts()) :
-    while ($query->have_posts()) : $query->the_post(); ?>
+    while ($query->have_posts() && $i < 3) : $query->the_post(); ?>
       <article>
         <span class="image">
           <img src="<?= the_post_thumbnail_url('large'); ?>" alt="" />
@@ -19,5 +21,10 @@
           <p><?php the_excerpt(); ?></p>
         </header>
       </article>
-  <?php endwhile;
+  <?php 
+  // Only limit posts if on frontpage
+  if (is_front_page()) {
+    $i++;
+  }
+  endwhile;
 endif; ?>
