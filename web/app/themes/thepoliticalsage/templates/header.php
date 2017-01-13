@@ -8,10 +8,9 @@
     </a>
     <nav id="responsive-menu">
       <?php
-        if (has_nav_menu('primary_navigation')) :
-          wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'links']);
-        endif;
-      ?>
+      if (has_nav_menu('primary_navigation')) {
+        wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'links']);
+      }?>
       <a href="#menu">Menu<i class="fa fa-bars"></i></a>
     </nav>
     <a class="important button" target="_blank" href="https://secure.actblue.com/contribute/page/the-politicalrevolution">Donate</a>
