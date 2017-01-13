@@ -108,6 +108,5 @@ function assets() {
   wp_enqueue_script('sage/skeljs', Assets\asset_path('scripts/skel.min.js'), [], null, true);
   wp_enqueue_script('sage/scrollyjs', Assets\asset_path('scripts/jquery.scrolly.min.js'), [], null, true);
   wp_enqueue_script('sage/main_oldjs', Assets\asset_path('scripts/main-old.js'), ['sage/js', 'sage/skeljs', 'sage/scrollyjs'], null, true);
-
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

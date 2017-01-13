@@ -34,7 +34,7 @@
                     <li>Privacy Policy</li>
                 </ul>
             </div>
-             <?php if (is_page_template('templates/template-petition.php')) : ?>
+              <?php if (is_page_template('templates/template-petition.php')) : ?>
                 <script>
                     $(document).ready(function(){
                         $('input').placeholder();
