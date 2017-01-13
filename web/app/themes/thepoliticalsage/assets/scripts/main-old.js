@@ -103,23 +103,23 @@ const skel = require('./skel');
     // Disable animations/transitions until the page has loaded.
       // $body.addClass('is-loading');
 
-      $window.on('load pageshow', function() {
-        window.setTimeout(function() {
-          $body.removeClass('is-loading');
-        }, 100);
-      });
+    $window.on('load pageshow', function() {
+      window.setTimeout(function() {
+        $body.removeClass('is-loading');
+      }, 100);
+    });
 
     // Clear transitioning state on unload/hide.
-      $window.on('unload pagehide', function() {
-        window.setTimeout(function() {
-          $('.is-transitioning').removeClass('is-transitioning');
-        }, 250);
-      });
+    $window.on('unload pagehide', function() {
+      window.setTimeout(function() {
+        $('.is-transitioning').removeClass('is-transitioning');
+      }, 250);
+    });
 
     // Fix: Enable IE-only tweaks.
-      if (skel.vars.browser == 'ie' || skel.vars.browser == 'edge') {
-        $body.addClass('is-ie');
-      }
+    if (skel.vars.browser == 'ie' || skel.vars.browser == 'edge') {
+      $body.addClass('is-ie');
+    }
 
     // Banner.
     $banner.each(function() {
