@@ -32,6 +32,7 @@ script:
   - phpcs --standard=ruleset.xml --extensions=php -n -s .
 
 after_success:
+  - cd $TRAVIS_BUILD_DIR
   - gem install bundler
   - bundler install
   - bundle exec cap staging deploy
