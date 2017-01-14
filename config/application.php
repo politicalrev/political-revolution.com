@@ -77,6 +77,14 @@ define('DISALLOW_FILE_MODS', true);
 /** Enable W3 Total Cache */
 define('WP_CACHE', true); // Added by W3 Total Cache
 
+// Stage switcher config
+$envs = [
+  'development' => 'http://prdev.com:8083',
+  'staging'     => 'http://wpdev.thepoliticalrev.org',
+  'production'  => 'http://political-revolution.com'
+];
+define('ENVIRONMENTS', serialize($envs));
+
 /**
  * Bootstrap WordPress
  */
