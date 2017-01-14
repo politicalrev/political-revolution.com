@@ -11,7 +11,7 @@ set :branch, :master
 set :deploy_to, -> { "/srv/www/#{fetch(:application)}" }
 
 # Use :debug for more verbose output when troubleshooting
-set :log_level, :info
+set :log_level, :debug
 
 # Apache users with .htaccess files:
 # it needs to be added to linked_files so it persists across deploys:
