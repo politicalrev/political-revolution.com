@@ -7,15 +7,23 @@ This file describes the steps to install a working developer environment on your
 
 ## Installation
 
-### Get the code
+1. **Install Docker Engine.** The local development server is entirely assembled using [docker-compose](https://docs.docker.com/compose/), so this is the only prerequisite for theme development. Installation is straightforward on [Mac](https://docs.docker.com/engine/installation/mac/), [Linux](https://docs.docker.com/engine/installation/), or [Windows](https://docs.docker.com/engine/installation/windows/). Once it's installed, open up your preferred terminal.
 
-`git clone https://github.com/politicalrev/political-revolution.com.git` in your directory of choice. If you want a quick rundown on the workings of git or how to set it up, check out [this basic git guide](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
+2. **Clone the code into your directory of choice:** 
 
-### Set up local dev server
+  ```
+  git clone https://github.com/politicalrev/political-revolution.com.git
+  ```
 
-1. **Install Docker Engine.** The local development server is entirely assembled using [docker-compose](https://docs.docker.com/compose/), so this is the only prerequisite for theme development. Installation is straightforward on [Mac](https://docs.docker.com/engine/installation/mac/), [Linux](https://docs.docker.com/engine/installation/), or [Windows](https://docs.docker.com/engine/installation/windows/). 
+2. **Set up the local server:** 
 
-2. In the terminal of your choice, navigate to the `political-revolution.com/` directory you cloned earlier, and run `cp .env.example .env && docker-compose up`. First, we copy the example environment configuration (which has already been configured to work with our local dev environment) to a .env file. The reason for this is that .env is not tracked by git, as it will vary depending on the deploy environment ([explanation of how .env is used by bedrock](https://roots.io/bedrock/docs/environment-variables/)). Docker will then create virtual containers which emulate our production server environment. On your console you will see the output of these containers. The first time you run this command, it will take several minutes to complete as it downloads all the dependencies the local server needs, imorts our database into the `db/` folder, and starts up the server. Go grab a cup-a-joe. Running `docker-compose up` in the future will go much faster, as the dependencies are already installed. The installation is complete when you see:
+  ```
+  cd political-revolution.com && cp .env.example .env && docker-compose up
+  ```
+
+  First, we [copy the example environment configuration](https://roots.io/bedrock/docs/environment-variables/) (which has already been configured to work with our local dev environment) to a local, untracked .env file. Docker will then create virtual containers which emulate our production server environment. On your console you will see the output of these containers. 
+  
+  The first time you run this command, it will take several minutes to complete as it downloads all the dependencies the local server needs, imorts our database into the `db/` folder, and starts up the server. Go grab a cup-a-joe. Running `docker-compose up` in the future will go much faster, as the dependencies are already installed. The installation is complete when you see:
 
   ```
   build_1      | [BS] Proxying: http://prdev.com
