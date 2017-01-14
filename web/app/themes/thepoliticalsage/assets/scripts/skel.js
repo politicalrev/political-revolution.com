@@ -1,1044 +1,1057 @@
 /* skel.js v3.0.1 | (c) skel.io | MIT licensed */
 
-var skel = (function() { "use strict"; var _ = {
-
-	/******************************/
-	/* Properties                 */
-	/******************************/
-
-		/**
-		 * IDs of breakpoints that are currently active.
-		 * @type {array}
-		 */
-		breakpointIds: null,
-
-		/**
-		 * Events.
-		 * @type {object}
-		 */
-		events: {},
-
-		/**
-		 * Are we initialized?
-		 * @type {bool}
-		 */
-		isInit: false,
-
-		/**
-		 * Objects.
-		 * @type {object}
-		 */
-		obj: {
-
-			// Attachments.
-				attachments: {},
-
-		 	// Breakpoints.
-				breakpoints: {},
-
-			// Head.
-				head: null,
-
-			// States.
-				states: {}
-
-		},
-
-		/**
-		 * State ID delimiter (don't change this).
-		 * @type {string}
-		 */
-		sd: '/',
-
-		/**
-		 * Current state.
-		 * @type {object}
-		 */
-		state: null,
-
-		/**
-		 * State handlers.
-		 * @type {object}
-		 */
-		stateHandlers: {},
-
-		/**
-		 * Current state ID.
-		 * @type {string}
-		 */
-		stateId: '',
-
-		/**
-		 * Internal vars.
-		 * @type {object}
-		 */
-		vars: {},
-
-	/******************************/
-	/* Methods: Utility           */
-	/******************************/
-
-		/**
-		 * Does stuff when the DOM is ready.
-		 * @param {function} f Function.
-		 */
-		DOMReady: null,
-
-		/**
-		 * Wrapper/polyfill for (Array.prototype|String).indexOf.
-		 * @param {Array|string} search Object or string to search.
-		 * @param {integer} from Starting index.
-		 * @return {integer} Matching index (or -1 if there's no match).
-		 */
-		indexOf: null,
-
-		/**
-		 * Wrapper/polyfill for Array.isArray.
-		 * @param {array} x Variable to check.
-		 * @return {bool} If true, x is an array. If false, x is not an array.
-		 */
-		isArray: null,
-
-		/**
-		 * Safe replacement for "for..in". Avoids stuff that doesn't belong to the array itself (eg. properties added to Array.prototype).
-		 * @param {Array} a Array to iterate.
-		 * @param {function} f(index) Function to call on each element.
-		 */
-		iterate: null,
-
-		/**
-		 * Determines if a media query matches the current browser state.
-		 * @param {string} query Media query.
-		 * @return {bool} True if it matches, false if not.
-		 */
-		matchesMedia: null,
+var skel = (function() { 'use strict'; var _ = {
+
+    /******************************/
+    /* Properties                 */
+    /******************************/
+
+    /**
+     * IDs of breakpoints that are currently active.
+     * @type {array}
+     */
+    breakpointIds: null,
+
+    /**
+     * Events.
+     * @type {object}
+     */
+    events: {},
+
+    /**
+     * Are we initialized?
+     * @type {bool}
+     */
+    isInit: false,
+
+    /**
+     * Objects.
+     * @type {object}
+     */
+    obj: {
+
+      // Attachments.
+      attachments: {},
+
+      // Breakpoints.
+      breakpoints: {},
+
+      // Head.
+      head: null,
+
+      // States.
+      states: {}
+
+    },
+
+    /**
+     * State ID delimiter (don't change this).
+     * @type {string}
+     */
+    sd: '/',
+
+    /**
+     * Current state.
+     * @type {object}
+     */
+    state: null,
+
+    /**
+     * State handlers.
+     * @type {object}
+     */
+    stateHandlers: {},
+
+    /**
+     * Current state ID.
+     * @type {string}
+     */
+    stateId: '',
+
+    /**
+     * Internal vars.
+     * @type {object}
+     */
+    vars: {},
+
+    /******************************/
+    /* Methods: Utility           */
+    /******************************/
+
+    /**
+     * Does stuff when the DOM is ready.
+     * @param {function} f Function.
+     */
+    DOMReady: null,
+
+    /**
+     * Wrapper/polyfill for (Array.prototype|String).indexOf.
+     * @param {Array|string} search Object or string to search.
+     * @param {integer} from Starting index.
+     * @return {integer} Matching index (or -1 if there's no match).
+     */
+    indexOf: null,
+
+    /**
+     * Wrapper/polyfill for Array.isArray.
+     * @param {array} x Variable to check.
+     * @return {bool} If true, x is an array. If false, x is not an array.
+     */
+    isArray: null,
+
+    /**
+     * Safe replacement for "for..in". Avoids stuff that doesn't belong to the array itself (eg. properties added to Array.prototype).
+     * @param {Array} a Array to iterate.
+     * @param {function} f(index) Function to call on each element.
+     */
+    iterate: null,
+
+    /**
+     * Determines if a media query matches the current browser state.
+     * @param {string} query Media query.
+     * @return {bool} True if it matches, false if not.
+     */
+    matchesMedia: null,
+
+    /**
+     * Extends x by y.
+     * @param {object} x Target object.
+     * @param {object} y Source object.
+     */
+    extend: function(x, y) {
+
+      _.iterate(y, function(k) {
+
+        if (_.isArray(y[k])) {
+
+          if (!_.isArray(x[k])) {
+            x[k] = [];
+          }
+          _.extend(x[k], y[k]);
+
+        } else if (typeof y[k] == 'object') {
+
+          if (typeof x[k] != 'object') {
+            x[k] = {};
+          }
+          _.extend(x[k], y[k]);
+
+        } else {
+          x[k] = y[k];
+        }
+      });
 
-		/**
-		 * Extends x by y.
-		 * @param {object} x Target object.
-		 * @param {object} y Source object.
-		 */
-		extend: function(x, y) {
+    },
 
-			_.iterate(y, function(k) {
+    /**
+     * Creates a new style element.
+     * @param {string} content Content.
+     * @return {DOMHTMLElement} Style element.
+     */
+    newStyle: function(content) {
 
-				if (_.isArray(y[k])) {
+      var e = document.createElement('style');
+      e.type = 'text/css';
+      e.innerHTML = content;
 
-					if (!_.isArray(x[k]))
-						x[k] = [];
+      return e;
 
-					_.extend(x[k], y[k]);
+    },
 
-				}
-				else if (typeof y[k] == 'object') {
+    /******************************/
+    /* Methods: API               */
+    /******************************/
 
-					if (typeof x[k] != 'object')
-						x[k] = {};
+    /**
+     * Temporary element for canUse()
+     * @type {DOMElement}
+     */
+    _canUse: null,
 
-					_.extend(x[k], y[k]);
+    /**
+     * Determines if the browser supports a given property.
+     * @param {string} p Property.
+     * @return {bool} True if property is supported, false if not.
+     */
+    canUse: function(p) {
 
-				}
-				else
-					x[k] = y[k];
+      // Create temporary element if it doesn't already exist.
+      if (!_._canUse) {
+        _._canUse = document.createElement('div');
+      }
+      // Check for property.
+      var e = _._canUse.style;
+      var up = p.charAt(0).toUpperCase() + p.slice(1);
 
-			});
+      return	(
+            p in e ||
+            ('Moz' + up) in e ||
+            ('Webkit' + up) in e ||
+            ('O' + up) in e ||
+            ('ms' + up) in e
+      );
 
-		},
+    },
 
-		/**
-		 * Creates a new style element.
-		 * @param {string} content Content.
-		 * @return {DOMHTMLElement} Style element.
-		 */
-		newStyle: function(content) {
+    /******************************/
+    /* Methods: Events            */
+    /******************************/
 
-			var e = document.createElement('style');
-				e.type = 'text/css';
-				e.innerHTML = content;
+    /**
+     * Registers one or more events.
+     * @param {string} names Space-delimited list of event names.
+     * @param {function} f Function.
+     */
+    on: function(names, f) {
 
-			return e;
+      var a = names.split(/[\s]+/);
 
-		},
+      _.iterate(a, function(i) {
 
-	/******************************/
-	/* Methods: API               */
-	/******************************/
+        var name = a[i];
 
-		/**
-		 * Temporary element for canUse()
-		 * @type {DOMElement}
-		 */
-		_canUse: null,
+        // Manually trigger event if applicable.
+        if (_.isInit) {
 
-		/**
-		 * Determines if the browser supports a given property.
-		 * @param {string} p Property.
-		 * @return {bool} True if property is supported, false if not.
-		 */
-		canUse: function(p) {
+          // Init.
+          if (name == 'init') {
 
-			// Create temporary element if it doesn't already exist.
-				if (!_._canUse)
-					_._canUse = document.createElement('div');
+            // Trigger event.
+            (f)();
 
-			// Check for property.
-				var e = _._canUse.style,
-					up = p.charAt(0).toUpperCase() + p.slice(1);
+            // This only gets called once, so there's no need to actually
+            // register it.
+            return;
 
-				return	(
-							p in e
-						||	('Moz' + up) in e
-						||	('Webkit' + up) in e
-						||	('O' + up) in e
-						||	('ms' + up) in e
-				);
+          // Change.
+          } else if (name == 'change') {
 
-		},
+            // Trigger event.
+            (f)();
 
-	/******************************/
-	/* Methods: Events            */
-	/******************************/
+          // Activate / Not.
+          } else {
 
-		/**
-		 * Registers one or more events.
-		 * @param {string} names Space-delimited list of event names.
-		 * @param {function} f Function.
-		 */
-		on: function(names, f) {
+            var x = name.charAt(0);
 
-			var a = names.split(/[\s]+/);
+            if (x == '+' || x == '!') {
 
-			_.iterate(a, function(i) {
+              var y = name.substring(1);
 
-				var name = a[i];
+              if (y in _.obj.breakpoints) {
 
-				// Manually trigger event if applicable.
-					if (_.isInit) {
+                // Activate.
+                if (x == '+' && _.obj.breakpoints[y].active) {
 
-						// Init.
-							if (name == 'init') {
+                  // Trigger event.
+                  (f)();
 
-								// Trigger event.
-									(f)();
+                }
 
-								// This only gets called once, so there's no need to actually
-								// register it.
-									return;
+                // Not.
+                else if (x == '!' && !_.obj.breakpoints[y].active) {
 
-							}
+                  // Trigger event.
+                  (f)();
 
-						// Change.
-							else if (name == 'change') {
+                  // This only gets called once, so there's no need to actually
+                  // register it.
+                  return;
 
-								// Trigger event.
-									(f)();
+                }
 
-							}
+              }
 
-						// Activate / Not.
-							else {
+            }
 
-								var x = name.charAt(0);
+          }
 
-								if (x == '+' || x == '!') {
+        }
 
-									var y = name.substring(1);
+        // No previous events of this type registered? Set up its array.
+        if (!_.events[name]) {
+          _.events[name] = [];
+        }
+        // Register event.
+        _.events[name].push(f);
 
-									if (y in _.obj.breakpoints) {
+      });
 
-										// Activate.
-											if (x == '+' && _.obj.breakpoints[y].active) {
+      return _;
 
-												// Trigger event.
-													(f)();
+    },
 
-											}
+    /**
+     * Triggers an event.
+     * @param {string} name Name.
+     */
+    trigger: function(name) {
 
-										// Not.
-											else if (x == '!' && !_.obj.breakpoints[y].active) {
+      // No events registered? Bail.
+      if (!_.events[name] || _.events[name].length == 0) {
+        return;
+      }
+      // Step through and call events.
+      _.iterate(_.events[name], function(k) {
+        (_.events[name][k])();
+      });
 
-												// Trigger event.
-													(f)();
+      return _;
 
-												// This only gets called once, so there's no need to actually
-												// register it.
-													return;
+    },
 
-											}
+    /******************************/
+    /* Methods: Breakpoints       */
+    /******************************/
 
-									}
+    /**
+     * Gets a breakpoint.
+     * @param {string} id Breakpoint ID.
+     * @return {Breakpoint} Breakpoint.
+     */
+    breakpoint: function(id) {
+      return _.obj.breakpoints[id];
+    },
 
-								}
+    /**
+     * Sets breakpoints.
+     * @param {object} breakpoints Breakpoints.
+     */
+    breakpoints: function(breakpoints) {
 
-							}
+      // Breakpoint class.
+      function Breakpoint(id, media) {
 
-					}
+        this.name = this.id = id;
+        this.media = media;
+        this.active = false;
+        this.wasActive = false;
 
-				// No previous events of this type registered? Set up its array.
-					if (!_.events[name])
-						_.events[name] = [];
+      };
 
-				// Register event.
-					_.events[name].push(f);
+      Breakpoint.prototype.matches = function() {
+        return (_.matchesMedia(this.media));
+      };
 
-			});
+      Breakpoint.prototype.sync = function() {
 
-			return _;
+        this.wasActive = this.active;
+        this.active = this.matches();
 
-		},
+      };
 
-		/**
-		 * Triggers an event.
-		 * @param {string} name Name.
-		 */
-		trigger: function(name) {
+      // Create breakpoints.
+      _.iterate(breakpoints, function(id) {
+        _.obj.breakpoints[id] = new Breakpoint(id, breakpoints[id]);
+      });
 
-			// No events registered? Bail.
-				if (!_.events[name] || _.events[name].length == 0)
-					return;
+      // Initial poll.
+      window.setTimeout(function() {
+        _.poll();
+      }, 0);
 
-			// Step through and call events.
-				_.iterate(_.events[name], function(k) {
-					(_.events[name][k])();
-				});
+      return _;
 
-			return _;
+    },
 
-		},
+    /******************************/
+    /* Methods: States            */
+    /******************************/
 
-	/******************************/
-	/* Methods: Breakpoints       */
-	/******************************/
+    /**
+     * Adds a state handler.
+     * @param {string} id ID.
+     * @param {function} f Handler function.
+     */
+    addStateHandler: function(id, f) {
 
-		/**
-		 * Gets a breakpoint.
-		 * @param {string} id Breakpoint ID.
-		 * @return {Breakpoint} Breakpoint.
-		 */
-		breakpoint: function(id) {
-			return _.obj.breakpoints[id];
-		},
+      // Add handler.
+      _.stateHandlers[id] = f;
 
-		/**
-		 * Sets breakpoints.
-		 * @param {object} breakpoints Breakpoints.
-		 */
-		breakpoints: function(breakpoints) {
+      // Call it.
+      //_.callStateHandler(id);
 
-			// Breakpoint class.
-				function Breakpoint(id, media) {
+    },
 
-					this.name = this.id = id;
-					this.media = media;
-					this.active = false;
-					this.wasActive = false;
+    /**
+     * Calls a state handler.
+     * @param {string} id ID.
+     */
+    callStateHandler: function(id) {
 
-				};
+      // Call handler.
+      var attachments = (_.stateHandlers[id])();
 
-					Breakpoint.prototype.matches = function() {
-						return (_.matchesMedia(this.media));
-					};
+      // Add attachments to state (if any).
+      _.iterate(attachments, function(i) {
+        _.state.attachments.push(attachments[i]);
+      });
 
-					Breakpoint.prototype.sync = function() {
+    },
 
-						this.wasActive = this.active;
-						this.active = this.matches();
+    /**
+     * Switches to a different state.
+     * @param {string} newStateId New state ID.
+     */
+    changeState: function(newStateId) {
 
-					};
+      // Sync all breakpoints.
+      _.iterate(_.obj.breakpoints, function(id) {
+        _.obj.breakpoints[id].sync();
+      });
 
-			// Create breakpoints.
-				_.iterate(breakpoints, function(id) {
-					_.obj.breakpoints[id] = new Breakpoint(id, breakpoints[id]);
-				});
+      // Set last state var.
+      _.vars.lastStateId = _.stateId;
 
-			// Initial poll.
-				window.setTimeout(function() {
-					_.poll();
-				}, 0);
+      // Change state ID.
+      _.stateId = newStateId;
+      _.breakpointIds = (_.stateId === _.sd ?
+        [] :
+        _.stateId.substring(1).split(_.sd));
 
-			return _;
+      console.log('[skel] changing states (id: "' + _.stateId + '")');
 
-		},
+      // Get state.
+      if (!_.obj.states[_.stateId]) {
 
-	/******************************/
-	/* Methods: States            */
-	/******************************/
+        console.log('[skel] - not found. building ...');
 
-		/**
-		 * Adds a state handler.
-		 * @param {string} id ID.
-		 * @param {function} f Handler function.
-		 */
-		addStateHandler: function(id, f) {
+        // Build state.
+        _.obj.states[_.stateId] = {
+          attachments: []
+        };
 
-			// Add handler.
-				_.stateHandlers[id] = f;
+        _.state = _.obj.states[_.stateId];
 
-			// Call it.
-				//_.callStateHandler(id);
+        // Call all state handlers.
+        _.iterate(_.stateHandlers, _.callStateHandler);
 
-		},
+      } else {
 
-		/**
-		 * Calls a state handler.
-		 * @param {string} id ID.
-		 */
-		callStateHandler: function(id) {
+        console.log('[skel] - found');
 
-			// Call handler.
-				var attachments = (_.stateHandlers[id])();
+        // Get state.
+        _.state = _.obj.states[_.stateId];
 
-			// Add attachments to state (if any).
-				_.iterate(attachments, function(i) {
-					_.state.attachments.push(attachments[i]);
-				});
+      }
 
-		},
+      // Detach all attachments *EXCEPT* state's.
+      _.detachAll(_.state.attachments);
 
-		/**
-		 * Switches to a different state.
-		 * @param {string} newStateId New state ID.
-		 */
-		changeState: function(newStateId) {
+      // Attach state's attachments.
+      _.attachAll(_.state.attachments);
 
-			// Sync all breakpoints.
-				_.iterate(_.obj.breakpoints, function(id) {
-					_.obj.breakpoints[id].sync();
-				});
+      // Expose state and stateId as vars.
+      _.vars.stateId = _.stateId;
+      _.vars.state = _.state;
 
-			// Set last state var.
-				_.vars.lastStateId = _.stateId;
+      // Trigger change event.
+      _.trigger('change');
 
-			// Change state ID.
-				_.stateId = newStateId;
-				_.breakpointIds = (_.stateId === _.sd ? [] : _.stateId.substring(1).split(_.sd));
+      // Trigger activate/deactivate events.
+      _.iterate(_.obj.breakpoints, function(id) {
 
-				console.log('[skel] changing states (id: "' + _.stateId + '")');
+        // Breakpoint is now active ...
+        if (_.obj.breakpoints[id].active) {
 
-			// Get state.
-				if (!_.obj.states[_.stateId]) {
+          // ... and it wasn't active before? Trigger activate event.
+          if (!_.obj.breakpoints[id].wasActive) {
+            _.trigger('+' + id);
+          }
+        }
 
-					console.log('[skel] - not found. building ...');
+        // Breakpoint is not active ...
+        else {
 
-					// Build state.
-						_.obj.states[_.stateId] = {
-							attachments: []
-						};
+          // ... but it was active before? Trigger deactivate event.
+          if (_.obj.breakpoints[id].wasActive) {
+            _.trigger('-' + id);
+          }
+        }
 
-						_.state = _.obj.states[_.stateId];
+      });
 
-					// Call all state handlers.
-						_.iterate(_.stateHandlers, _.callStateHandler);
+    },
 
-				}
-				else {
+    /**
+     * Generates a state-specific config.
+     * @param {object} baseConfig Base config.
+     * @param {object} breakpointConfigs Breakpoint-specific configs.
+     * @return {object} State-specific config.
+     */
+    generateStateConfig: function(baseConfig, breakpointConfigs) {
 
-					console.log('[skel] - found');
+      var x = {};
 
-					// Get state.
-						_.state = _.obj.states[_.stateId];
+      // Extend with base config.
+      _.extend(x, baseConfig);
 
-				}
+      // Extend with configs for each active breakpoint.
+      _.iterate(_.breakpointIds, function(k) {
+        _.extend(x, breakpointConfigs[_.breakpointIds[k]]);
+      });
 
-			// Detach all attachments *EXCEPT* state's.
-				_.detachAll(_.state.attachments);
+      return x;
 
-			// Attach state's attachments.
-				_.attachAll(_.state.attachments);
+    },
 
-			// Expose state and stateId as vars.
-				_.vars.stateId = _.stateId;
-				_.vars.state = _.state;
+    /**
+     * Gets the current state ID.
+     * @return {string} State ID.
+     */
+    getStateId: function() {
 
-			// Trigger change event.
-				_.trigger('change');
+      var stateId = '';
 
-			// Trigger activate/deactivate events.
-				_.iterate(_.obj.breakpoints, function(id) {
+      _.iterate(_.obj.breakpoints, function(id) {
 
-					// Breakpoint is now active ...
-						if (_.obj.breakpoints[id].active) {
+        var b = _.obj.breakpoints[id];
 
-							// ... and it wasn't active before? Trigger activate event.
-								if (!_.obj.breakpoints[id].wasActive)
-									_.trigger('+' + id);
+        // Active? Append breakpoint ID to state ID.
+        if (b.matches()) {
+          stateId += _.sd + b.id;
+        }
+      });
 
-						}
+      return stateId;
 
-					// Breakpoint is not active ...
-						else {
+    },
 
-							// ... but it was active before? Trigger deactivate event.
-								if (_.obj.breakpoints[id].wasActive)
-									_.trigger('-' + id);
+    /**
+     * Polls for state changes.
+     */
+    poll: function() {
 
-						}
+      var newStateId = '';
 
-				});
+      // Determine new state.
+      newStateId = _.getStateId();
 
-		},
+      if (newStateId === '') {
+        newStateId = _.sd;
+      }
+      // State changed?
+      if (newStateId !== _.stateId) {
+        _.changeState(newStateId);
+      }
+    },
 
-		/**
-		 * Generates a state-specific config.
-		 * @param {object} baseConfig Base config.
-		 * @param {object} breakpointConfigs Breakpoint-specific configs.
-		 * @return {object} State-specific config.
-		 */
-		generateStateConfig: function(baseConfig, breakpointConfigs) {
+    /******************************/
+    /* Methods: Attachments       */
+    /******************************/
 
-			var x = {};
+    /**
+     * Attach point for attach()
+     * @type {DOMElement}
+     */
+    _attach: null,
 
-			// Extend with base config.
-				_.extend(x, baseConfig);
+    /**
+     * Attaches a single attachment.
+     * @param {object} attachment Attachment.
+     * @return bool True on success, false on failure.
+     */
+    attach: function(attachment) {
 
-			// Extend with configs for each active breakpoint.
-				_.iterate(_.breakpointIds, function(k) {
-					_.extend(x, breakpointConfigs[_.breakpointIds[k]]);
-				});
+      var	h = _.obj.head;
+      var e = attachment.element;
 
-			return x;
+      // Already attached? Bail.
+      if (e.parentNode &&	e.parentNode.tagName) {
+        return false;
+      }
+      // Add to <head>
 
-		},
+      // No attach point yet? Use <head>'s first child.
+      if (!_._attach) {
+        _._attach = h.firstChild;
+      }
+      // Insert element.
+      h.insertBefore(e, _._attach.nextSibling);
 
-		/**
-		 * Gets the current state ID.
-		 * @return {string} State ID.
-		 */
-		getStateId: function() {
+      // Permanent attachment? Make its element the new attach point.
+      if (attachment.permanent) {
+        _._attach = e;
+      }
+      console.log('[skel] ' + attachment.id +
+        ': attached (' + attachment.priority + ')');
 
-			var stateId = '';
+      return true;
 
-			_.iterate(_.obj.breakpoints, function(id) {
+    },
 
-				var b = _.obj.breakpoints[id];
+    /**
+     * Attaches a list of attachments.
+     * @param {array} attachments Attachments.
+     */
+    attachAll: function(attachments) {
 
-				// Active? Append breakpoint ID to state ID.
-					if (b.matches())
-						stateId += _.sd + b.id;
+      var a = [];
 
-			});
+      // Organize attachments by priority.
+      _.iterate(attachments, function(k) {
 
-			return stateId;
+        if (!a[ attachments[k].priority ]) {
+          a[ attachments[k].priority ] = [];
+        }
+        a[ attachments[k].priority ].push(attachments[k]);
 
-		},
+      });
 
-		/**
-		 * Polls for state changes.
-		 */
-		poll: function() {
+      // Reverse array order.
+      a.reverse();
 
-			var newStateId = '';
+      // Step through each priority.
+      _.iterate(a, function(k) {
+        _.iterate(a[k], function(x) {
+          _.attach(a[k][x]);
+        });
+      });
 
-			// Determine new state.
-				newStateId = _.getStateId();
+    },
 
-				if (newStateId === '')
-					newStateId = _.sd;
+    /**
+     * Detaches a single attachment.
+     * @param {object} attachment Attachment.
+     * @return bool True on success, false on failure.
+     */
+    detach: function(attachment) {
 
-			// State changed?
-				if (newStateId !== _.stateId)
-					_.changeState(newStateId);
+      var	e = attachment.element;
 
-		},
+      // Permanent or already detached? Bail.
+      if (attachment.permanent ||
+        !e.parentNode ||
+        (e.parentNode && !e.parentNode.tagName)) {
+        return false;
+      }
+      // Detach.
+      e.parentNode.removeChild(e);
 
-	/******************************/
-	/* Methods: Attachments       */
-	/******************************/
+      return true;
 
-		/**
-		 * Attach point for attach()
-		 * @type {DOMElement}
-		 */
-		_attach: null,
+    },
 
-		/**
-		 * Attaches a single attachment.
-		 * @param {object} attachment Attachment.
-		 * @return bool True on success, false on failure.
-		 */
-		attach: function(attachment) {
+    /**
+     * Detaches all attachments.
+     * @param {object} exclude A list of attachments to exclude.
+     */
+    detachAll: function(exclude) {
 
-			var	h = _.obj.head,
-				e = attachment.element;
+      var l = {};
 
-			// Already attached? Bail.
-				if (e.parentNode
-				&&	e.parentNode.tagName)
-					return false;
+      // Build exclusion list (for faster lookups).
+      _.iterate(exclude, function(k) {
+        l[exclude[k].id] = true;
+      });
 
-			// Add to <head>
+      _.iterate(_.obj.attachments, function(id) {
 
-				// No attach point yet? Use <head>'s first child.
-					if (!_._attach)
-						_._attach = h.firstChild;
+        // In our exclusion list? Bail.
+        if (id in l) {
+          return;
+        }
+        // Attempt to detach.
+        _.detach(_.obj.attachments[id]);
 
-				// Insert element.
-					h.insertBefore(e, _._attach.nextSibling);
+      });
 
-				// Permanent attachment? Make its element the new attach point.
-					if (attachment.permanent)
-						_._attach = e;
+    },
 
-			console.log('[skel] ' + attachment.id + ': attached (' + attachment.priority + ')');
+    attachment: function(id) {
+      return (id in _.obj.attachments ? _.obj.attachments[id] : null);
+    },
 
-			return true;
+    /**
+     * Creates a new attachment.
+     * @param {string} id ID.
+     * @param {DOMElement} element DOM element.
+     */
+    newAttachment: function(id, element, priority, permanent) {
 
-		},
+      return (_.obj.attachments[id] = {
+        id: id,
+        element: element,
+        priority: priority,
+        permanent: permanent
+      });
 
-		/**
-		 * Attaches a list of attachments.
-		 * @param {array} attachments Attachments.
-		 */
-		attachAll: function(attachments) {
+    },
 
-			var a = [];
+    /******************************/
+    /* Methods: Init              */
+    /******************************/
 
-			// Organize attachments by priority.
-				_.iterate(attachments, function(k) {
+    /**
+     * Initializes skel.
+     * This has to be explicitly called by the user.
+     */
+    init: function() {
 
-					if (!a[ attachments[k].priority ])
-						a[ attachments[k].priority ] = [];
+      // Initialize stuff.
+      _.initMethods();
+      _.initVars();
+      _.initEvents();
 
-					a[ attachments[k].priority ].push(attachments[k]);
+      // Tmp.
+      _.obj.head = document.getElementsByTagName('head')[0];
 
-				});
+      // Mark as initialized.
+      _.isInit = true;
 
-			// Reverse array order.
-				a.reverse();
+      // Trigger init event.
+      _.trigger('init');
 
-			// Step through each priority.
-				_.iterate(a, function(k) {
-					_.iterate(a[k], function(x) {
-						_.attach(a[k][x]);
-					});
-				});
+      console.log('[skel] initialized.');
 
-		},
+    },
 
-		/**
-		 * Detaches a single attachment.
-		 * @param {object} attachment Attachment.
-		 * @return bool True on success, false on failure.
-		 */
-		detach: function(attachment) {
+    /**
+     * Initializes browser events.
+     */
+    initEvents: function() {
 
-			var	e = attachment.element;
+      // On resize.
+      _.on('resize', function() { _.poll(); });
 
-			// Permanent or already detached? Bail.
-				if (attachment.permanent
-				||	!e.parentNode
-				||	(e.parentNode && !e.parentNode.tagName))
-					return false;
+      // On orientation change.
+      _.on('orientationChange', function() { _.poll(); });
 
-			// Detach.
-				e.parentNode.removeChild(e);
+      // Wrap "ready" event.
+      _.DOMReady(function() {
+        _.trigger('ready');
+      });
 
-			return true;
+      // Non-destructively register skel events to window.
 
-		},
+      // Load.
+      if (window.onload) {
+        _.on('load', window.onload);
+      }
+      window.onload = function() { _.trigger('load'); };
 
-		/**
-		 * Detaches all attachments.
-		 * @param {object} exclude A list of attachments to exclude.
-		 */
-		detachAll: function(exclude) {
+      // Resize.
+      if (window.onresize) {
+        _.on('resize', window.onresize);
+      }
+      window.onresize = function() { _.trigger('resize'); };
 
-			var l = {};
+      // Orientation change.
+      if (window.onorientationchange) {
+        _.on('orientationChange', window.onorientationchange);
+      }
+      window.onorientationchange = function() {
+        _.trigger('orientationChange');
+      };
 
-			// Build exclusion list (for faster lookups).
-				_.iterate(exclude, function(k) {
-					l[exclude[k].id] = true;
-				});
+    },
 
-			_.iterate(_.obj.attachments, function(id) {
+    /**
+     * Initializes methods.
+     */
+    initMethods: function() {
 
-				// In our exclusion list? Bail.
-					if (id in l)
-						return;
+      // _.DOMReady (based on github.com/ded/domready by @ded; domready (c) Dustin Diaz 2014 - License MIT)
+      !function(e, t) {
+        _.DOMReady = t()
+      }('domready',function() {
+        function s(t) {
+          i = 1;
+          while (t = e.shift()) {
+            t()
+          }
+        }
+        var e = [];
+        var t;
+        var n = document;
+        var r = 'DOMContentLoaded';
+        var i = /^loaded|^c/.test(n.readyState);
+        return n.addEventListener(r, t = function() {
+          n.removeEventListener(r, t),s()
+        }),function(t) {
+          i ? t() : e.push(t);
+        }});
 
-				// Attempt to detach.
-					_.detach(_.obj.attachments[id]);
+      // _.indexOf
+      _.indexOf = function(x,b) { return x.indexOf(b) };
 
-			});
+      // _.isArray
 
-		},
+      // Wrap existing method if it exists.
+      if (Array.isArray) {
+        _.isArray = function(x) { return Array.isArray(x) };
 
-		attachment: function(id) {
-			return (id in _.obj.attachments ? _.obj.attachments[id] : null);
-		},
+      // Otherwise, polyfill.
+      } else {
+        _.isArray = function(x) {
+          return (Object.prototype.toString.call(x) === '[object Array]')
+        };
+      }
+      // _.iterate
 
-		/**
-		 * Creates a new attachment.
-		 * @param {string} id ID.
-		 * @param {DOMElement} element DOM element.
-		 */
-		newAttachment: function(id, element, priority, permanent) {
+      // Use Object.keys if it exists (= better performance).
+      if (Object.keys) {
+        _.iterate = function(a, f) {
 
-			return (_.obj.attachments[id] = {
-				id: id,
-				element: element,
-				priority: priority,
-				permanent: permanent
-			});
+          if (!a) {
+            return [];
+          }
+          var k = Object.keys(a);
 
-		},
+          for (var i = 0; k[i]; i++) {
 
-	/******************************/
-	/* Methods: Init              */
-	/******************************/
+            if ((f)(k[i], a[k[i]]) === false) {
+              break;
+            }
+          }
 
-		/**
-		 * Initializes skel.
-		 * This has to be explicitly called by the user.
-		 */
-		init: function() {
+        };
 
-			// Initialize stuff.
-				_.initMethods();
-				_.initVars();
-				_.initEvents();
+      // Otherwise, fall back on hasOwnProperty (= slower, but works on older browsers).
+      } else {
+        _.iterate = function(a, f) {
 
-			// Tmp.
-				_.obj.head = document.getElementsByTagName('head')[0];
+          if (!a) {
+            return [];
+          }
+          var i;
 
-			// Mark as initialized.
-				_.isInit = true;
+          for (i in a) {
+            if (Object.prototype.hasOwnProperty.call(a, i)) {
 
-			// Trigger init event.
-				_.trigger('init');
+              if ((f)(i, a[i]) === false) {
+                break;
+              }
+            }
+          }
+        };
+      }
+      // _.matchesMedia
 
-			console.log('[skel] initialized.');
+      // Default: Use matchMedia (all modern browsers)
+      if (window.matchMedia) {
+        _.matchesMedia = function(query) {
 
-		},
+          if (query == '') {
+            return true;
+          }
+          return window.matchMedia(query).matches;
 
-		/**
-		 * Initializes browser events.
-		 */
-		initEvents: function() {
+        };
 
-			// On resize.
-				_.on('resize', function() { _.poll(); });
+      // Polyfill 1: Use styleMedia/media (IE9, older Webkit) (derived from github.com/paulirish/matchMedia.js)
+      } else if (window.styleMedia || window.media) {
+        _.matchesMedia = function(query) {
 
-			// On orientation change.
-				_.on('orientationChange', function() { _.poll(); });
+          if (query == '') {
+            return true;
+          }
+          var styleMedia = (window.styleMedia || window.media);
 
-			// Wrap "ready" event.
-				_.DOMReady(function() {
-					_.trigger('ready');
-				});
+          return styleMedia.matchMedium(query || 'all');
 
-			// Non-destructively register skel events to window.
+        };
 
-				// Load.
-					if (window.onload)
-						_.on('load', window.onload);
+      // Polyfill 2: Use getComputed Style (???) (derived from github.com/paulirish/matchMedia.js)
+      } else if (window.getComputedStyle) {
+        _.matchesMedia = function(query) {
 
-					window.onload = function() { _.trigger('load'); };
+          if (query == '') {
+            return true;
+          }
+          var	style = document.createElement('style');
+          var script = document.getElementsByTagName('script')[0];
+          var info = null;
 
-				// Resize.
-					if (window.onresize)
-						_.on('resize', window.onresize);
+          style.type = 'text/css';
+          style.id = 'matchmediajs-test';
+          script.parentNode.insertBefore(style, script);
+          info = ('getComputedStyle' in window) &&
+            window.getComputedStyle(style, null) ||
+            style.currentStyle;
 
-					window.onresize = function() { _.trigger('resize'); };
+          var text = '@media ' + query +
+            '{ #matchmediajs-test { width: 1px; } }';
 
-				// Orientation change.
-					if (window.onorientationchange)
-						_.on('orientationChange', window.onorientationchange);
+          if (style.styleSheet) {
+            style.styleSheet.cssText = text;
+          } else {
+            style.textContent = text;
+          }
+          return info.width === '1px';
 
-					window.onorientationchange = function() { _.trigger('orientationChange'); };
+        };
 
-		},
+      // Polyfill 3: Manually parse (IE<9)
+      } else {
+        _.matchesMedia = function(query) {
 
-		/**
-		 * Initializes methods.
-		 */
-		initMethods: function() {
+          // Empty query? Always succeed.
+          if (query == '') {
+            return true;
+          }
+          // Parse query.
+          var s;
+          var b;
+          var values = {'min-width': null, 'max-width': null};
+          var found = false;
 
-			// _.DOMReady (based on github.com/ded/domready by @ded; domready (c) Dustin Diaz 2014 - License MIT)
+          var a = query.split(/\s+and\s+/);
 
-				// Hack: Use older version for browsers that don't support addEventListener (*cough* IE8).
-					if (!document.addEventListener)
-						!function(e,t){_.DOMReady = t()}("domready",function(e){function p(e){h=1;while(e=t.shift())e()}var t=[],n,r=!1,i=document,s=i.documentElement,o=s.doScroll,u="DOMContentLoaded",a="addEventListener",f="onreadystatechange",l="readyState",c=o?/^loaded|^c/:/^loaded|c/,h=c.test(i[l]);return i[a]&&i[a](u,n=function(){i.removeEventListener(u,n,r),p()},r),o&&i.attachEvent(f,n=function(){/^c/.test(i[l])&&(i.detachEvent(f,n),p())}),e=o?function(n){self!=top?h?n():t.push(n):function(){try{s.doScroll("left")}catch(t){return setTimeout(function(){e(n)},50)}n()}()}:function(e){h?e():t.push(e)}});
-				// And everyone else.
-					else
-						!function(e,t){_.DOMReady = t()}("domready",function(){function s(t){i=1;while(t=e.shift())t()}var e=[],t,n=document,r="DOMContentLoaded",i=/^loaded|^c/.test(n.readyState);return n.addEventListener(r,t=function(){n.removeEventListener(r,t),s()}),function(t){i?t():e.push(t)}});
+          for (var k = 0; k < a.length; k++) {
 
-			// _.indexOf
+            s = a[k];
 
-				// Wrap existing method if it exists.
-					if (Array.prototype.indexOf)
-						_.indexOf = function(x,b) { return x.indexOf(b) };
+            // Operator (key: value)
+            if (s.charAt(0) == '(') {
 
-				// Otherwise, polyfill.
-					else
-						_.indexOf = function(x,b){if (typeof x=='string') return x.indexOf(b);var c,a=(b)?b:0,e;if(!this){throw new TypeError()}e=this.length;if(e===0||a>=e){return -1}if(a<0){a=e-Math.abs(a)}for(c=a;c<e;c++){if(this[c]===x){return c}}return -1};
+              s = s.substring(1, s.length - 1);
+              b = s.split(/:\s+/);
 
-			// _.isArray
+              if (b.length == 2) {
 
-				// Wrap existing method if it exists.
-					if (Array.isArray)
-						_.isArray = function(x) { return Array.isArray(x) };
+                values[ b[0].replace(/^\s+|\s+$/g, '') ] = parseInt(b[1]);
+                found = true;
 
-				// Otherwise, polyfill.
-					else
-						_.isArray = function(x) { return (Object.prototype.toString.call(x) === '[object Array]') };
+              }
 
-			// _.iterate
+            }
 
-				// Use Object.keys if it exists (= better performance).
-					if (Object.keys)
-						_.iterate = function(a, f) {
+          }
 
-							if (!a)
-								return [];
+          // No matches? Query likely contained something unsupported so we automatically fail.
+          if (!found) {
+            return false;
+          }
+          // Check against viewport.
+          var w = document.documentElement.clientWidth;
+          var h = document.documentElement.clientHeight;
 
-							var i, k = Object.keys(a);
+          if ((values['min-width'] !== null && w < values['min-width']) ||
+          (values['max-width'] !== null && w > values['max-width']) ||
+          (values['min-height'] !== null && h < values['min-height']) ||
+          (values['max-height'] !== null && h > values['max-height'])) {
+            return false;
+          }
+          return true;
 
-							for (i = 0; k[i]; i++) {
+        };
+      }
+      // _.newStyle
 
-								if ((f)(k[i], a[k[i]]) === false)
-									break;
+      // IE<9 fix.
+      if (navigator.userAgent.match(/MSIE ([0-9]+)/) &&	RegExp.$1 < 9) {
+        _.newStyle = function(content) {
 
-							}
+          var e = document.createElement('span');
+          e.innerHTML = '&nbsp;<style type="text/css">' + content + '</style>';
 
-						};
+          return e;
 
-				// Otherwise, fall back on hasOwnProperty (= slower, but works on older browsers).
-					else
-						_.iterate = function(a, f) {
+        };
+      }
+    },
 
-							if (!a)
-								return [];
+    /**
+     * Initializes the vars.
+     */
+    initVars: function() {
 
-							var i;
+      var ua = navigator.userAgent;
 
-							for (i in a)
-								if (Object.prototype.hasOwnProperty.call(a, i)) {
+      // browser, browserVersion.
+      var x = 'other';
+      var y = 0;
+      var a = [
+        ['firefox',	/Firefox\/([0-9\.]+)/],
+        ['bb', /BlackBerry.+Version\/([0-9\.]+)/],
+        ['bb', /BB[0-9]+.+Version\/([0-9\.]+)/],
+        ['opera',	/OPR\/([0-9\.]+)/],
+        ['opera', /Opera\/([0-9\.]+)/],
+        ['edge', /Edge\/([0-9\.]+)/],
+        ['safari', /Version\/([0-9\.]+).+Safari/],
+        ['chrome', /Chrome\/([0-9\.]+)/],
+        ['ie', /MSIE ([0-9]+)/],
+        ['ie', /Trident\/.+rv:([0-9]+)/]
+      ];
 
-									if ((f)(i, a[i]) === false)
-										break;
+      _.iterate(a, function(k, v) {
 
-								}
+        if (ua.match(v[1])) {
 
-						};
+          x = v[0];
+          y = parseFloat(RegExp.$1);
 
-			// _.matchesMedia
+          return false;
 
-				// Default: Use matchMedia (all modern browsers)
-					if (window.matchMedia)
-						_.matchesMedia = function(query) {
+        }
 
-							if (query == '')
-								return true;
+      });
 
-							return window.matchMedia(query).matches;
+      _.vars.browser = x;
+      _.vars.browserVersion = y;
 
-						};
+      // os, osVersion.
+      x = 'other';
+      y = 0;
+      a = [
+        ['ios',			/([0-9_]+) like Mac OS X/,			function(v) { return v.replace('_', '.').replace('_', ''); }],
+        ['ios',			/CPU like Mac OS X/,				function(v) { return 0 }],
+        ['wp',			/Windows Phone ([0-9\.]+)/,			null],
+        ['android',		/Android ([0-9\.]+)/,				null],
+        ['mac',			/Macintosh.+Mac OS X ([0-9_]+)/,	function(v) { return v.replace('_', '.').replace('_', ''); }],
+        ['windows',		/Windows NT ([0-9\.]+)/,			null],
+        ['bb',			/BlackBerry.+Version\/([0-9\.]+)/,	null],
+        ['bb',			/BB[0-9]+.+Version\/([0-9\.]+)/,	null]
+      ];
 
-				// Polyfill 1: Use styleMedia/media (IE9, older Webkit) (derived from github.com/paulirish/matchMedia.js)
-					else if (window.styleMedia || window.media)
-						_.matchesMedia = function(query) {
+      _.iterate(a, function(k, v) {
 
-							if (query == '')
-								return true;
+        if (ua.match(v[1])) {
 
-							var styleMedia = (window.styleMedia || window.media);
+          x = v[0];
+          y = parseFloat(v[2] ? (v[2])(RegExp.$1) : RegExp.$1);
 
-							return styleMedia.matchMedium(query || 'all');
+          return false;
 
-						};
+        }
 
-				// Polyfill 2: Use getComputed Style (???) (derived from github.com/paulirish/matchMedia.js)
-					else if (window.getComputedStyle)
-						_.matchesMedia = function(query) {
+      });
 
-							if (query == '')
-								return true;
+      _.vars.os = x;
+      _.vars.osVersion = y;
 
-							var	style = document.createElement('style'),
-								script = document.getElementsByTagName('script')[0],
-								info = null;
+      // IEVersion.
+      _.vars.IEVersion = (_.vars.browser == 'ie' ? _.vars.browserVersion : 99);
 
-							style.type = 'text/css';
-							style.id = 'matchmediajs-test';
-							script.parentNode.insertBefore(style, script);
-							info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
+      // touch.
+      _.vars.touch = (_.vars.os == 'wp' ?
+        (navigator.msMaxTouchPoints > 0) :
+        !!('ontouchstart' in window));
 
-							var text = '@media ' + query + '{ #matchmediajs-test { width: 1px; } }';
+      // mobile.
+      _.vars.mobile = (_.vars.os == 'wp' ||
+        _.vars.os == 'android' ||
+        _.vars.os == 'ios' ||
+        _.vars.os == 'bb');
 
-							if (style.styleSheet)
-								style.styleSheet.cssText = text;
-							else
-								style.textContent = text;
+    },
 
-							return info.width === '1px';
-
-						};
-
-				// Polyfill 3: Manually parse (IE<9)
-					else
-						_.matchesMedia = function(query) {
-
-							// Empty query? Always succeed.
-								if (query == '')
-									return true;
-
-							// Parse query.
-								var k, s, a, b, values = { 'min-width': null, 'max-width': null },
-									found = false;
-
-								a = query.split(/\s+and\s+/);
-
-								for (k = 0; k < a.length; k++) {
-
-									s = a[k];
-
-									// Operator (key: value)
-										if (s.charAt(0) == '(') {
-
-											s = s.substring(1, s.length - 1);
-											b = s.split(/:\s+/);
-
-											if (b.length == 2) {
-
-												values[ b[0].replace(/^\s+|\s+$/g, '') ] = parseInt( b[1] );
-												found = true;
-
-											}
-
-										}
-
-								}
-
-							// No matches? Query likely contained something unsupported so we automatically fail.
-								if (!found)
-									return false;
-
-							// Check against viewport.
-								var w = document.documentElement.clientWidth,
-									h = document.documentElement.clientHeight;
-
-								if ((values['min-width'] !== null && w < values['min-width'])
-								||	(values['max-width'] !== null && w > values['max-width'])
-								||	(values['min-height'] !== null && h < values['min-height'])
-								||	(values['max-height'] !== null && h > values['max-height']))
-									return false;
-
-							return true;
-
-						};
-
-			// _.newStyle
-
-				// IE<9 fix.
-					if (navigator.userAgent.match(/MSIE ([0-9]+)/)
-					&&	RegExp.$1 < 9)
-						_.newStyle = function(content) {
-
-							var e = document.createElement('span');
-								e.innerHTML = '&nbsp;<style type="text/css">' + content + '</style>';
-
-							return e;
-
-						};
-
-		},
-
-		/**
-		 * Initializes the vars.
-		 */
-		initVars: function() {
-
-			var x, y, a, ua = navigator.userAgent;
-
-			// browser, browserVersion.
-				x = 'other';
-				y = 0;
-				a = [
-					['firefox',		/Firefox\/([0-9\.]+)/],
-					['bb',			/BlackBerry.+Version\/([0-9\.]+)/],
-					['bb',			/BB[0-9]+.+Version\/([0-9\.]+)/],
-					['opera',		/OPR\/([0-9\.]+)/],
-					['opera',		/Opera\/([0-9\.]+)/],
-					['edge',		/Edge\/([0-9\.]+)/],
-					['safari',		/Version\/([0-9\.]+).+Safari/],
-					['chrome',		/Chrome\/([0-9\.]+)/],
-					['ie', 			/MSIE ([0-9]+)/],
-					['ie',			/Trident\/.+rv:([0-9]+)/]
-				];
-
-				_.iterate(a, function(k, v) {
-
-					if (ua.match(v[1])) {
-
-						x = v[0];
-						y = parseFloat(RegExp.$1);
-
-						return false;
-
-					}
-
-				});
-
-				_.vars.browser = x;
-				_.vars.browserVersion = y;
-
-			// os, osVersion.
-				x = 'other';
-				y = 0;
-				a = [
-					['ios',			/([0-9_]+) like Mac OS X/,			function(v) { return v.replace('_', '.').replace('_', ''); }],
-					['ios',			/CPU like Mac OS X/,				function(v) { return 0 }],
-					['wp',			/Windows Phone ([0-9\.]+)/,			null],
-					['android',		/Android ([0-9\.]+)/,				null],
-					['mac',			/Macintosh.+Mac OS X ([0-9_]+)/,	function(v) { return v.replace('_', '.').replace('_', ''); }],
-					['windows',		/Windows NT ([0-9\.]+)/,			null],
-					['bb',			/BlackBerry.+Version\/([0-9\.]+)/,	null],
-					['bb',			/BB[0-9]+.+Version\/([0-9\.]+)/,	null]
-				];
-
-				_.iterate(a, function(k, v) {
-
-					if (ua.match(v[1])) {
-
-						x = v[0];
-						y = parseFloat( v[2] ? (v[2])(RegExp.$1) : RegExp.$1 );
-
-						return false;
-
-					}
-
-				});
-
-				_.vars.os = x;
-				_.vars.osVersion = y;
-
-			// IEVersion.
-				_.vars.IEVersion = (_.vars.browser == 'ie' ? _.vars.browserVersion : 99);
-
-			// touch.
-				_.vars.touch = (_.vars.os == 'wp' ? (navigator.msMaxTouchPoints > 0) : !!('ontouchstart' in window));
-
-			// mobile.
-				_.vars.mobile = (_.vars.os == 'wp' || _.vars.os == 'android' || _.vars.os == 'ios' || _.vars.os == 'bb');
-
-		},
-
-}; _.init(); return _; })();
+  }; _.init(); return _; })();
 
 // UMD Wrapper (github.com/umdjs/umd/blob/master/returnExports.js | @umdjs + @nason)
 (function(root, factory) {
 
-	// AMD.
-		if (typeof define === 'function' && define.amd)
-			define([], factory);
+  // AMD.
+  if (typeof define === 'function' && define.amd) {
+    define([], factory);
 
-	// Node.
-		else if (typeof exports === 'object')
-			module.exports = factory();
+  // Node.
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
 
-	// Browser global.
-		else
-			root.skel = factory();
-
+  // Browser global.
+  } else {
+    root.skel = factory();
+  }
 }(this, function() { return skel; }));

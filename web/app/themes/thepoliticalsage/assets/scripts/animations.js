@@ -10,11 +10,11 @@ module.exports = function($) {
     xxsmall: '(max-width: 360px)'
   });
 
-  var	$window = $(window),
-    $body = $('body'),
-    $wrapper = $('#wrapper'),
-    $header = $('#header'),
-    $banner = $('#banner');
+  var	$window = $(window);
+  var $body = $('body');
+  var $wrapper = $('#wrapper');
+  var $header = $('#header');
+  var $banner = $('#banner');
 
   // DISABLED so content shows up faster on slow connections
   // Disable animations/transitions until the page has loaded.
@@ -41,87 +41,89 @@ module.exports = function($) {
   // Banner.
   $banner.each(function() {
 
-    var $this = $(this),
-      $image = $this.find('.image'), 
-      $img = $image.find('img');
+    var $this = $(this);
+    var $image = $this.find('.image');
+    var $img = $image.find('img');
 
     // Parallax.
-    // $this._parallax = (skel.vars.browser == 'ie' || skel.vars.browser == 'edge' || skel.vars.mobile) 
-    //   ? function() { return $(this); } 
-    //   : function(intensity) {
+    $this._parallax = (skel.vars.browser == 'ie' ||
+      skel.vars.browser == 'edge' ||
+      skel.vars.mobile) ?
+      function() { return $(this); }
+      : function(intensity) {
 
-    //     var	$window = $(window),
-    //       $this = $(this);
+        var	$window = $(window);
+        var $this = $(this);
 
-    //     if (this.length == 0 || intensity === 0) {
-    //       return $this;
-    //     }
+        if (this.length == 0 || intensity === 0) {
+          return $this;
+        }
 
-    //     if (this.length > 1) {
+        if (this.length > 1) {
 
-    //       for (var i=0; i < this.length; i++) {
-    //         $(this[i])._parallax(intensity);
-    //       }
+          for (var i = 0; i < this.length; i++) {
+            $(this[i])._parallax(intensity);
+          }
 
-    //       return $this;
+          return $this;
 
-    //     }
+        }
 
-    //     if (!intensity) {
-    //       intensity = 0.25;
-    //     }
+        if (!intensity) {
+          intensity = 0.25;
+        }
 
-    //     $this.each(function() {
+        $this.each(function() {
 
-    //       var $t = $(this),
-    //         on, off;
+          var $t = $(this);
 
-    //       on = function() {
+          var on = function() {
 
-    //         $t.css('background-position', 'center 0px');
+            $t.css('background-position', 'center 0px');
 
-    //         $window
-    //           .on('scroll._parallax', function() {
+            $window
+              .on('scroll._parallax', function() {
+                var pos = parseInt($window.scrollTop()) -
+                  parseInt($t.position().top);
 
-    //             var pos = parseInt($window.scrollTop()) - parseInt($t.position().top);
+                $t.css('background-position', 'center ' +
+                  (pos * (-1 * intensity)) + 'px');
 
-    //             $t.css('background-position', 'center ' + (pos * (-1 * intensity)) + 'px');
+              });
 
-    //           });
+          };
 
-    //       };
+          var off = function() {
 
-    //       off = function() {
+            $t
+              .css('background-position', '');
 
-    //         $t
-    //           .css('background-position', '');
+            $window
+              .off('scroll._parallax');
 
-    //         $window
-    //           .off('scroll._parallax');
+          };
 
-    //       };
+          skel.on('change', function() {
 
-    //       skel.on('change', function() {
+            if (skel.breakpoint('medium').active) {
+              (off)();
+            } else {
+              (on)();
+            }
+          });
 
-    //         if (skel.breakpoint('medium').active) {
-    //           (off)();
-    //         } else {
-    //           (on)();
-    //         }
-    //       });
+        });
 
-    //     });
+        $window
+          .off('load._parallax resize._parallax')
+          .on('load._parallax resize._parallax', function() {
+            $window.trigger('scroll');
+          });
 
-    //     $window
-    //       .off('load._parallax resize._parallax')
-    //       .on('load._parallax resize._parallax', function() {
-    //         $window.trigger('scroll');
-    //       });
+        return $(this);
 
-    //     return $(this);
-
-    // };
-    // $this._parallax(0.275);
+      };
+    $this._parallax(0.275);
   });
 };
 

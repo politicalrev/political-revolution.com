@@ -5,10 +5,11 @@ module.exports = function($) {
 
   $tiles.each(function() {
 
-    var $this = $(this),
-      $image = $this.find('.image'), $img = $image.find('img'),
-      $link = $this.find('.link'),
-      x;
+    var $this = $(this);
+    var $image = $this.find('.image');
+    var $img = $image.find('img');
+    var $link = $this.find('.link');
+    var x;
 
     // Image.
 

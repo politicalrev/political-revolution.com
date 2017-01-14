@@ -1,8 +1,8 @@
 // Menu.
 module.exports = function($) {
-  var $menu = $('#menu'),
-    $body = $('body'),
-    $menuInner;
+  var $menu = $('#menu');
+  var $body = $('body');
+  var $menuInner;
 
   $menu.wrapInner('<div class="inner"></div>');
   $menuInner = $menu.children('.inner');
@@ -10,9 +10,9 @@ module.exports = function($) {
 
   $menu._lock = function() {
 
-    if ($menu._locked)
+    if ($menu._locked) {
       return false;
-
+    }
     $menu._locked = true;
 
     window.setTimeout(function() {
@@ -39,9 +39,9 @@ module.exports = function($) {
 
   $menu._toggle = function() {
 
-    if ($menu._lock())
+    if ($menu._lock()) {
       $body.toggleClass('is-menu-visible');
-
+    }
   };
 
   $menuInner
@@ -56,12 +56,12 @@ module.exports = function($) {
       event.stopPropagation();
 
       // Hide.
-        $menu._hide();
+      $menu._hide();
 
       // Redirect.
-        window.setTimeout(function() {
-          window.location.href = href;
-        }, 250);
+      window.setTimeout(function() {
+        window.location.href = href;
+      }, 250);
 
     });
 
@@ -84,20 +84,20 @@ module.exports = function($) {
       event.preventDefault();
 
       // Toggle.
-        $menu._toggle();
+      $menu._toggle();
 
     })
     .on('click', function(event) {
 
       // Hide.
-        $menu._hide();
+      $menu._hide();
 
     })
     .on('keydown', function(event) {
 
       // Hide on escape.
-        if (event.keyCode == 27)
-          $menu._hide();
-
+      if (event.keyCode == 27) {
+        $menu._hide();
+      }
     });
 };

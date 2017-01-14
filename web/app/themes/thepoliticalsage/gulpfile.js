@@ -143,7 +143,7 @@ var jsTasks = function(filename) {
     .pipe(function() {return browserified;})
     .pipe(concat, filename)
     .pipe(function() {
-      return gulpif(!enabled.maps, 
+      return gulpif(!enabled.maps,
         uglify({compress: {'drop_debugger': enabled.stripJSDebug}})
       );
     })
