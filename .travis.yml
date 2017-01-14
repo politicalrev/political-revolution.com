@@ -30,3 +30,8 @@ script:
   - npm run jshint
   - npm run jscs
   - phpcs --standard=ruleset.xml --extensions=php -n -s .
+
+after_success:
+  - gem install bundler
+  - bundler install
+  - bundle exec cap staging deploy
