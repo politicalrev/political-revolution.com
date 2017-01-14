@@ -38,6 +38,7 @@ after_success:
 - bundler install
 - "openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
 - chmod 600 config/deploy_id_rsa
+- echo -e "Host <deploy host>\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - eval "$(ssh-agent)"
 - ssh-add config/deploy_id_rsa
 - bundle exec cap staging deploy
