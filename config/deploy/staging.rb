@@ -16,7 +16,7 @@ server '45.55.137.23', user: 'deploy', roles: %w{web app db}
 # you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
 # set it globally
  set :ssh_options, {
-   keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa"),
+   keys: "config/deploy_id_rsa",
    forward_agent: false,
    auth_methods: %w(password)
  }
