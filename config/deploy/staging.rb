@@ -17,7 +17,7 @@ server '45.55.137.23', user: 'deploy', roles: %w{web app db}
 # set it globally
  set :ssh_options, {
    keys: "config/deploy_id_rsa",
-   forward_agent: false,
+   forward_agent: true,
    auth_methods: %w(password)
  }
 
