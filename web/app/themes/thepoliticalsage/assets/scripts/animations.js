@@ -1,5 +1,5 @@
 module.exports = function($) {
-  const skel = require('./skel');
+  const skel = require('skel-framework');
 
   skel.breakpoints({
     xlarge: '(max-width: 1680px)',
