@@ -18,8 +18,8 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-        require('./tiles')($);
-        require('./menu')($);
+        require('./Tiles')($);
+        require('./Menu')($);
         require('./animations')($);
       },
       finalize: function() {
