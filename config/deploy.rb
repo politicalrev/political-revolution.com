@@ -20,7 +20,6 @@ set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('web/app/uploads')
 # W3 Total Cache Directories
 set :linked_dirs, fetch(:linked_dirs, []).push('web/app/cache')
-set :linked_dirs, fetch(:linked_dirs, []).push('web/app/w3tc-config')
 
 namespace :deploy do
   desc 'Restart application'
