@@ -12,11 +12,6 @@
       ],
       "main": true
     },
-    "util.js": {
-      "files": [
-        "scripts/util.js"
-      ]
-    },
     "customizer.js": {
       "files": [
         "scripts/customizer.js"
