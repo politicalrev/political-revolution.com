@@ -1,38 +1,36 @@
 sudo: false
 language: php
 php:
-  - nightly
-  - 5.6
-  - 5.5
-  - 5.4
-  - hhvm
-
+- nightly
+- 5.6
+- 5.5
+- 5.4
+- hhvm
 env:
+  matrix:
   - THEME_DIR=web/app/themes/thepoliticalsage
-
+  global:
+    secure: fuVMxuy5dz0lyUpTgC10/kmpTt4Io9T8KGamgWAPwThCJRGQyuflK/ROr/OrDS4qjyg1JQMbNnJkZKubWnC1MzcLzNeaC42Klf98oYcMP2nvhMSX8t6JpL1FFel3Vcph7w76A6pGn4lCiXvahQ6JjKzDTYP8vC976HIUikjYVSX4BMe8LY2XU/4tB8YUAThqdMlyxLOvBzxr5Dnw8SvJq2pBSanJWscWS6piP5YHcMqR/EnzR5cKTihr5NHQOD1+FTBy3tne9DQLYmNZ41aR+KzB2TKt8ho1Nd+6rUPaGV4/RPuro1yqgCgLp8fZjW5VdLe++8uv7TVPJ5Y24Xu4ukLtHufzmaj5WGRZTNRaaP+W1Q5DDfQ4PZ5FI5n/AfQn38O9PncA446GejF2CT7j96tcloD0IfXJwZe+YPu8uRyJeMtDGXyAY9YZb3fcmTCJ6I93AH0JZxSFAVrFby3ylgZzpMKpPmWuZEW4eS33hElR0bMh/TjdCEEns0f2Koz0nknReqtxy95Gmb6gKk3BUFXvI/unofGpauyeETjFAYxbQKZ+3Hnna6el1cG8myS/4Afqfa7zTgCoXytUOojfyhT5CODt1plNMV4Y8h8+OviuwMjt2KWtzxbwtP3yOYSK9fuZIySDXJ/1ITmawrIxOlEUY4CtGx8JBuHje6UEuc4=
 matrix:
   allow_failures:
-    - php: nightly
-
+  - php: nightly
 before_install:
-  - cd $THEME_DIR
-
+- cd $THEME_DIR
 install:
-  - nvm install stable
-  - npm install -g npm@latest
-  - npm install -g bower gulp jscs yarn
-  - composer self-update && composer --version
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - composer global require squizlabs/php_codesniffer
-
+- nvm install stable
+- npm install -g npm@latest
+- npm install -g bower gulp jscs yarn
+- composer self-update && composer --version
+- export PATH="$HOME/.composer/vendor/bin:$PATH"
+- composer global require squizlabs/php_codesniffer
 script:
-  - npm run build
-  - npm run jshint
-  - npm run jscs
-  - phpcs --standard=ruleset.xml --extensions=php -n -s .
-
+- npm run build
+- npm run jshint
+- npm run jscs
+- phpcs --standard=ruleset.xml --extensions=php -n -s .
 after_success:
-  - cd $TRAVIS_BUILD_DIR
-  - gem install bundler
-  - bundler install
-  - bundle exec cap staging deploy
+- cd $TRAVIS_BUILD_DIR
+- gem install bundler
+- bundler install
+- "openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
+- [[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap staging deploy
