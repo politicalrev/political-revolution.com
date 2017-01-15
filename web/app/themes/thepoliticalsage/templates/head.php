@@ -11,7 +11,7 @@
   <meta name="twitter:site" content="@ourpoliticalrev">
   <meta name="twitter:creator" content="@ourpoliticalrev">
   <meta name="twitter:title" content="Change can only take place when people get involved in the political process. Now is the time to join the revolution!">
-  <meta name="twitter:description" content="National grassroots hub for progressive candidates, volunteers, and anyone intersted in changed the face of our government.">
+  <meta name="twitter:description" content="National grassroots hub for progressive political activists.">
   <meta name="twitter:image" content="https://political-revolution.com/wp-content/uploads/2017/01/TPR-twittercard.jpg">
   <meta name="robots" content="noindex,nofollow">
 
