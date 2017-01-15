@@ -146,9 +146,11 @@
 		padding: (_size(element-margin) / 2) 2em;
 		background: $color-fg-bold;
 		box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
+		* {
+			color: $color-accent1 !important;
+		}
 		p {
 			margin: 0;
-			color: $color-accent1 !important;
 		}
 	}
 
