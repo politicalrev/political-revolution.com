@@ -38,6 +38,8 @@ This file describes the steps to install a working developer environment on your
   build_1      | [BS] Watching files...
   ```
 
+  **Troubleshooting tip:** If it looks like it's stalled, exit the process with `ctrl + c` and re-run with `docker-compose up`
+
 3. **Point the domain `prdev.com` at your local machine.** This is to get [BrowserSync](https://browsersync.io/) working with Docker, and is totally worth it. You can do this manually by adding the line `127.0.0.1 prdev.com` to your hosts file (`/etc/hosts` on Unix, `c:\windows\system32\drivers\etc\hosts` on Windows). If you are on Unix, running `./server/addhost.sh` from the root of the repo will do this for you.
 
 4. **Navigate to `prdev.com:8083`, you're ready to go!** You should see a near-exact copy of the PR website. Browsersync will automatically inject any changes you make into the page when you save a file.
