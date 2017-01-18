@@ -1,9 +1,11 @@
 # [political-revolution.com](https://github.com/politicalrev/wp.thepoliticalrev.org)
 [![Build Status](https://travis-ci.org/politicalrev/political-revolution.com.svg?branch=master)](https://travis-ci.org/politicalrev/political-revolution.com)
 
-Welcome to the Github repository for the website of [Political Revolution](https://political-revolution.com). It is built upon [Bedrock](https://roots.io/bedrock/) and the [Sage 8.5](https://github.com/roots/sage/releases/latest) starter theme.
+Welcome to the Github repository for the website of [Political Revolution](https://political-revolution.com/about). It is built upon [Bedrock](https://roots.io/bedrock/) and the [Sage 8.5](https://github.com/roots/sage/releases/latest) starter theme.
 
-This file describes the steps to install a working developer environment on your local machine so you can begin contributing to the revolution.
+Political Revolution is an all-volunteer organization which works to promote progressive values through digital activism. This website, as with all our efforts, is completely built on and reliant on contributions from people like you.
+
+Follow the guide below to install a working developer environment on your local machine and begin contributing to the revolution.
 
 ## Installation
 
