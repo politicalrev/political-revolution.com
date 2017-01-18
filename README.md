@@ -7,7 +7,7 @@ Political Revolution is an all-volunteer organization which works to promote pro
 
 1. Follow [this guide](https://github.com/politicalrev/political-revolution.com/blob/master/docs/INSTALLATION.md) to get our preconfigured developer environment set up on your computer.
 
-2. Check out the [open issues](https://github.com/politicalrev/political-revolution.com/issues) to see what needs doing right now. When you find something you want to tackle, drop a comment and let us know you're getting started.
+2. Check out the [open issues](https://github.com/politicalrev/political-revolution.com/issues) to see what needs doing right now. Issues marked with a "help wanted" label in particular are fleshed out and just waiting to be done. When you find something you want to tackle, drop a comment and let us know you're getting started.
 
 3. Join the PR conversation on Slack. That's where all discussion and planning for our projects take place. Go to our [volunteer page](https://political-revolution.com/volunteer/) and click the big red button to join.
 
