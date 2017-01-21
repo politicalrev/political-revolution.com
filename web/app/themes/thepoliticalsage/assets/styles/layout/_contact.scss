@@ -11,7 +11,7 @@
 		overflow-x: hidden;
 
 		> .inner {
-			@include vendor('display', 'flex');
+			display: flex;
 			padding: 0 !important;
 
 			> :nth-child(2n - 1) {

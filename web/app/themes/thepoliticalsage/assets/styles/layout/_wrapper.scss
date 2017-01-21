@@ -7,11 +7,9 @@
 /* Wrapper */
 
 	#wrapper {
-		@include vendor('transition', (
-			'filter #{$duration-menu} ease',
-			'-webkit-filter #{$duration-menu} ease',
-			'opacity 0.375s ease-out'
-		));
+		transition:
+			filter $duration-menu ease,
+			opacity 0.375s ease-out;
 
 		&.is-transitioning {
 			opacity: 0;

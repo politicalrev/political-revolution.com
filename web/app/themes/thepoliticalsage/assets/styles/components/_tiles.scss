@@ -7,8 +7,8 @@
 /* Tiles */
 
 	.tiles {
-		@include vendor('display', 'flex');
-		@include vendor('flex-wrap', 'wrap');
+		display: flex;
+		flex-wrap: wrap;
 		border-top: 0 !important;
 
 		& + * {
@@ -26,14 +26,12 @@
 		}
 
 		article, >header.major {
-			@include vendor('align-items', 'center');
-			@include vendor('display', 'flex');
-			@include vendor('transition', (
-				'transform 0.25s ease',
-				'opacity 0.25s ease',
-				'filter 1s ease',
-				'-webkit-filter 1s ease'
-			));
+			align-items: center;
+			display: flex;
+			transition:
+				transform 0.25s ease,
+				opacity 0.25s ease,
+				filter 1s ease;
 			@include padding(4em, 4em);
 			background-position: center;
 			background-repeat: no-repeat;
@@ -70,13 +68,13 @@
 					width: 100;
 				}
 				p {
-					@include vendor('transition', 'text-shadow 0.5s ease');
+					transition: text-shadow 0.5s ease;
 				}
 			}
 
 			h3 {
 				font-size: 1.75em;
-				@include vendor('transition', 'text-shadow 0.5s ease');
+				transition: text-shadow 0.5s ease;
 
 				a {
 					&:hover {
@@ -108,8 +106,8 @@
 			}
 
 			&.is-transitioning {
-				@include vendor('transform', 'scale(0.95)');
-				@include vendor('filter', 'blur(0.5em)');
+				transform: scale(0.95);
+				filter: blur(0.5em);
 				opacity: 0;
 			}
 
@@ -203,7 +201,7 @@
 		}
 
 	article:before {
-		@include vendor('transition', 'opacity 0.5s ease');
+		transition: opacity 0.5s ease;
 		bottom: 0;
 		content: '';
 		display: block;

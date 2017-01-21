@@ -11,12 +11,10 @@
 	input[type="button"],
 	button,
 	.button {
-		@include vendor('appearance', 'none');
-		@include vendor('transition', (
-			'background-color #{$duration-transition} ease-in-out',
-			'box-shadow #{$duration-transition} ease-in-out',
-			'color #{$duration-transition} ease-in-out'
-		));
+    transition:
+			background-color $duration-transition ease-in-out,
+			box-shadow $duration-transition ease-in-out,
+			color $duration-transition ease-in-out;
 		background-color: transparent;
 		border: 0;
 		border-radius: 0;
@@ -79,7 +77,7 @@
 			position: relative;
 
 			&:before, &:after {
-				@include vendor('transition', 'opacity #{$duration-transition)} ease-in-out';
+				transition: opacity $duration-transition ease-in-out;
 				background-position: center right;
 				background-repeat: no-repeat;
 				background-size: 36px 24px;
@@ -131,7 +129,7 @@
 
 		&.disabled,
 		&:disabled {
-			@include vendor('pointer-events', 'none');
+			pointer-events: none;
 			cursor: default;
 			opacity: 0.25;
 		}

@@ -28,9 +28,9 @@
 			@include inner;
 
 		&:after {
-			@include vendor('transition', 'opacity #{$duration-banner)} ease';
-			@include vendor('transition-delay', '0.75s');
-			@include vendor('pointer-events', 'none');
+			transition: opacity $duration-banner ease;
+			transition-delay: 0.75s;
+			pointer-events: none;
 			background: linear-gradient(to top, $color-bg, transparent);
 			content: '';
 			display: block;
@@ -44,12 +44,10 @@
 		}
 
 		> .inner {
-			@include vendor('transition', (
-				'opacity 1.5s ease',
-				'transform 0.5s ease-out',
-				'filter 0.5s ease',
-				'-webkit-filter 0.5s ease'
-			));
+			transition:
+				opacity 1.5s ease,
+				transform 0.5s ease-out,
+				filter 0.5s ease;
 			z-index: 2;
 			position: relative;
 			height: 100%;
@@ -126,8 +124,8 @@
 			}
 
 			> .inner {
-				@include vendor('filter', 'blur(0.125em)');
-				@include vendor('transform', 'translateX(-0.5em)');
+				filter: blur(0.125em);
+				transform: translateX(-0.5em);
 				opacity: 0;
 			}
 		}

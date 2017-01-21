@@ -7,15 +7,14 @@
 /* Menu */
 
 	#menu {
-		@include vendor('transition', (
-			'transform #{$duration-menu} ease',
-			'opacity #{$duration-menu} ease',
-			'visibility #{$duration-menu}'
-		));
-		@include vendor('align-items', 'center');
-		@include vendor('display', 'flex');
-		@include vendor('justify-content', 'center');
-		@include vendor('pointer-events', 'none');
+		transition:
+			transform $duration-menu ease,
+			opacity $duration-menu ease,
+			visibility $duration-menu;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		pointer-events: none;
 		background: transparentize($color-bg, 0.1);
 		box-shadow: none;
 		height: 100%;
@@ -30,12 +29,11 @@
 		z-index: _misc(z-index-base) + 2;
 
 		.inner {
-			@include vendor('transition', (
-				'transform #{$duration-menu} ease-out',
-				'opacity #{$duration-menu} ease',
-				'visibility #{$duration-menu}'
-			));
-			@include vendor('transform', 'rotateX(20deg)');
+			transition:
+				transform $duration-menu ease-out,
+				opacity $duration-menu ease,
+				visibility $duration-menu;
+			transform: rotateX(20deg);
 			-webkit-overflow-scrolling: touch;
 			max-width: 100%;
 			max-height: 100vh;
@@ -91,7 +89,7 @@
 		}
 
 		.close {
-			@include vendor('transition', 'color #{$duration-transition)} ease-in-out';
+			transition: color $duration-transition ease-in-out;
 			-webkit-tap-highlight-color: rgba(0,0,0,0);
 			border: 0;
 			cursor: pointer;
@@ -110,7 +108,7 @@
 			width: 8em;
 
 			&:before, &:after {
-				@include vendor('transition', 'opacity #{$duration-transition)} ease-in-out';
+				transition: opacity $duration-transition ease-in-out;
 				background-position: center;
 				background-repeat: no-repeat;
 				content: '';
@@ -147,16 +145,16 @@
 
 	body.is-menu-visible {
 		#wrapper {
-			@include vendor('filter', 'blur(0.5em)');
+			filter: blur(0.5em);
 		}
 
 		#menu {
-			@include vendor('pointer-events', 'auto');
+			pointer-events: auto;
 			opacity: 1;
 			visibility: visible;
 
 			.inner {
-				@include vendor('transform', 'none');
+				transform: none;
 				opacity: 1;
 				visibility: visible;
 			}
