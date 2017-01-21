@@ -36,8 +36,8 @@
 
 			> p {
 				font-size: 0.7em;
-				font-weight: _font(weight-bold);
-				letter-spacing: _font(letter-spacing-alt);
+				font-weight: $font-weight-bold;
+				letter-spacing: $letter-spacing-alt;
 				margin-bottom: 0;
 				text-transform: uppercase;
 			}

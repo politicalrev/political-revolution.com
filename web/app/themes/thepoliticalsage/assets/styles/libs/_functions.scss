@@ -5,13 +5,6 @@
 	@return val($duration, $keys...);
 }
 
-/// Gets a font value.
-/// @param {string} $keys Key(s).
-/// @return {string} Value.
-@function _font($keys...) {
-	@return val($font, $keys...);
-}
-
 /// Gets a misc value.
 /// @param {string} $keys Key(s).
 /// @return {string} Value.

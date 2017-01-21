@@ -94,8 +94,8 @@
 				}
 
 				p {
-					font-weight: _font(weight-bold);
-					// letter-spacing: _font(letter-spacing-alt);
+					font-weight: $font-weight-bold;
+					// letter-spacing: $letter-spacing-alt;
 					text-transform: uppercase;
 					padding: .5em 1.5em;
 				}

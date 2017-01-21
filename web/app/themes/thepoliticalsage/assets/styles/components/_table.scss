@@ -34,7 +34,7 @@
 		th {
 			color: $color-fg-bold;
 			font-size: 0.9em;
-			font-weight: _font(weight-bold);
+			font-weight: $font-weight-bold;
 			padding: 0 0.75em 0.75em 0.75em;
 			text-align: left;
 		}
