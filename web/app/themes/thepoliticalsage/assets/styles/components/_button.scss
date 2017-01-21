@@ -13,9 +13,9 @@
 	.button {
 		@include vendor('appearance', 'none');
 		@include vendor('transition', (
-			'background-color #{_duration(transition)} ease-in-out',
-			'box-shadow #{_duration(transition)} ease-in-out',
-			'color #{_duration(transition)} ease-in-out'
+			'background-color #{$duration-transition} ease-in-out',
+			'box-shadow #{$duration-transition} ease-in-out',
+			'color #{$duration-transition} ease-in-out'
 		));
 		background-color: transparent;
 		border: 0;
@@ -79,7 +79,7 @@
 			position: relative;
 
 			&:before, &:after {
-				@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
+				@include vendor('transition', 'opacity #{$duration-transition)} ease-in-out';
 				background-position: center right;
 				background-repeat: no-repeat;
 				background-size: 36px 24px;

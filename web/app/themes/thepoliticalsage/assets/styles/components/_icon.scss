@@ -32,7 +32,7 @@
 	a.icon {
 		&.alt {
 			&:before {
-				@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');
+				@include vendor('transition', 'background-color #{$duration-transition)} ease-in-out';
 			}
 
 			&:hover {

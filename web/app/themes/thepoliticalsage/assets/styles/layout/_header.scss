@@ -36,7 +36,7 @@
 		width: 100%;
 		z-index: 10000;
     opacity: .95;
-		transition: opacity _duration(transition) ease-in-out;
+		transition: opacity $duration-transition ease-in-out;
 
 		&:hover {
 			opacity: 1;
@@ -103,7 +103,7 @@
 					// }
 
 					&:after {
-						transition: opacity #{_duration(transition)} ease-in-out;
+						transition: opacity #{$duration-transition} ease-in-out;
 						background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 24 32" preserveAspectRatio="none"><style>line { stroke-width: 2px; stroke: #{$color-highlight)}; }</style><line x1="0" y1="11" x2="24" y2="11" /><line x1="0" y1="21" x2="24" y2="21" /><line x1="0" y1="16" x2="24" y2="16" /></svg>');
 						opacity: 0;
 						z-index: 1;
@@ -130,7 +130,7 @@
 		}
 
 		&.alt {
-			transition: opacity #{_duration(banner)} ease;
+			transition: opacity #{$duration-banner} ease;
 			transition-delay: 0.75s;
 			animation: none;
 			background-color: transparent;
