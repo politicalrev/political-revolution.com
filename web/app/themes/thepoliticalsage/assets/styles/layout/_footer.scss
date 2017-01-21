@@ -21,11 +21,45 @@
 				background-color: $color-accent2;
 				text-align: center;
 				font-size: 2em;
-				li a {
-					color: $color-bg;
-					&:hover {color: $color-fg-bold;}
+				li {
+					position: relative;
+
+					a {
+						color: $color-bg;
+						position: relative;
+						top: 0px;
+						transition: top 0.2s;
+						text-decoration: none !important;
+
+						.icon-detail {
+							opacity: 0;
+							position: absolute;
+							font-size: 14px;
+							top: 20px;
+							transition: top 0.2s, opacity 0.2s;
+							text-decoration: none;
+							left: 50%;
+							transform: translateX(-50%);
+							width: auto;
+							pointer-events: none;
+						}
+
+						&:hover {
+							color: $color-fg-bold;
+							top: -10px;
+							transition: top 0.2s;
+
+							.icon-detail {
+								opacity: 1;
+								top: 35px;
+								transition: top 0.2s, opacity 0.2s;
+								pointer-events: all;
+							}
+						}
+					}
 				}
 			}
+			
 			// Footer Nav
 			&:nth-of-type(2) {
 				background-color: $color-fg;
