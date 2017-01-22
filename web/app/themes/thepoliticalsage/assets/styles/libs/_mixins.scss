@@ -33,7 +33,7 @@
 		$important: '!important';
 	}
 
-	padding: ($tb + nth($pad,1)) ($lr + nth($pad,2)) max(0.1em, $tb - $size-element-margin) + nth($pad,3)) ($lr + nth($pad,4) #{$important};
+	padding: ($tb + nth($pad,1)) ($lr + nth($pad,2)) max(0.1em, $tb - $size-element-margin + nth($pad,3)) ($lr + nth($pad,4)) #{$important};
 
 }
 
@@ -53,11 +53,4 @@
 
 	@return url("data:image/svg+xml;charset=utf8,#{$svg}");
 
-}
-
-@mixin image-grid($rows) {
-	display: inline;
-	box-sizing: border-box;
-	// width: 95% / $rows;
-	margin: 3px
 }
