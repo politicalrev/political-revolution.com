@@ -1,5 +1,5 @@
 # [political-revolution.com](https://github.com/politicalrev/wp.thepoliticalrev.org)
-[![Build Status](https://travis-ci.org/politicalrev/political-revolution.com.svg?branch=master)](https://travis-ci.org/politicalrev/political-revolution.com)
+[![Build Status](https://travis-ci.org/politicalrev/political-revolution.com.svg?branch=master)](https://travis-ci.org/politicalrev/political-revolution.com) [![Stories in Ready](https://badge.waffle.io/politicalrev/political-revolution.com.png?label=ready&title=Ready)](http://waffle.io/politicalrev/political-revolution.com)
 
 Welcome to the Github repository for the website of [Political Revolution](https://political-revolution.com/about). It is built upon [Bedrock](https://roots.io/bedrock/) and the [Sage 8.5](https://github.com/roots/sage/releases/latest) starter theme.
 
@@ -28,5 +28,3 @@ jumping into the code to give your work the highest chance of being merged.
 ## Documentation
 
 Detailed documentation for this project will be located in the [docs/](https://github.com/politicalrev/wp.thepoliticalrev.org/tree/master/docs) folder, which already contains documentation for both Sage and Bedrock.
-
-[![Stories in Ready](https://badge.waffle.io/innovativedmm/browser-sync.png?label=ready&title=Ready)](http://waffle.io/innovativedmm/browser-sync)
