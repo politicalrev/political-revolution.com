@@ -10,23 +10,23 @@
 }
 .aligncenter {
   display: block;
-  margin: (_size(element-margin) / 2) auto;
+  margin: ($size-element-margin) / 2 auto;
   height: auto;
 }
 .alignleft,
 .alignright {
-  margin-bottom: (_size(element-margin) / 2);
+  margin-bottom: ($size-element-margin) / 2;
   height: auto;
 }
 @include breakpoint(small) {
   // Only float if not on an extra small device
   .alignleft {
     float: left;
-    margin-right: (_size(element-margin) / 2);
+    margin-right: ($size-element-margin) / 2;
   }
   .alignright {
     float: right;
-    margin-left: (_size(element-margin) / 2);
+    margin-left: ($size-element-margin) / 2;
   }
 }
 

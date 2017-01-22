@@ -71,7 +71,7 @@
 			.content {
 				display: flex;
 				align-items: center;
-				margin: 0 auto _size(element-margin);
+				margin: 0 auto $size-element-margin;
 				position: absolute;
 				top: 100%;
 				left: 50%;
@@ -158,7 +158,7 @@
 
 					> * {
 						margin-left: 0;
-						// margin-bottom: _size(element-margin);
+						// margin-bottom: $size-element-margin;
 					}
 				}
 			}

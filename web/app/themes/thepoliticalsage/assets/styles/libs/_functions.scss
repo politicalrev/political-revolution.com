@@ -1,6 +1,0 @@
-/// Gets a size value.
-/// @param {string} $keys Key(s).
-/// @return {string} Value.
-@function _size($keys...) {
-	@return val($size, $keys...);
-}

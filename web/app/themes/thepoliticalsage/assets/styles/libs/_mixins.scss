@@ -33,7 +33,7 @@
 		$important: '!important';
 	}
 
-	padding: ($tb + nth($pad,1)) ($lr + nth($pad,2)) max(0.1em, $tb - _size(element-margin) + nth($pad,3)) ($lr + nth($pad,4)) #{$important};
+	padding: ($tb + nth($pad,1)) ($lr + nth($pad,2)) max(0.1em, $tb - $size-element-margin) + nth($pad,3)) ($lr + nth($pad,4) #{$important};
 
 }
 

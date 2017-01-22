@@ -8,7 +8,7 @@
 
 	.box {
 		border: solid 1px $color-border;
-		margin-bottom: _size(element-margin);
+		margin-bottom: $size-element-margin;
 		padding: 1.5em;
 
 		> :last-child,

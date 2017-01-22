@@ -7,7 +7,6 @@
 // endbower
 
 @import 'libs/vars';
-@import 'libs/functions';
 @import 'libs/mixins';
 @import 'libs/skel';
 
@@ -44,7 +43,7 @@
 		> .inner {
 			@include padding(4em, 0);
 			margin: 0 auto;
-			max-width: _size(inner);
+			max-width: $size-inner;
 			width: calc(100% - 6em);
 
 			@include breakpoint(small) {

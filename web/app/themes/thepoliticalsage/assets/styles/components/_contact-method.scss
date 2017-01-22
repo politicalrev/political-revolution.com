@@ -7,7 +7,7 @@
 /* Contact Method */
 
 	.contact-method {
-		margin: 0 0 _size(element-margin) 0;
+		margin: 0 0 $size-element-margin 0;
 		padding-left: 3.25em;
 		position: relative;
 
@@ -18,6 +18,6 @@
 		}
 
 		h3 {
-			margin: 0 0 (_size(element-margin) * 0.25) 0;
+			margin: 0 0 ($size-element-margin) * 0.25 0;
 		}
 	}
