@@ -130,8 +130,7 @@ var jsTasks = function(filename) {
   // Create a plugin to bundle js files with Browserify
   var browserified = transform(function(filename) {
     var b = browserify({
-      entries: filename,
-      debug: true
+      entries: filename
     });
     return b.bundle();
   });
