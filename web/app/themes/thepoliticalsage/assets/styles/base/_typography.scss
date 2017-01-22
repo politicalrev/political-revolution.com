@@ -141,7 +141,7 @@
 		font-style: italic;
 		font-size: 1.1em;
 		font-weight: 100;
-		margin: $size-element-margin) (_size(element-margin) / 2) _size(element-margin;
+		margin: $size-element-margin ($size-element-margin / 2) $size-element-margin;
 		padding: ($size-element-margin) / 2 2em;
 		background: $color-fg-bold;
 		box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
