@@ -1,0 +1,76 @@
+// Applies to posts (content-single.php)
+
+body.single-post {
+	background: $color-fg;
+	main {
+		display: flex;
+		justify-content: space-around;
+		flex-flow: row wrap;
+	}
+	.post-banner {
+		width: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 42%;
+		padding: 3em 1em;
+		position: relative;
+		z-index: 1;
+		&::after {
+			content: '';
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background: transparentize($color-bg, .3);
+		}
+	}
+	header.major {
+		position: relative;
+		padding: 1.5em 0;
+		margin: 0 auto;
+		text-align: center;
+		width: 100%;
+		max-width: 44em;
+		z-index: 10;
+		display: block;
+		h1 {
+			font-size: 2.5em;
+			color: $color-fg;
+			line-height: 1.2;
+			width: auto;
+			&::after {
+				margin-bottom: .2em;
+			}
+		}
+		span.post-info {
+			color: $color-fg;
+			display: block;
+			&.date {
+				font-size: .8em;
+			}
+		}
+	}
+	.text-wrapper {
+		flex-basis: 40em;
+		flex-grow: 4;
+		position: relative;
+		z-index: 10;
+		margin: 0;
+		@media all and (max-width: 500px) {
+			max-width: 100%;
+		}
+		* {
+			color: $color-bg;
+		}
+		hr {
+			border-bottom: solid 1px transparentize($color-bg, .8);
+			margin: 2em 0;
+		}
+		figure, img {
+			max-width: 100% !important;
+			height: auto !important ;
+			margin: 0 auto;
+		}
+	}
+}

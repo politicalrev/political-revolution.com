@@ -1,0 +1,20 @@
+// Wordpress dynamic sidebar styling
+
+aside.sidebar {
+	max-width: 18em;
+	flex-grow: 1;
+	margin: 2em 1em 2em;
+	font-size: .8em;
+	* {
+		color: $color-bg;
+	}
+	h2 {
+		color: $color-bg;
+	}
+	article {
+		overflow: hidden;
+		* {
+			color: $color-fg-bold;
+		}
+	}
+}
