@@ -206,8 +206,8 @@
 		}
 	}
 	.responsive-text {
-                $size-adjust: .3em;
-	        font-size: calc($size-adjust + 2vw);
+		$size-adjust: .3em;
+		font-size: calc($size-adjust + 2vw);
 		@media all and (min-width: 700px) {
 			font-size: calc($size-adjust + 14px);
 		}

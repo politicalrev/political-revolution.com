@@ -2,7 +2,7 @@
 
 body.single-post {
 	background: $color-fg;
-	main {
+	div.post {
 		display: flex;
 		justify-content: space-around;
 		flex-flow: row wrap;
