@@ -1,6 +1,6 @@
 
 <?php while (have_posts()) : the_post(); ?>
-  <main <?php post_class('responsive-text'); ?>>
+  <div <?php post_class('responsive-text'); ?>>
 
     <div class="post-banner" style="background-image: url('
     <?php
@@ -20,7 +20,7 @@
     </p>
 
     <p>
-      <a class="btn-tweet" target="_blank" href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>&amp;url=<?php echo get_permalink(); ?>&amp;via=OurPoliticalRev" target="_blank">
+      <a class="btn-tweet" target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo utf8_uri_encode(the_title()); ?>&amp;url=<?php echo get_permalink(); ?>&amp;via=OurPoliticalRev">
         Tweet
       </a>
     </p>
@@ -30,7 +30,7 @@
     </footer>
     <?php //comments_template('/templates/comments.php'); ?>-->
     <aside class="sidebar"><?php get_template_part('templates/sidebar'); ?></aside>
-  </main>
+  </div>
 
 <?php endwhile; ?>
 

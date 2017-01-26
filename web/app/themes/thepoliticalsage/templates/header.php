@@ -15,7 +15,7 @@
     </nav>
     <a class="important button" target="_blank" href="https://secure.actblue.com/contribute/page/the-politicalrevolution">Donate</a>
     
-  </header
+  </header>
 
   <!-- Menu -->
   <nav id="menu">
