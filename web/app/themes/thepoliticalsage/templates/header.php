@@ -4,7 +4,7 @@
   <!-- Header -->
   <header id="header">
     <a href="<?= home_url(); ?>" class="logo">
-      <img alt="Political Revolution Logo" src="<?= get_stylesheet_directory_uri(); ?>/assets/images/logo-web.png" />
+      <img alt="Political Revolution" src="<?= get_stylesheet_directory_uri(); ?>/assets/images/logo-web.png" />
     </a>
     <nav id="responsive-menu">
       <?php
@@ -15,7 +15,7 @@
     </nav>
     <a class="important button" target="_blank" href="https://secure.actblue.com/contribute/page/the-politicalrevolution">Donate</a>
     
-  </header>
+  </header
 
   <!-- Menu -->
   <nav id="menu">
