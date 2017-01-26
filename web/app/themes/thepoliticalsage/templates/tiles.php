@@ -18,7 +18,7 @@
         </span>
         <header class="major">
           <h3><a href="<?= get_permalink() ?>" class="link"><?php the_title(); ?></a></h3>
-          <p><?php the_excerpt(); ?></p>
+          <?php the_excerpt(); ?>
         </header>
       </article>
   <?php
@@ -28,3 +28,4 @@
   }
   endwhile;
 endif; ?>
+</section>

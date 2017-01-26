@@ -4,7 +4,7 @@
   <!-- Header -->
   <header id="header">
     <a href="<?= home_url(); ?>" class="logo">
-      <img src="<?= get_stylesheet_directory_uri(); ?>/assets/images/logo-web.png" />
+      <img alt="Political Revolution Logo" src="<?= get_stylesheet_directory_uri(); ?>/assets/images/logo-web.png" />
     </a>
     <nav id="responsive-menu">
       <?php

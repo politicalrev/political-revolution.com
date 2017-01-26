@@ -32,7 +32,3 @@
 </div>
 <!-- One -->
 <?php get_template_part('templates/tiles'); ?>
-
-</body>
-
-</html>

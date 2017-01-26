@@ -113,7 +113,3 @@
 
 </div>
 <!-- Wrapper -->
-
-</body>
-
-</html>
