@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b4a4cb214948ae91ebe7b2f1856be59",
+    "content-hash": "cf0a6d74ed595b2625d47cece3c95b75",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.25",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e"
+                "reference": "d78064c68299743e0161004f2de3a0204e33b804"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
-                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d78064c68299743e0161004f2de3a0204e33b804",
+                "reference": "d78064c68299743e0161004f2de3a0204e33b804",
                 "shasum": ""
             },
             "require": {
@@ -64,21 +64,26 @@
                 "MODX Evo",
                 "Mautic",
                 "OXID",
+                "Plentymarkets",
+                "RadPHP",
                 "SMF",
                 "Thelia",
                 "WolfCMS",
                 "agl",
                 "aimeos",
                 "annotatecms",
+                "attogram",
                 "bitrix",
                 "cakephp",
                 "chef",
+                "cockpit",
                 "codeigniter",
                 "concrete5",
                 "croogo",
                 "dokuwiki",
                 "drupal",
                 "elgg",
+                "expressionengine",
                 "fuelphp",
                 "grav",
                 "installer",
@@ -95,16 +100,18 @@
                 "piwik",
                 "ppi",
                 "puppet",
+                "reindex",
                 "roundcube",
                 "shopware",
                 "silverstripe",
                 "symfony",
                 "typo3",
                 "wordpress",
+                "yawik",
                 "zend",
                 "zikula"
             ],
-            "time": "2016-04-13T19:46:30+00:00"
+            "time": "2016-08-13T20:53:52+00:00"
         },
         {
             "name": "jeremykendall/php-domain-parser",
@@ -159,16 +166,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.7.1",
+            "version": "4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "6a6a20e568db37fb501fe9deb75ed2a8600d1b30"
+                "reference": "ac7b1792641d1fb61cb2901db292903b31694057"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/6a6a20e568db37fb501fe9deb75ed2a8600d1b30",
-                "reference": "6a6a20e568db37fb501fe9deb75ed2a8600d1b30",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/ac7b1792641d1fb61cb2901db292903b31694057",
+                "reference": "ac7b1792641d1fb61cb2901db292903b31694057",
                 "shasum": ""
             },
             "require": {
@@ -192,7 +199,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2017-01-11T17:46:47+00:00"
+            "time": "2017-01-26T18:32:19+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -558,15 +565,15 @@
         },
         {
             "name": "wpackagist-plugin/two-factor-authentication",
-            "version": "1.2.14",
+            "version": "1.2.15",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/two-factor-authentication/",
-                "reference": "tags/1.2.14"
+                "reference": "tags/1.2.15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/two-factor-authentication.1.2.14.zip",
+                "url": "https://downloads.wordpress.org/plugin/two-factor-authentication.1.2.15.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -578,15 +585,15 @@
         },
         {
             "name": "wpackagist-plugin/w3-total-cache",
-            "version": "0.9.5.1",
+            "version": "0.9.5.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/w3-total-cache/",
-                "reference": "tags/0.9.5.1"
+                "reference": "tags/0.9.5.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.0.9.5.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.0.9.5.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -598,15 +605,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "4.0.2",
+            "version": "4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/4.0.2"
+                "reference": "tags/4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.4.0.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.4.1.zip",
                 "reference": null,
                 "shasum": null
             },
