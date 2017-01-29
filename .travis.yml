@@ -12,6 +12,8 @@ branches:
   - master
   - production
 
+cache: yarn
+
 before_install:
 - cd $THEME_DIR
 install:
