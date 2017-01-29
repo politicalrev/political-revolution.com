@@ -34,4 +34,5 @@ after_success:
 - echo -e "Host <deploy host>\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - eval "$(ssh-agent)"
 - ssh-add config/deploy_id_rsa
-- bundle exec cap staging deploy
+- if [ "$TRAVIS_BRANCH" = "master" ]; then bundle exec cap staging deploy
+- if [ "$TRAVIS_BRANCH" = "production" ]; then bundle exec cap production deploy
