@@ -48,7 +48,8 @@
     "wpackagist-plugin/two-factor-authentication": "1.2.15",
     "wpackagist-plugin/w3-total-cache": "0.9.5.2",
     "wpackagist-plugin/cloudflare": "3.1.1",
-    "roots/wp-stage-switcher": "2.0.0"
+    "roots/wp-stage-switcher": "2.0.0",
+    "wpackagist-plugin/ninja-forms": "3.0.25"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1"
