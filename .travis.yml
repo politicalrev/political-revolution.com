@@ -10,6 +10,7 @@ env:
 branches:
   only:
   - master
+  - production
 
 before_install:
 - cd $THEME_DIR
@@ -34,4 +35,5 @@ after_success:
 - echo -e "Host <deploy host>\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - eval "$(ssh-agent)"
 - ssh-add config/deploy_id_rsa
-- bundle exec cap staging deploy
+- test $TRAVIS_BRANCH = "master" && bundle exec cap staging deploy
+- test $TRAVIS_BRANCH = "production" && bundle exec cap production deploy
