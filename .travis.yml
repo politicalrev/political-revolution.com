@@ -10,6 +10,7 @@ env:
 branches:
   only:
   - master
+  - production
 
 before_install:
 - cd $THEME_DIR
