@@ -33,3 +33,4 @@ exclude_paths:
 - config/
 - vendor/
 - web/app/mu-plugins
+- web/app/object-cache.php
