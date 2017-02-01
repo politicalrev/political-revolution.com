@@ -1,4 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "jshint.config" : "web/app/themes/thepoliticalsage/.jshintrc"
+  "jshint.config": "web/app/themes/thepoliticalsage/.jshintrc",
+  "eslint.enable": true
 }
