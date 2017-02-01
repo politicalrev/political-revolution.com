@@ -28,3 +28,6 @@ jumping into the code to give your work the highest chance of being merged.
 ## Documentation
 
 Detailed documentation for this project will be located in the [docs/](https://github.com/politicalrev/wp.thepoliticalrev.org/tree/master/docs) folder, which already contains documentation for both Sage and Bedrock.
+
+<a href="https://codeclimate.com/repos/5891533788d1c10075005e38/feed"><img src="https://codeclimate.com/repos/5891533788d1c10075005e38/badges/18e14d6d31942441cd4c/gpa.svg" /></a>
+<a href="https://codeclimate.com/repos/5891533788d1c10075005e38/feed"><img src="https://codeclimate.com/repos/5891533788d1c10075005e38/badges/18e14d6d31942441cd4c/issue_count.svg" /></a>
