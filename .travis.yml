@@ -12,7 +12,11 @@ branches:
   - master
   - production
 
-cache: yarn
+cache: 
+  yarn: true
+  directories:
+    - $THEME_DIR/node_modules
+    - $THEME_DIR/bower_components
 
 before_install:
 - cd $THEME_DIR

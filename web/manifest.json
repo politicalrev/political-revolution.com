@@ -1,0 +1,10 @@
+{
+  "name": "Political Revolution",
+  "short_name": "TPR",
+  "description": "The website for the Political Revolution, an all-volunteer grassroots organization fighting with progressive candidates.",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#04243E",
+  "background_color": "#04243E"
+}

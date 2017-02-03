@@ -13,16 +13,16 @@
     <h1 class="start"><?= the_title(); ?></h1>
     <hr class="start">
     <?= the_content(); ?>
-  <form target="no-target" action method="post" id="googleform" class="start" autocomplete="on">
+  <!--<form target="no-target" action method="post" id="googleform" class="start" autocomplete="on">
     <input type="email" autocapitalize="off" autocorrect="off" id="email" name="email" placeholder="Email address" autocomplete="email" required />
     <input type="text" id="zip" name="zip" placeholder="Zip code" inputmode="numeric" pattern="(\d{5}([\-]\d{4})?)" maxlength="5" autocomplete="postal-code" required />
     <input id="source" name="source" type="hidden" value="">
     <input type="submit" id="submit" name="submit" value="I AGREE" />
     <iframe src="#" id="no-target" name="no-target" style="visibility:hidden;display:none;"></iframe>
     <div class="clear start"></div>
-  </form>
-    <div class="signatures start"><span id="signers"></span> signatures so far</div>
-    <div class="clear start"></div>
+  </form>-->
+    <!--<div class="signatures start"><span id="signers"></span> signatures so far</div>
+    <div class="clear start"></div>-->
     
   <h1 class="thankyou">Can you take one more step to help us win this fight?</h1>
     <hr class="thankyou">

@@ -10,6 +10,10 @@
  * always reference jQuery with $, even when in .noConflict() mode.
  * ======================================================================== */
 
+var animations = require('./animations')($);
+var menu = require('./Menu')($);
+var tiles = require('./Tiles')($);
+
 (function($) {
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
@@ -18,9 +22,9 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-        require('./Tiles')($);
-        require('./Menu')($);
-        require('./animations')($);
+        tiles($);
+        menu($);
+        animations($);
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -76,4 +80,4 @@
   // Load Events
   $(document).ready(UTIL.loadEvents);
 
-})(jQuery); // Fully reference jQuery after this point.
+}(jQuery)); // Fully reference jQuery after this point.
