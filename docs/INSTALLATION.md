@@ -1,6 +1,6 @@
 # Political Revolution Website Developer Installation Guide
 
-This file describes the steps needed to install a working developer environment on your local machine so you can begin contributing to the Political Revolution website.
+This file describes the steps needed to install a working developer environment on your local machine so you can begin contributing to the Political Revolution website. If you encounter any problems during the setup process, check our [troubleshooting guide](https://github.com/politicalrev/political-revolution.com/blob/master/docs/TROUBLESHOOTING.md).
 
 1. **Install Docker Engine.** The local development server is entirely assembled using [docker-compose](https://docs.docker.com/compose/), so this is the only prerequisite for theme development. Installation is straightforward on [Mac](https://docs.docker.com/engine/installation/mac/), [Linux](https://docs.docker.com/engine/installation/), or [Windows](https://docs.docker.com/engine/installation/windows/). Once it's installed, open up your preferred terminal.
 
@@ -32,8 +32,6 @@ This file describes the steps needed to install a working developer environment 
   build_1      |  -----------------------------------
   build_1      | [BS] Watching files...
   ```
-
-  **Troubleshooting tip:** If it looks like it's stalled, exit the process with `ctrl + c` and re-run with `docker-compose up`
 
 3. **Point the domain `prdev.com` at your local machine.** This is to get [BrowserSync](https://browsersync.io/) working with Docker, and is totally worth it. You can do this manually by adding the line `127.0.0.1 prdev.com` to your hosts file (`/etc/hosts` on Unix, `c:\windows\system32\drivers\etc\hosts` on Windows). If you are on Unix, running `./server/addhost.sh` from the root of the repo will do this for you.
 
