@@ -2,7 +2,7 @@
 
 This file describes the steps needed to install a working developer environment on your local machine so you can begin contributing to the Political Revolution website. If you encounter any problems during the setup process, check our [troubleshooting guide](https://github.com/politicalrev/political-revolution.com/blob/master/docs/TROUBLESHOOTING.md).
 
-1. **Install Docker Engine.** The local development server is entirely assembled using [docker-compose](https://docs.docker.com/compose/), so this is the only prerequisite for theme development. Installation is straightforward on [Mac](https://docs.docker.com/engine/installation/mac/), [Linux](https://docs.docker.com/engine/installation/), or [Windows](https://docs.docker.com/engine/installation/windows/). Once it's installed, open up your preferred terminal.
+1. **Install Docker Engine.** The local development server is entirely assembled using [docker-compose](https://docs.docker.com/compose/), so this is the only prerequisite for theme development. Installation is straightforward on [Mac](https://docs.docker.com/engine/installation/mac/), [Linux](https://docs.docker.com/engine/installation/), or [Windows](https://docs.docker.com/engine/installation/windows/). Once it's installed, open up your preferred terminal (git bash on Windows).
 
 2. **Clone the code into your directory of choice:** 
 
