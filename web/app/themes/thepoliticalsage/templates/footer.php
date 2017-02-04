@@ -37,12 +37,12 @@
                             <div class="icon-detail">Voices</div>
                         </a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="https://polrevvols.herokuapp.com/" class="icon fa-slack" target="_blank">
                             <span class="label">Slack</span>
                             <div class="icon-detail">Chat</div>
                         </a>
-                    </li>
+                    </li>-->
                     <li>
                         <a href="https://www.reddit.com/r/Political_Revolution/" class="icon fa-reddit-alien" target="_blank">
                             <span class="label">LinkedIn</span>
