@@ -68,6 +68,7 @@ namespace :deploy do
       execute "cd #{release_path}/web/app/themes/thepoliticalsage && npm run build"
       execute "chmod 777 #{release_path}/web/app/cache"
       execute "chmod 777 #{release_path}/web/app/w3tc-config"      
+      execute "php #{release_path}/purge-w3tc-cache.php"
     end
   end
 
