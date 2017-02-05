@@ -46,11 +46,11 @@ var banmap = require('./banmap/map')($);
         // JavaScript to be fired on the about us page
       }
     },
-	'banmap': {
-	  init: function() {
-		banmap($);
-	  }
-	}
+    'banmap': {
+      init: function() {
+        banmap($);
+      }
+    }
   };
 
   // The routing fires all common scripts, followed by the page specific scripts.
