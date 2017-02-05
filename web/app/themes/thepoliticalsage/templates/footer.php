@@ -37,12 +37,12 @@
                             <div class="icon-detail">Voices</div>
                         </a>
                     </li>
-                    <!--<li>
+                    <li>
                         <a href="https://polrevvols.herokuapp.com/" class="icon fa-slack" target="_blank">
                             <span class="label">Slack</span>
                             <div class="icon-detail">Chat</div>
                         </a>
-                    </li>-->
+                    </li>
                     <li>
                         <a href="https://www.reddit.com/r/Political_Revolution/" class="icon fa-reddit-alien" target="_blank">
                             <span class="label">LinkedIn</span>
@@ -61,16 +61,6 @@
                     <li>Privacy Policy</li>
                 </ul>
             </div>
-            <!--Google Analytics Code-->
-            <script>
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-                ga('create', 'UA-83228257-1', 'auto');
-                ga('send', 'pageview');
-            </script>
     </footer>
 
 </div>

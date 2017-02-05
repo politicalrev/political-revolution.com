@@ -36,3 +36,7 @@ db
 web/app/object-cache.php
 web/app/db.php
 web/app/cache
+
+# Vim
+*.swp
+*.swo

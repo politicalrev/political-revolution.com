@@ -10,9 +10,10 @@
  * always reference jQuery with $, even when in .noConflict() mode.
  * ======================================================================== */
 
-var animations = require('./animations');
-var menu = require('./Menu');
-var tiles = require('./Tiles');
+var animations = require('./animations')($);
+var menu = require('./Menu')($);
+var tiles = require('./Tiles')($);
+var banmap = require('./banmap/map')($);
 
 (function($) {
   // Use this variable to set up the common and page specific functions. If you
@@ -44,7 +45,12 @@ var tiles = require('./Tiles');
       init: function() {
         // JavaScript to be fired on the about us page
       }
-    }
+    },
+	'banmap': {
+	  init: function() {
+		banmap($);
+	  }
+	}
   };
 
   // The routing fires all common scripts, followed by the page specific scripts.
