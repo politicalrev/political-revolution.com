@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Petition
+ * Template Name: Banmap
  */
 ?>
 <img id="background" src="images/background.png">
