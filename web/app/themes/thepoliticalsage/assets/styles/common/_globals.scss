@@ -42,3 +42,8 @@
 	* {
 		max-width: 100vw;
 	}
+  
+  // make sure images aren't overflowing containers, and 
+  // wp images inline height isn't borking the ratio
+  img[class*="wp-image"][style*="height"]{ height: auto!important;  }
+  img{ max-width: 100%;  }
