@@ -16,7 +16,8 @@ cache:
   directories:
     - $THEME_DIR/node_modules
     - $THEME_DIR/bower_components
-
+before_install:
+- cd $THEME_DIR
 install:
 - composer self-update && composer --version
 - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -25,6 +26,7 @@ install:
 - gem install bundler
 - bundler install
 # Set up SSH permissions
+- cd $TRAVIS_BUILD_DIR
 - "openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
 - chmod 600 config/deploy_id_ra
 - echo -e "Host <deploy host>\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
