@@ -21,6 +21,7 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var transform    = require('vinyl-transform');
 var uglify       = require('gulp-uglify');
+var wiredep = require('wiredep').stream;
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -254,6 +255,7 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // build step for that asset and inject the changes into the page.
 // See: http://www.browsersync.io
 gulp.task('watch', function() {
+  gulp.start('build');
   browserSync.init({
     files: ['{lib,templates}/**/*.php', '*.php'],
     proxy: config.devUrl,
@@ -285,7 +287,6 @@ gulp.task('build', function(callback) {
 // `gulp wiredep` - Automatically inject Less and Sass Bower dependencies. See
 // https://github.com/taptapship/wiredep
 gulp.task('wiredep', function() {
-  var wiredep = require('wiredep').stream;
   return gulp.src(project.css)
     .pipe(wiredep())
     .pipe(changed(path.source + 'styles', {
