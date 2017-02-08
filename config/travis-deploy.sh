@@ -2,9 +2,9 @@
 
 if [ $TRAVIS_BRANCH = "master" ]; then
   bundle exec cap staging deploy
-  exit 0
+  exit $?
 elif [ $TRAVIS_BRANCH = "production" ]; then
   bundle exec cap production deploy
-  exit 0
+  exit $?
 fi
 exit 1 
