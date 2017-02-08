@@ -12,11 +12,6 @@ branches:
   - master
   - production
 
-cache: 
-  directories:
-    - $THEME_DIR/node_modules
-    - $THEME_DIR/bower_components
-
 install:
 - composer self-update && composer --version
 - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -33,8 +28,6 @@ install:
 before_script:
 - cd $THEME_DIR
 script:
-- npm run jshint
-- npm run jscs
 - phpcs --standard=ruleset.xml --extensions=php -n -s .
 - cd $TRAVIS_BUILD_DIR
 - test $TRAVIS_BRANCH = "master" && bundle exec cap staging deploy
