@@ -66,7 +66,6 @@ var enabled = {
   // Strip debug statments from javascript when `--production`
   stripJSDebug: argv.production
 };
-
 // Path to the compiled assets manifest in the dist directory
 var revManifest = path.dist + 'assets.json';
 
@@ -131,16 +130,20 @@ var jsTasks = function(filename) {
   // Create a plugin to bundle js files with Browserify
   var browserified = transform(function(filename) {
     var b = browserify({
-      entries: filename
+      entries: filename,
+      debug: enabled.maps
     });
     return b.bundle();
   });
 
   return lazypipe()
-    .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.init());
-    })
     .pipe(function() {return browserified;})
+    .pipe(function() {
+      return gulpif(enabled.maps, sourcemaps.init({
+        // Load browserify sourcemaps
+        loadMaps: true
+      }));
+    })
     .pipe(concat, filename)
     .pipe(function() {
       return gulpif(!enabled.maps,
