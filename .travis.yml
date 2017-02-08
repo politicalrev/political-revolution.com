@@ -30,5 +30,4 @@ before_script:
 script:
 - phpcs --standard=ruleset.xml --extensions=php -n -s .
 - cd $TRAVIS_BUILD_DIR
-- test $TRAVIS_BRANCH = "master" && bundle exec cap staging deploy
-- test $TRAVIS_BRANCH = "production" && bundle exec cap production deploy
+- bash config/travis-deploy.sh 
