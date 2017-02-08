@@ -3,17 +3,10 @@
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
 @import "../../bower_components/font-awesome/scss/font-awesome.scss";
-@import "../../bower_components/bootstrap/scss/bootstrap.scss";
 // endbower
 
 @import 'libs/mixins';
 @import 'libs/skel';
-
-/*
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
 	@include skel-breakpoints((
 		xlarge: '(max-width: 1680px)',
