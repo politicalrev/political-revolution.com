@@ -3,8 +3,7 @@
  * Template Name: Banmap
  */
 ?>
-<img id="background" src="<?= get_template_directory_uri(); ?>/assets/images/banmap/background.png">
-<div class="container-fluid">
+<div class="container-fluid map-wrapper" style="background-image: url(<?= get_template_directory_uri(); ?>/assets/images/banmap/background.png">
   <div class="row">
     <div id="header-col" class="col-xs-12">
       <div class="header"> 
@@ -12,8 +11,6 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container-fluid">
   <div class="row">
     <div class="col-xs-2 col-lg-0">
       <div id="legend">

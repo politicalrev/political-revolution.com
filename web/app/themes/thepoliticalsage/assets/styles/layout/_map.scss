@@ -8,12 +8,17 @@
 	padding: 0;
 }
 
-body.banmap .header {
-	background-color: #04243e;
-	padding-top: .5vw;
-	padding-bottom: 1.0vw;
-	margin-top: 2vw;
-	margin-bottom: 1vw;
+body.banmap {
+	.map-wrapper {
+		height: 100vh;
+	}
+	.header {
+		background-color: #04243e;
+		padding-top: .5vw;
+		padding-bottom: 1.0vw;
+		margin-top: 2vw;
+		margin-bottom: 1vw;
+	}
 }
 
 .header h1{
