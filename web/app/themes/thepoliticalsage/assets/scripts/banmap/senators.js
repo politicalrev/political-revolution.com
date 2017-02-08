@@ -1,4 +1,4 @@
-exports = {
+module.exports = {
    "AK": [
       {
          "First Name": "Lisa",
