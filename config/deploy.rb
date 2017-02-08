@@ -65,7 +65,6 @@ namespace :deploy do
 
   before :publishing, :build do
     on roles(:all) do
-      execute "npm install -g bower gulp jscs yarn"
       execute "cd #{release_path}/web/app/themes/thepoliticalsage && npm run build"
       execute "chmod 777 #{release_path}/web/app/cache"
       execute "chmod 777 #{release_path}/web/app/w3tc-config"      
