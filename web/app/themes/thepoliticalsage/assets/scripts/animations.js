@@ -1,5 +1,6 @@
+const skel = require('skel-framework');
+
 module.exports = function($) {
-  const skel = require('skel-framework');
 
   skel.breakpoints({
     xlarge: '(max-width: 1680px)',
@@ -34,7 +35,7 @@ module.exports = function($) {
   });
 
   // Fix: Enable IE-only tweaks.
-  if (skel.vars.browser == 'ie' || skel.vars.browser == 'edge') {
+  if (skel.vars.browser === 'ie' || skel.vars.browser === 'edge') {
     $body.addClass('is-ie');
   }
 
@@ -46,8 +47,8 @@ module.exports = function($) {
     var $img = $image.find('img');
 
     // Parallax.
-    $this._parallax = (skel.vars.browser == 'ie' ||
-      skel.vars.browser == 'edge' ||
+    $this._parallax = (skel.vars.browser === 'ie' ||
+      skel.vars.browser === 'edge' ||
       skel.vars.mobile) ?
       function() { return $(this); }
       : function(intensity) {
@@ -55,7 +56,7 @@ module.exports = function($) {
         var	$window = $(window);
         var $this = $(this);
 
-        if (this.length == 0 || intensity === 0) {
+        if (this.length === 0 || intensity === 0) {
           return $this;
         }
 

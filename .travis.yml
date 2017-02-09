@@ -12,11 +12,6 @@ branches:
   - master
   - production
 
-cache: 
-  directories:
-    - $THEME_DIR/node_modules
-    - $THEME_DIR/bower_components
-
 install:
 - composer self-update && composer --version
 - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -26,16 +21,13 @@ install:
 - bundler install
 # Set up SSH permissions
 - "openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
-- chmod 600 config/deploy_id_ra
+- chmod 600 config/deploy_id_rsa
 - echo -e "Host <deploy host>\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - eval "$(ssh-agent)"
 - ssh-add config/deploy_id_rsa
 before_script:
 - cd $THEME_DIR
 script:
-- npm run jshint
-- npm run jscs
 - phpcs --standard=ruleset.xml --extensions=php -n -s .
 - cd $TRAVIS_BUILD_DIR
-- test $TRAVIS_BRANCH = "master" && bundle exec cap staging deploy
-- test $TRAVIS_BRANCH = "production" && bundle exec cap production deploy
+- bash config/travis-deploy.sh 

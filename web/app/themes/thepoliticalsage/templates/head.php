@@ -17,6 +17,10 @@
   
   <!-- Web Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500" rel="stylesheet"> 
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
   
   <?php wp_head(); ?>
 </head>

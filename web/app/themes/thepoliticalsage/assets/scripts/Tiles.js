@@ -48,7 +48,7 @@ module.exports = function($) {
         // Redirect.
         window.setTimeout(function() {
 
-          if ($link.attr('target') == '_blank') {
+          if ($link.attr('target') === '_blank') {
             window.open(href);
           } else {
             location.href = href;

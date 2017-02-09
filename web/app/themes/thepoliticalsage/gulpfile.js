@@ -21,6 +21,7 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var transform    = require('vinyl-transform');
 var uglify       = require('gulp-uglify');
+var wiredep = require('wiredep').stream;
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -65,7 +66,6 @@ var enabled = {
   // Strip debug statments from javascript when `--production`
   stripJSDebug: argv.production
 };
-
 // Path to the compiled assets manifest in the dist directory
 var revManifest = path.dist + 'assets.json';
 
@@ -130,16 +130,20 @@ var jsTasks = function(filename) {
   // Create a plugin to bundle js files with Browserify
   var browserified = transform(function(filename) {
     var b = browserify({
-      entries: filename
+      entries: filename,
+      debug: enabled.maps
     });
     return b.bundle();
   });
 
   return lazypipe()
-    .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.init());
-    })
     .pipe(function() {return browserified;})
+    .pipe(function() {
+      return gulpif(enabled.maps, sourcemaps.init({
+        // Load browserify sourcemaps
+        loadMaps: true
+      }));
+    })
     .pipe(concat, filename)
     .pipe(function() {
       return gulpif(!enabled.maps,
@@ -254,6 +258,7 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // build step for that asset and inject the changes into the page.
 // See: http://www.browsersync.io
 gulp.task('watch', function() {
+  gulp.start('build');
   browserSync.init({
     files: ['{lib,templates}/**/*.php', '*.php'],
     proxy: config.devUrl,
@@ -285,7 +290,6 @@ gulp.task('build', function(callback) {
 // `gulp wiredep` - Automatically inject Less and Sass Bower dependencies. See
 // https://github.com/taptapship/wiredep
 gulp.task('wiredep', function() {
-  var wiredep = require('wiredep').stream;
   return gulp.src(project.css)
     .pipe(wiredep())
     .pipe(changed(path.source + 'styles', {

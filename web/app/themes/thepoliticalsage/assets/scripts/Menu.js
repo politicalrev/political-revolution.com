@@ -96,7 +96,7 @@ module.exports = function($) {
     .on('keydown', function(event) {
 
       // Hide on escape.
-      if (event.keyCode == 27) {
+      if (event.keyCode === 27) {
         $menu._hide();
       }
     });
