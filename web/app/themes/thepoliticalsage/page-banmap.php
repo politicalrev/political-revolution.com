@@ -6,7 +6,7 @@
 <div class="container-fluid map-wrapper" style="background-image: url(<?= get_template_directory_uri(); ?>/assets/images/banmap/background.png">
   <div class="row">
     <div id="header-col" class="col-xs-12">
-      <div id="map-header"> 
+      <div class="header"> 
         <h1>The Muslim Ban According to The Senate</h1>
       </div>
     </div>
