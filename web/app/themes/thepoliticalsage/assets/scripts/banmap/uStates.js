@@ -59,7 +59,7 @@ exports.draw = function(id, data, toolTip, $) {
 		d3.select("#tooltip").transition().duration(200).style("opacity", .9);      
 		d3.select("#tooltip").style("pointer-events", "auto");
 		
-		d3.select("#tooltip #body").html(toolTip(d.n, data[d.id]))
+		d3.select("#tooltip #tooltip-body").html(toolTip(d.n, data[d.id]))
 		d3.select("#tooltip")
 			.style("top", "60%");
 	}
@@ -72,7 +72,6 @@ exports.draw = function(id, data, toolTip, $) {
 
 	d3.select(document).on("click",function(){
 		console.log($(d3.event.target).attr("class"));
-		//var outside = map.filter(equalToEventTarget).empty();
 		var outside = $(d3.event.target).attr("class") != "state" && $(d3.event.target).parents("#tooltip") == null;
 		console.log("is outside map: " + outside);
 		if (outside) {
@@ -98,5 +97,5 @@ exports.draw = function(id, data, toolTip, $) {
 				score += data[d.id][1]["Stance"].indexOf("Opposed") != -1;
 				return score == 0 ? "#000000" : score == 1 ? "#04243e" : "#339999";
 			})
-			.on("mouseover", mouseOver).on("mouseout", mouseOut).on("click", clicked);
+			.on("click", clicked);
 };
