@@ -1,4 +1,3 @@
-var d3 = require('./d3.min');
 var senators = require('./senators');
 var uStates = require('./uStates');
 
@@ -26,4 +25,5 @@ d3.select("div#map-container")
    //class to make it responsive
    .classed("svg-content-responsive", true); 
 
+console.log(uStates);
 uStates.draw("#statesvg", senators, tooltipHtml);

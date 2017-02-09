@@ -7,7 +7,7 @@
 <div class="container-fluid">
   <div class="row">
     <div id="header-col" class="col-xs-12">
-      <div id="header"> 
+      <div id="map-header"> 
         <h1>The Muslim Ban According to The Senate</h1>
       </div>
     </div>

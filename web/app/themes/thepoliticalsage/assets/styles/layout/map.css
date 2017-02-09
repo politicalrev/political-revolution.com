@@ -17,7 +17,7 @@ body{
 	padding: 0;
 }
 
-#header {
+#map-header {
 	background-color: #04243e;
 	padding-top: .5vw;
 	padding-bottom: 1.0vw;
@@ -25,7 +25,7 @@ body{
 	margin-bottom: 1vw;
 }
 
-#header h1{
+#map-header h1{
 	color: #cccccc;
 	font-family: "Work Sans";
 	font-size: 1.9vw;

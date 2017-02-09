@@ -13,6 +13,7 @@
 var animations = require('./animations');
 var menu = require('./Menu');
 var tiles = require('./Tiles');
+var d3 = require('./banmap/d3.min');
 var banmap = require('./banmap/map');
 
 (function($) {
@@ -48,6 +49,7 @@ var banmap = require('./banmap/map');
     },
     'banmap': {
       init: function() {
+		d3($);
         banmap($);
       }
     }
