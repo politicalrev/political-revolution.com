@@ -6,22 +6,48 @@
 
 #header-col{
 	padding: 0;
+	width: 100%;
 }
 
 body.banmap {
 	.map-wrapper {
 		height: 100vh;
+		padding: 0;
 	}
-	.header {
+	.map-header {
 		background-color: #04243e;
 		padding-top: .5vw;
 		padding-bottom: 1.0vw;
 		margin-top: 2vw;
 		margin-bottom: 1vw;
 	}
+	.row{
+		margin: 0;
+	}
+	
+	.row > *{
+		padding-left: 0;
+		padding-right: 0x;
+	}
 }
 
-.header h1{
+@media screen and (max-width: 1159px) {
+	body.banmap {
+		.map-wrapper {
+			height: 70vh;
+		}
+	}
+}
+
+@media screen and (max-width: 991px) {
+	body.banmap {
+		.map-wrapper {
+			height: 90vh;
+		}
+	}
+}
+
+.map-header h1{
 	color: #cccccc;
 	font-family: "Work Sans";
 	font-size: 1.9vw;
@@ -57,7 +83,7 @@ body.banmap {
 	text-align: center;
 	color: #cccccc;
 
-	z-index: 2000;
+	z-index: 4096 !important;
 	opacity: 0;
 }
 
@@ -73,12 +99,14 @@ body.banmap {
 	font-weight: 700;
 	color: #bababa;
 	padding-bottom: 5%;
+	width: 100%;
 }
 
 #tooltip h6{
 	font-size: .9vw;
 	font-weight: 600;        
 	padding-bottom: 3%;
+	width: 100%;
 }
 
 #tooltip p{
@@ -86,6 +114,7 @@ body.banmap {
 	font-weight: 400;        
 	padding-left: 3%;
 	padding-right: 3%;
+	width: 100%;
 }
 
 #tooltip-container{
@@ -94,6 +123,15 @@ body.banmap {
 
 #tooltip-container .col-xs-6 .row{
 	padding-top: 1%;
+}
+
+.tooltip-body-col{
+	width: 50%;
+}
+
+#map-col{
+	transform: translate(-50%, 0%);
+	left: 50%;
 }
 
 .svg-content-responsive {
@@ -113,14 +151,14 @@ body.banmap {
 
 	.svg-content-responsive {
 		width: 100%;
-		transform: translate(0%, 0%);
 		left: auto;
-	}
-
-	#statesvg{
 		position: fixed;
 		transform: translate(0%, -50%);
-		top: 40%;
+		top: 20vh;
+	}
+
+	#tooltip{
+		margin: 0;
 	}
 
 	#tooltip h4{
@@ -141,6 +179,14 @@ body.banmap {
 
 }
 
+@media screen and (max-width: 767px) {
+	.svg-content-responsive {
+		width: 80%;
+		transform: translate(-50%, -50%);
+		left: 50%;
+	}
+}
+
 #legend{
 	position: fixed;
 	transform: translate(0%, -50%);
@@ -152,8 +198,8 @@ body.banmap {
 
 	width: 18%;
 
-	padding-left: 2vw;
-	padding-right: 2vw;
+	padding-left: 1.6vw;
+	padding-right: 1.6vw;
 	padding-bottom: 3%;
 	z-index: 2000;
 }
@@ -171,6 +217,12 @@ body.banmap {
 	font-weight: 600;
 	font-family: "Work Sans";
 	font-size: .7vw;
+	margin-top: 1.0vw;
+	margin-bottom: 0;
+}
+
+.legend-icon{
+		width: 3vw;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1159px) {
@@ -191,6 +243,7 @@ body.banmap {
 
 @media screen and (max-width: 991px) {
 	#legend{
+		position: absolute;
 		transform: translate(-50%, 0%);
 
 		background: none;
@@ -198,6 +251,7 @@ body.banmap {
 		bottom: 5%;
 		left: 50%;
 		width: 100%;
+		z-index: 0;
 	}
 	
 	#big-screen-legend{
@@ -217,6 +271,7 @@ body.banmap {
 		font-size: 2.5vw;
 		padding-left: 0;
 		text-align: center;
+		width: 100%;
 	}
 	
 	.legend-icon{
