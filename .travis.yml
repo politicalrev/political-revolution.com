@@ -28,6 +28,6 @@ install:
 before_script:
 - cd $THEME_DIR
 script:
-- phpcs --standard=ruleset.xml --extensions=php -n -s .
+- phpcbf --standard=ruleset.xml --extensions=php -n -s .
 - cd $TRAVIS_BUILD_DIR
 - bash config/travis-deploy.sh 
