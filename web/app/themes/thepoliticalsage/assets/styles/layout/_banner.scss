@@ -80,7 +80,7 @@
 				max-width: 56em;
 				background: $color-fg;
 				color: $color-bg;
-				box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
+				box-shadow: $box-shadow;
 
 				> * {
 					margin-left: 1.5em;

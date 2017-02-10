@@ -69,19 +69,32 @@ exports.draw = function(id, data, toolTip, $) {
 		return $(this).attr("class") == $(d3.event.target).attr("class");
 	}
 
+	function tooltipClose() {
+		d3.select("#tooltip").transition().duration(500).style("opacity", 0);      
+		d3.select("#tooltip").style("pointer-events", "none");
+	}
+
 	d3.select(document).on("click",function(){
-		console.log($(d3.event.target).attr("class"));
 		var outside = $(d3.event.target).attr("class") != "state" && $(d3.event.target).parents("#tooltip") == null;
-		console.log("is outside map: " + outside);
 		if (outside) {
-			d3.select("#tooltip").transition().duration(500).style("opacity", 0);      
-			d3.select("#tooltip").style("pointer-events", "none");
+			tooltipClose();
 		}
 	});
 
+	d3.select('body').on('keyup', function () {
+		if (d3.event.key === 'Escape') {
+			tooltipClose();
+		}
+	});
+
+	var tooltipCloseCancel;
+
 	d3.select("#tooltip").on('mouseleave', function(d){
-		d3.select("#tooltip").transition().duration(500).style("opacity", 0);      
-		d3.select("#tooltip").style("pointer-events", "none");
+		tooltipCloseCancel = setTimeout(tooltipClose, 500);
+	});
+
+	d3.select('#tooltip').on('mouseenter', function(e) {
+		clearTimeout(tooltipCloseCancel);
 	});
 
 	$('#close-tooltip').on("click", function(e){
