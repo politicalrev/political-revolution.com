@@ -19,9 +19,10 @@
   ],
   "scripts": {
     "start": "yarn && bower install --allow-root && gulp watch",
-    "build": "yarn && bower install --allow-root && npm run jshint && npm run jscs && gulp",
+    "build": "yarn && bower install --allow-root && npm test && gulp --production",
     "jshint": "gulp jshint",
-    "jscs": "jscs gulpfile.js assets/scripts/*.js"
+    "jscs": "jscs gulpfile.js assets/scripts/*.js",
+    "test": "npm run jshint & npm run jscs"
   },
   "engines": {
     "node": ">= 4.5"
