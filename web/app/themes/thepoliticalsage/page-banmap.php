@@ -10,11 +10,11 @@
         <h1 class="responsive-text">The Muslim Ban According to The Senate</h1>
       </div>
       <div class="text-wrapper responsive-text">
-        <?php 
-          while (have_posts()) {
-            the_post();
-            the_content();
-          }
+        <?php
+        while (have_posts()) {
+          the_post();
+          the_content();
+        }
         ?>
       </div>
     </div>
