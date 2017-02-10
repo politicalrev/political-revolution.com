@@ -100,7 +100,7 @@ function display_sidebar() {
 function assets() {
   // Rewrite revision-hashed filepaths on production
   if (file_exists(Assets\asset_path('assets.json'))) {
-    $revManifest = json_decode(file_get_contents(Assets\asset_path('assets.json')), TRUE);
+    $revManifest = json_decode(file_get_contents(Assets\asset_path('assets.json')), true);
     $mainCss = Assets\asset_path('styles/' . $revManifest['main.css']);
     $mainJs = Assets\asset_path('scripts/' . $revManifest['main.js']);
   } else {
