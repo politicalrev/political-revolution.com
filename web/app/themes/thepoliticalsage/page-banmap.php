@@ -6,8 +6,14 @@
 <div class="container-fluid map-wrapper">
   <div class="row">
     <div id="header-col" class="col-xs-12">
-      <div class="map-header responsive-text"> 
-        <h1>The Muslim Ban According to The Senate</h1>
+      <div class="map-header"> 
+        <h1 class="responsive-text">The Muslim Ban According to The Senate</h1>
+      </div>
+      <div class="text-wrapper responsive-text">
+        <?php while (have_posts()) {
+          the_post();
+          the_content();
+        }?>
       </div>
     </div>
   </div>

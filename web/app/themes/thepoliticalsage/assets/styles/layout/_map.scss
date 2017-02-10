@@ -21,10 +21,13 @@ body.banmap {
 		padding-bottom: 1.0vw;
 		margin-bottom: 1vw;
 		h1{
-			color: $color-bg-alt;
+			color: $color-bg;
 			font-size: 3.6vw;
 			font-weight: $font-weight-bold;
 			text-align: center;
+		}
+		p {
+			color: $color-bg;
 		}
 	}
 	.row{
