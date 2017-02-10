@@ -11,12 +11,12 @@
 
 body.banmap {
 	.map-wrapper {
-		/*height: 100vh;*/
+		height: 100vh;
 		padding: 0;
 	}
 	.map-header {
 		background-color: #04243e;
-		padding-top: 2.0vw;
+		padding-top: .5vw;
 		padding-bottom: 1.0vw;
 		margin-top: 2vw;
 		margin-bottom: 1vw;
@@ -34,7 +34,7 @@ body.banmap {
 @media screen and (max-width: 1159px) {
 	body.banmap {
 		.map-wrapper {
-			/*height: 70vh;*/
+			height: 70vh;
 		}
 	}
 }
@@ -42,7 +42,7 @@ body.banmap {
 @media screen and (max-width: 991px) {
 	body.banmap {
 		.map-wrapper {
-			/*height: 90vh;*/
+			height: 90vh;
 		}
 	}
 }
@@ -50,7 +50,7 @@ body.banmap {
 .map-header h1{
 	color: #cccccc;
 	font-family: "Work Sans";
-	font-size: 2.9vw;
+	font-size: 1.9vw;
 	font-weight: 700;
 	text-align: center;
 }
@@ -136,13 +136,11 @@ body.banmap {
 
 .svg-content-responsive {
     display: inline-block;
-    position: relative;
+    position: absolute;
 	width: 90%;
     top: 10px;
 	transform: translate(-50%, 0%);
     left: 50%;
-	margin-top: 1vw;
-	margin-bottom: 3vw;
 }
 
 @media screen and (max-width: 992px) {
@@ -154,10 +152,9 @@ body.banmap {
 	.svg-content-responsive {
 		width: 100%;
 		left: auto;
-		position: relative;
+		position: fixed;
 		transform: translate(0%, -50%);
-		top: 20vw;
-		margin-bottom: 40vw;
+		top: 20vh;
 	}
 
 	#tooltip{
@@ -184,16 +181,16 @@ body.banmap {
 
 @media screen and (max-width: 767px) {
 	.svg-content-responsive {
-		width: 68%;
+		width: 80%;
 		transform: translate(-50%, -50%);
 		left: 50%;
 	}
 }
 
 #legend{
-	position: absolute;
+	position: fixed;
 	transform: translate(0%, -50%);
-	top: 50%;
+	top: 40%;
 	left: 0;
 
 	background: rgb(204, 204, 204);
@@ -204,7 +201,7 @@ body.banmap {
 	padding-left: 1.6vw;
 	padding-right: 1.6vw;
 	padding-bottom: 3%;
-	z-index: 0;
+	z-index: 2000;
 }
 
 .legend-row{
@@ -222,7 +219,6 @@ body.banmap {
 	font-size: .7vw;
 	margin-top: 1.0vw;
 	margin-bottom: 0;
-	color: #000;
 }
 
 .legend-icon{
