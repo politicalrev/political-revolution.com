@@ -1,9 +1,4 @@
-# [political-revolution.com](https://github.com/politicalrev/political-revolution.com)
- [![Build Status](https://travis-ci.org/politicalrev/political-revolution.com.svg?branch=master)](https://travis-ci.org/politicalrev/political-revolution.com)
- [![Stories in Ready](https://badge.waffle.io/politicalrev/political-revolution.com.png?label=ready&title=Ready)](http://waffle.io/politicalrev/political-revolution.com)
- [![Stories in Progress](https://badge.waffle.io/politicalrev/political-revolution.com.svg?label=In%20Progress&title=In%20Progress)](http://waffle.io/politicalrev/political-revolution.com)
- <a href="https://codeclimate.com/repos/5891533788d1c10075005e38/feed"><img src="https://codeclimate.com/repos/5891533788d1c10075005e38/badges/18e14d6d31942441cd4c/gpa.svg" /></a>
- <a href="https://codeclimate.com/repos/5891533788d1c10075005e38/feed"><img src="https://codeclimate.com/repos/5891533788d1c10075005e38/badges/18e14d6d31942441cd4c/issue_count.svg" /></a>
+# [political-revolution.com](https://github.com/politicalrev/political-revolution.com) [![Build Status](https://travis-ci.org/politicalrev/political-revolution.com.svg?branch=master)](https://travis-ci.org/politicalrev/political-revolution.com) [![Stories in Ready](https://badge.waffle.io/politicalrev/political-revolution.com.png?label=ready&title=Ready)](http://waffle.io/politicalrev/political-revolution.com) [![Stories in Progress](https://badge.waffle.io/politicalrev/political-revolution.com.svg?label=In%20Progress&title=In%20Progress)](http://waffle.io/politicalrev/political-revolution.com) <a href="https://codeclimate.com/repos/5891533788d1c10075005e38/feed"><img src="https://codeclimate.com/repos/5891533788d1c10075005e38/badges/18e14d6d31942441cd4c/gpa.svg" /></a> <a href="https://codeclimate.com/repos/5891533788d1c10075005e38/feed"><img src="https://codeclimate.com/repos/5891533788d1c10075005e38/badges/18e14d6d31942441cd4c/issue_count.svg" /></a>
 
 ![Political Revolution Logo](web/app/themes/thepoliticalsage/assets/images/logo-web.png)
 
