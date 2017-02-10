@@ -4,9 +4,9 @@ var uStates = require('./uStates');
 
 module.exports = function($) {
   function senatorHtml(d){
-    var senBody = "<div class='col-xs-6 tooltip-body-col'><div class='row'><h6>"+(d["First Name"] + " " + d["Last Name"])+"</h6></div><div class='row'><p>"+(d["Stance"])+"</p></div><div class='row'><p>";
+    var senBody = "<div class='col-xs-6 tooltip-body-col'><div class='row'><h6>"+(d["First Name"] + " " + d["Last Name"])+"</h6></div><div class='row '><p class='senator-status'>"+(d["Stance"])+"</p></div><div class='row'><p>";
     senBody += d["Statement"];
-    senBody += "</p></div><div class='row'><a href = '"+ (d["Statement Link"]) + "'><p>"+(d["Statement Link"])+"</a></p></div><div class='row'><p>"+(d["Local Office Number"])+"</p></div></div>";
+    senBody += "</p></div><div class='row'><p><a target='_blank' href = '"+ (d["Statement Link"]) + "'>Source</a></p></div><div class='row'><p><strong>Phone Number:</strong> "+(d["Local Office Number"])+"</p></div></div>";
     return senBody;
   }
 

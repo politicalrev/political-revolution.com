@@ -144,7 +144,7 @@
 		margin: $size-element-margin ($size-element-margin / 2) $size-element-margin;
 		padding: ($size-element-margin) / 2 2em;
 		background: $color-fg-bold;
-		box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
+		box-shadow: $box-shadow;
 		* {
 			color: $color-accent1 !important;
 		}

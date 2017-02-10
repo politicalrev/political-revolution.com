@@ -11,15 +11,21 @@
 
 body.banmap {
 	.map-wrapper {
-		/*height: 100vh;*/
 		padding: 0;
+		background: $color-fg linear-gradient(to bottom, #FFF, #BABABA);
+		z-index: 200;
 	}
 	.map-header {
-		background-color: #04243e;
+		background-color: transparent;
 		padding-top: 2.0vw;
 		padding-bottom: 1.0vw;
-		margin-top: 2vw;
 		margin-bottom: 1vw;
+		h1{
+			color: $color-bg-alt;
+			font-size: 3.6vw;
+			font-weight: $font-weight-bold;
+			text-align: center;
+		}
 	}
 	.row{
 		margin: 0;
@@ -29,30 +35,6 @@ body.banmap {
 		padding-left: 0;
 		padding-right: 0x;
 	}
-}
-
-@media screen and (max-width: 1159px) {
-	body.banmap {
-		.map-wrapper {
-			/*height: 70vh;*/
-		}
-	}
-}
-
-@media screen and (max-width: 991px) {
-	body.banmap {
-		.map-wrapper {
-			/*height: 90vh;*/
-		}
-	}
-}
-
-.map-header h1{
-	color: #cccccc;
-	font-family: "Work Sans";
-	font-size: 2.9vw;
-	font-weight: 700;
-	text-align: center;
 }
 
 .state{
@@ -69,10 +51,11 @@ body.banmap {
 #tooltip{
 	position: absolute;           
 	background: #04233d;   
-	width: 100%;
+	width: 120%;
 
 	border:1px solid grey;
 	border-radius:5px;
+	box-shadow: $box-shadow;
 
 	padding: 20px;             
 	margin: 10px;
@@ -85,44 +68,41 @@ body.banmap {
 
 	z-index: 4096 !important;
 	opacity: 0;
+
+	h4{
+		margin:0;
+		font-size: 3.2vw;
+		font-weight: $font-weight-bold;
+		width: 100%;
+	}
+
+	h6{
+		font-size: 1.5vw;
+		font-weight: 600;        
+		width: 100%;
+		margin-bottom: 0;
+	}
+	.senator-status {
+		text-align: center;
+	}
+	p{
+		font-size: 1.2vw;
+		font-weight: 400;        
+		padding-left: 3%;
+		padding-right: 3%;
+		width: 100%;
+		text-align: left;
+	}
+
 }
 
 #close-tooltip{
 	position: absolute;
-	width: 2%;
-	right: 5%;
-}
-
-#tooltip h4{
-	margin:0;
-	font-size: 1.1vw;
-	font-weight: 700;
-	color: #bababa;
-	padding-bottom: 5%;
-	width: 100%;
-}
-
-#tooltip h6{
-	font-size: .9vw;
-	font-weight: 600;        
-	padding-bottom: 3%;
-	width: 100%;
-}
-
-#tooltip p{
-	font-size: .8vw;
-	font-weight: 400;        
-	padding-left: 3%;
-	padding-right: 3%;
-	width: 100%;
-}
-
-#tooltip-container{
-	width: 100%;
-}
-
-#tooltip-container .col-xs-6 .row{
-	padding-top: 1%;
+	right: 10px;
+	top: 0;
+	color: $color-accent1;
+	cursor: pointer;
+	font-size: 1.6em;
 }
 
 .tooltip-body-col{
@@ -135,59 +115,21 @@ body.banmap {
 }
 
 .svg-content-responsive {
-    display: inline-block;
-    position: relative;
+	display: inline-block;
+	position: relative;
 	width: 90%;
-    top: 10px;
+	top: 10px;
 	transform: translate(-50%, 0%);
-    left: 50%;
+	left: 70%;
 	margin-top: 1vw;
 	margin-bottom: 3vw;
 }
-
-@media screen and (max-width: 992px) {
-
-	body.banmap .header h1{
-		font-size: 2.3vw;
-	}
-
-	.svg-content-responsive {
-		width: 100%;
-		left: auto;
-		position: relative;
-		transform: translate(0%, -50%);
-		top: 20vw;
-		margin-bottom: 40vw;
-	}
-
-	#tooltip{
-		margin: 0;
-	}
-
-	#tooltip h4{
-		font-size: 2.0vw;
-	}
-
-	#tooltip h6{
-		font-size: 1.8vw;
-	}
-
-	#tooltip p{
-		font-size: 1.6vw;
-	}
-
-	#close-tooltip{
-		width: 5%;
-	}
-
+#big-screen-legend{
+	display: inline-block;
 }
 
-@media screen and (max-width: 767px) {
-	.svg-content-responsive {
-		width: 68%;
-		transform: translate(-50%, -50%);
-		left: 50%;
-	}
+#small-screen-legend{
+	display: none;
 }
 
 #legend{
@@ -196,10 +138,10 @@ body.banmap {
 	top: 50%;
 	left: 0;
 
-	background: rgb(204, 204, 204);
-	background: rgba(204, 204, 204, .8);
+	background: $color-fg;
+	box-shadow: $box-shadow;
 
-	width: 18%;
+	width: 27%;
 
 	padding-left: 1.6vw;
 	padding-right: 1.6vw;
@@ -215,49 +157,88 @@ body.banmap {
 
 #legend p{
 	display: inline-block;
-	text-align: left;
+	text-align: center;
 	padding-left: 3vw;
 	font-weight: 600;
-	font-family: "Work Sans";
-	font-size: .7vw;
+	font-size: 1.5vw;
 	margin-top: 1.0vw;
 	margin-bottom: 0;
 	color: #000;
+	white-space: nowrap;
 }
 
 .legend-icon{
-		width: 3vw;
-}
-
-@media screen and (min-width: 992px) and (max-width: 1159px) {
-	#legend p{
-		font-size: .6vw;
-	}
-}
-
-@media screen and (min-width: 992px) {
-	#big-screen-legend{
 		display: inline-block;
-	}
-
-	#small-screen-legend{
-		display: none;
-	}
+		width: 3vw;
+		height: 50px;
+		&#oppose-icon {
+			background-color: $color-accent2;
+		}
+		&#half-icon {
+			background-color: $color-bg;
+		}
+		&#support-icon {
+			background-color: black;
+		}
 }
 
-@media screen and (max-width: 991px) {
+@include breakpoint(medium) {
+	#tooltip{
+		margin: 0;
+
+		h4 {
+			font-size: 4.0vw;
+		}
+
+		h6 {
+			font-size: 1.8vw;
+		}
+
+		p {
+			font-size: 1.6vw;
+		}
+	}
+	
+}
+
+@include breakpoint(small) {
+	.svg-content-responsive {
+		width: 95%;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%, -25%);
+		top: 20vw;
+		margin-bottom: 40vw;
+	}
+	#tooltip {	
+    width: 100%;
+		h4 {
+			font-size: 6vw;
+		}
+		h6 {
+			font-size: 3vw;
+		}
+		p {
+			font-size: 2.7vw;
+		}
+	}
+	#close-tooltip{
+		font-size: 2em;
+		right: 15px;
+		top: 5px;
+	}
+
 	#legend{
 		position: absolute;
 		transform: translate(-50%, 0%);
 
-		background: none;
 		top: auto;
 		bottom: 5%;
 		left: 50%;
 		width: 100%;
 		z-index: 0;
 	}
-	
+
 	#big-screen-legend{
 		display: none;
 	}
@@ -265,7 +246,7 @@ body.banmap {
 	#small-screen-legend{
 		display: inline-block;
 	}
-	
+
 	.legend-row{
 		width: 100%;
 	}
@@ -274,7 +255,6 @@ body.banmap {
 		display: block;
 		font-size: 2.5vw;
 		padding-left: 0;
-		text-align: center;
 		width: 100%;
 	}
 	
@@ -284,5 +264,13 @@ body.banmap {
 		transform: translate(-50%, 0%);
 		left: 50%;
 		top: -13vw;
+		min-width: 50px;
+	}	
+}
+
+@include breakpoint(xsmall) {
+	#tooltip {
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 }
