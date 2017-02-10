@@ -60,8 +60,7 @@ exports.draw = function(id, data, toolTip, $) {
 		d3.select("#tooltip").style("pointer-events", "auto");
 		
 		d3.select("#tooltip #tooltip-body").html(toolTip(d.n, data[d.id]))
-		d3.select("#tooltip")
-			.style("top", "60%");
+		//d3.select("#tooltip").style("top", "60%");
 	}
 
 	var map = d3.selectAll(".state");
