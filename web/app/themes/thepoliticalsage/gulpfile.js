@@ -192,6 +192,12 @@ gulp.task('styles', ['wiredep'], function() {
       });
     }
     merged.add(gulp.src(dep.globs, {base: 'styles'})
+      .pipe(gulpif(!enabled.failStyleTask, plumber({
+        errorHandler: function (err) {
+          console.error(err.message);
+          this.emit('end');
+        }
+      })))
       .pipe(cssTasksInstance));
   });
   return merged
