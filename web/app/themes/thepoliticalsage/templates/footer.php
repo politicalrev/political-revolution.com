@@ -11,7 +11,26 @@
     </footer>-->
 
 <footer id="footer">
-    <div class="social">
+    <div class="footer-color">
+        <div class="disclaimer">
+            Paid for by <a href="<?= home_url(); ?>">The Political Revolution</a> and not authorized by any candidate
+            or candidate's committee.
+        </div>
+        <div class="privacy-policy">
+            Privacy Policy
+        </div>
+    </div>
+    <div class="footer-white">
+        <span class="footer-left">&copy; <?= bloginfo('title'); ?> 2017</span>
+        <img alt="Political Revolution Bird Logo"
+             src="<?= get_stylesheet_directory_uri(); ?>/assets/images/button.svg"/>
+        <!--                <ul class="footernav">-->
+        <!--                    <li>Contact Us</li>-->
+        <!--                    <li>Search</li>-->
+        <!--                    <li>By-laws</li>-->
+        <!--                    <li>Privacy Policy</li>-->
+        <!--                </ul>-->
+        <span class="footer-right">
         <ul class="icons">
             <li>
                 <a href="https://twitter.com/ourpoliticalrev" class="icon fa-twitter" target="_blank">
@@ -50,22 +69,6 @@
                 </a>
             </li>
         </ul>
-    </div>
-    <div class="legal">
-        <span class="footer-left">&copy; <?= bloginfo('title'); ?> 2017</span>
-        <img alt="Political Revolution Bird Logo"
-             src="<?= get_stylesheet_directory_uri(); ?>/assets/images/button.svg"/>
-        <!--                <ul class="footernav">-->
-        <!--                    <li>Contact Us</li>-->
-        <!--                    <li>Search</li>-->
-        <!--                    <li>By-laws</li>-->
-        <!--                    <li>Privacy Policy</li>-->
-        <!--                </ul>-->
-        <span class="footer-right">
-            <div class="disclaimer">
-                Paid for by The Political Revolution (<a href="<?= home_url(); ?>">political-revolution.com</a>). Not
-                authorized by any candidate or candidate's committee.
-            </div>
         </span>
     </div>
 </footer>
