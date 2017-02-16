@@ -13,6 +13,7 @@ var jshint       = require('gulp-jshint');
 var lazypipe     = require('lazypipe');
 var less         = require('gulp-less');
 var merge        = require('merge-stream');
+var newer        = require('gulp-newer');
 var cssNano      = require('gulp-cssnano');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
@@ -198,6 +199,10 @@ gulp.task('styles', ['wiredep'], function() {
           this.emit('end');
         }
       })))
+      .pipe(newer({
+        dest: path.dist + 'styles/' + dep.name,
+        extra: path.source + 'styles/**/*.scss'
+      }))
       .pipe(cssTasksInstance));
   });
   return merged
@@ -212,6 +217,10 @@ gulp.task('scripts', function() {
   manifest.forEachDependency('js', function(dep) {
     merged.add(
       gulp.src(dep.globs, {base: 'scripts'})
+        .pipe(newer({
+          dest: path.dist + 'scripts/' + dep.name,
+          extra: path.source + 'scripts/**/*.js'
+        }))
         .pipe(jsTasks(dep.name))
     );
   });
@@ -223,22 +232,26 @@ gulp.task('scripts', function() {
 // `gulp fonts` - Grabs all the fonts and outputs them in a flattened directory
 // structure. See: https://github.com/armed/gulp-flatten
 gulp.task('fonts', function() {
+  var fontDist = path.dist + 'fonts';
   return gulp.src(globs.fonts)
+    .pipe(newer(fontDist))
     .pipe(flatten())
-    .pipe(gulp.dest(path.dist + 'fonts'))
+    .pipe(gulp.dest(fontDist))
     .pipe(browserSync.stream());
 });
 
 // ### Images
 // `gulp images` - Run lossless compression on all the images.
 gulp.task('images', function() {
+  imageDist = path.dist + 'images';
   return gulp.src(globs.images)
+    .pipe(newer(imageDist))
     .pipe(imagemin({
       progressive: true,
       interlaced: true,
       svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
     }))
-    .pipe(gulp.dest(path.dist + 'images'))
+    .pipe(gulp.dest(imageDist))
     .pipe(browserSync.stream());
 });
 
