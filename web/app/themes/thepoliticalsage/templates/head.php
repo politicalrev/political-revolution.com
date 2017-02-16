@@ -21,6 +21,8 @@
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
+  <!--Font Awesome-->
+  <script src="https://use.fontawesome.com/36bf1938a4.js"></script>
   
   <?php wp_head(); ?>
 </head>
