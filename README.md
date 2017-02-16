@@ -33,7 +33,7 @@ number, copying that line into the the `"require"` section of `composer.json`, a
 
 ## Contributing
 
-Contributions are welcome from everyone. However, *please read* the [contributing guidelines](docs/CONTRIBUTING.md) before
+Contributions are welcome from everyone. However, *please read* the [contributing guidelines](.github/CONTRIBUTING.md) before
 jumping into the code to give your work the highest chance of being merged.
 
 ## Documentation
