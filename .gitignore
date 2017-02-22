@@ -40,9 +40,3 @@ web/app/cache
 # Vim
 *.swp
 *.swo
-
-# Sage theme Ignores
-dist
-bower_components
-npm-debug.log
-wp-content/themes/thepoliticalsage/assets/manifest.json

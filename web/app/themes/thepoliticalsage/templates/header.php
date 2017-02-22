@@ -13,7 +13,7 @@
       }?>
       <a href="#menu">Menu<i class="fa fa-bars"></i></a>
     </nav>
-    <a class="important button" target="_blank" href="https://secure.actblue.com/contribute/page/the-politicalrevolution?refcode=website">Donate</a>
+    <a class="important button" target="_blank" href="https://secure.actblue.com/contribute/page/the-politicalrevolution">Donate</a>
     
   </header>
 

@@ -18,8 +18,8 @@
     }
   ],
   "scripts": {
-    "start": "yarn && gulp watch",
-    "build": "yarn && npm test && gulp --production",
+    "start": "yarn && bower install --allow-root && gulp watch",
+    "build": "yarn && bower install --allow-root && npm test && gulp --production",
     "jshint": "gulp jshint",
     "jscs": "jscs gulpfile.js assets/scripts/*.js",
     "test": "npm run jshint & npm run jscs"
@@ -44,7 +44,6 @@
     "gulp-imagemin": "^3.0.3",
     "gulp-jshint": "^2.0.1",
     "gulp-less": "^3.0.3",
-    "gulp-newer": "^1.3.0",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^7.1.2",
