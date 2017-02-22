@@ -1,5 +1,5 @@
 set :stage, :staging
-set :application, 'staging.political-revolution.com'
+set :application, 'wpdev.thepoliticalrev.org'
 
 # Simple Role Syntax
 # ==================

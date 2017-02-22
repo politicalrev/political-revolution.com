@@ -111,7 +111,7 @@
 				margin-left: ($size-element-margin) * -0.5;
 				padding: 0;
 				table-layout: fixed;
-				width: calc(100% + #{($size-element-margin) * 0.5});
+				width: calc(100% + #{($size-element-margin) * 0.5)};
 
 				li {
 					display: table-cell;
@@ -124,7 +124,7 @@
 
 				&.small {
 					margin-left: ($size-element-margin) * -0.5;
-					width: calc(100% + #{($size-element-margin) * 0.5});
+					width: calc(100% + #{($size-element-margin) * 0.5)};
 
 					li {
 						padding: 0 0 0 ($size-element-margin) * 0.5;
