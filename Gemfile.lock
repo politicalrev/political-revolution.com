@@ -12,7 +12,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
-    rake (10.3.2)
+    rake (13.0.1)
     sshkit (1.5.1)
       colorize
       net-scp (>= 1.1.2)
