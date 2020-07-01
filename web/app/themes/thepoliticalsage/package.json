@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "asset-builder": "^1.1.0",
-    "bower": "^1.8.0",
+    "bower": "^1.8.8",
     "browser-sync": "^2.8.2",
     "browserify": "=8.0.1",
     "d3": "^4.5.0",
