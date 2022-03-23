@@ -57,7 +57,7 @@
     "jshint-stylish": "^2.0.1",
     "lazypipe": "^1.0.1",
     "merge-stream": "^1.0.0",
-    "minimist": "^1.2.3",
+    "minimist": "^1.2.6",
     "run-sequence": "^1.1.2",
     "skel-framework": "github:ajlkn/skel",
     "stream-browserify": "^2.0.1",
